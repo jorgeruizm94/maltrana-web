@@ -1,0 +1,15 @@
+# Archivos fuente pesados (no se suben)
+assets-fuente/
+
+# Archivos de sistema de macOS
+.DS_Store
+
+# Material de trabajo y entregas (no se suben)
+maltrana-web-entrega/
+maltrana-web-entrega.zip
+figma-export/
+copy/
+.claude/
+
+# Instrucciones internas del proyecto (no se suben)
+CLAUDE.md

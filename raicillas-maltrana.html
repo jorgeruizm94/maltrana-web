@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raicillas Maltraña</title>
+<meta name="description" content="[COPY PENDIENTE: meta descripción]">
+
+<!-- Orden de carga: Bootstrap → íconos → fuentes → tokens → estilos propios -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="tokens.css" rel="stylesheet">
+<!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
+<script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============================================================
+     AGE GATE (va en todas las páginas)
+     Modal de Bootstrap con fondo estático: no se cierra con clic
+     afuera ni con Esc. La lógica está en age-gate.js.
+     TEXTOS: de Maika; la línea del paso "menor" es propuesta, por aprobar.
+     ============================================================ -->
+<div class="modal fade mlt-agegate" id="mlt-agegate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="mlt-agegate-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <img class="mlt-agegate__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280">
+
+      <div class="mlt-agegate__step" data-agegate-step="ask">
+        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
+        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
+        </div>
+      </div>
+
+      <div class="mlt-agegate__step" data-agegate-step="minor" hidden>
+        <h2 class="mlt-agegate__title" tabindex="-1">Lo sentimos, debes ser mayor de edad para acceder al sitio.</h2>
+        <!-- Leyenda basada en la Ley General de Salud (art. 185 Bis): por aprobar -->
+        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas en cualquier cantidad por menores de edad es nocivo para la salud.</p>
+        <!-- ENLACE PENDIENTE: página sobre los riesgos del alcohol en menores (lo envía Maika) -->
+        <a class="btn mlt-btn" href="#" target="_blank" rel="noopener">Conoce los riesgos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp flotante en celular (zona del pulgar). WHATSAPP PENDIENTE -->
+<a class="mlt-wa d-md-none" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+
+
+<!-- ============================================================
+     HEADER
+     navbar-expand-md = menú colapsado (hamburguesa) en celular,
+     abierto desde md (768px)
+     ============================================================ -->
+<!-- sticky-top: utilidad de Bootstrap que deja el header fijo arriba al hacer scroll -->
+<header class="mlt-header sticky-top">
+  <nav class="navbar navbar-expand-md py-2" aria-label="Principal">
+    <div class="container-xxl flex-md-column position-relative">
+
+      <a class="navbar-brand m-0 mx-md-auto py-2" href="index.html">
+        <img class="mlt-header__logo" src="assets/svg/logo-header.svg" alt="Maltraña" width="493" height="79">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mlt-nav" aria-controls="mlt-nav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
+        <ul class="navbar-nav align-items-md-center">
+          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item dropdown dropdown-center">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cocteleria.html">Coctelería</a></li>
+              <li><a class="dropdown-item" href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+        </ul>
+
+        <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
+        <div class="mlt-header__utils">
+          <ul class="mlt-social">
+            <!-- WHATSAPP PENDIENTE: https://wa.me/52XXXXXXXXXX -->
+            <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+          </ul>
+          <!-- Selector de idioma: dropdown de Bootstrap -->
+          <div class="dropdown">
+            <button class="mlt-lang dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" lang="en">
+              English
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end mlt-lang__menu">
+              <li>
+                <a class="dropdown-item active" href="raicillas-maltrana.html" lang="es" hreflang="es" aria-current="true">
+                  Español
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" lang="en" hreflang="en">
+                  English
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h1 class="visually-hidden">Raicillas Maltraña</h1>
+
+  <!-- ============================================================
+       PRODUCTO 1 · RAICILLA MALTRAÑA (fondo verde con degradado)
+       Orden en el HTML = orden en celular: título → foto → información.
+       En tablet/escritorio el grid acomoda la foto a la derecha.
+       ============================================================ -->
+  <section class="mlt-product" id="raicilla-maltrana" aria-labelledby="maltrana-title">
+    <div class="container-xxl">
+      <div class="mlt-product__grid">
+        <header class="mlt-product__head">
+          <h2 class="mlt-product__name" id="maltrana-title">Raicilla Maltraña<span class="mlt-reg">®</span></h2>
+          <p class="mlt-product__tagline">Espíritu de agave de la Sierra Madre Occidental de Jalisco</p>
+        </header>
+
+        <div class="mlt-product__media-wrap">
+          <figure class="mlt-product__media">
+            <!-- <picture>: el navegador usa AVIF si lo soporta; si no, WebP -->
+            <picture>
+              <source type="image/avif"
+                      srcset="assets/img/raicilla-maltrana-640.avif 640w, assets/img/raicilla-maltrana-1046.avif 1046w"
+                      sizes="(min-width: 768px) 40vw, 100vw">
+              <img src="assets/img/raicilla-maltrana-1046.webp"
+                   srcset="assets/img/raicilla-maltrana-640.webp 640w, assets/img/raicilla-maltrana-1046.webp 1046w"
+                   sizes="(min-width: 768px) 40vw, 100vw"
+                   alt="Botella de Raicilla Maltraña sobre una mesa de madera, con hojas de agave al fondo"
+                   width="1046" height="1656">
+            </picture>
+          </figure>
+        </div>
+
+        <div class="mlt-product__body">
+          <div class="mlt-product__intro">
+            <p>Raicilla Maltraña<span class="mlt-reg">®</span> es un destilado de agave que honra la tradición raicillera de la sierra de Jalisco. Elaborada con agaves silvestres de la especie Agave maximiliana, de entre 12 y 16 años de edad, su proceso comienza con una cocción lenta de tres días en horno de piedra calentado con leña.</p>
+            <p>Su destilación en una sola pasada y la selección cuidadosa del corazón del destilado dan lugar a una expresión auténtica del agave, con un perfil aromático complejo, notas herbales y cítricas, matices minerales y un toque ahumado sutil. A 40% Alc. Vol., ofrece un carácter firme y equilibrado, pensado para quienes aprecian los destilados mexicanos de origen y elaboración artesanal.</p>
+          </div>
+
+          <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-2 gap-md-3 mlt-pills">
+            <li class="mlt-pill">40% Alc. Vol.</li>
+            <li class="mlt-pill">750 ml</li>
+            <li class="mlt-pill">250 ml</li>
+            <li class="mlt-pill">50 ml</li>
+          </ul>
+
+          <div class="mlt-divider mlt-product__divider" aria-hidden="true">
+            <span class="mlt-divider__line"></span>
+            <img class="mlt-divider__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
+            <span class="mlt-divider__line"></span>
+          </div>
+
+          <!-- Pestañas en tablet y escritorio / acordeón en celular -->
+          <div class="mlt-tabs">
+            <div class="nav nav-underline d-none d-md-flex" role="tablist" aria-label="Raicilla Maltraña">
+              <button class="nav-link active" id="mal-tab-1" data-bs-toggle="tab" data-bs-target="#mal-pane-1" type="button" role="tab" aria-controls="mal-pane-1" aria-selected="true">Características del producto</button>
+              <button class="nav-link" id="mal-tab-2" data-bs-toggle="tab" data-bs-target="#mal-pane-2" type="button" role="tab" aria-controls="mal-pane-2" aria-selected="false">Notas de cata</button>
+              <button class="nav-link" id="mal-tab-3" data-bs-toggle="tab" data-bs-target="#mal-pane-3" type="button" role="tab" aria-controls="mal-pane-3" aria-selected="false">Maridaje y servicio</button>
+            </div>
+
+            <div class="tab-content accordion accordion-flush pt-md-3" id="mal-acc">
+              <div class="tab-pane accordion-item active" id="mal-pane-1">
+                <h3 class="accordion-header d-md-none">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#mal-col-1" aria-expanded="true" aria-controls="mal-col-1">Características del producto</button>
+                </h3>
+                <div id="mal-col-1" class="accordion-collapse collapse show" data-bs-parent="#mal-acc">
+                  <div class="accordion-body">
+                    <ul class="mlt-list">
+                      <li>Origen: Sierra Madre Occidental, Jalisco, México</li>
+                      <li>Agave: Agave maximiliana</li>
+                      <li>Proceso destacado: Cocción en horno de piedra con leña durante tres días, una sola destilación, estabilización durante 3 meses en cuartos oscuro.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane accordion-item" id="mal-pane-2">
+                <h3 class="accordion-header d-md-none">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mal-col-2" aria-expanded="false" aria-controls="mal-col-2">Notas de cata</button>
+                </h3>
+                <div id="mal-col-2" class="accordion-collapse collapse" data-bs-parent="#mal-acc">
+                  <div class="accordion-body">
+                    <ul class="mlt-list">
+                      <li>Vista: Transparente y brillante.</li>
+                      <li>Aroma: Agave cocido, hierbas frescas, notas cítricas y matices minerales.</li>
+                      <li>Paladar: Equilibrado, con notas herbales, un toque ahumado delicado y un final persistente.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane accordion-item" id="mal-pane-3">
+                <h3 class="accordion-header d-md-none">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mal-col-3" aria-expanded="false" aria-controls="mal-col-3">Maridaje y servicio</button>
+                </h3>
+                <div id="mal-col-3" class="accordion-collapse collapse" data-bs-parent="#mal-acc">
+                  <div class="accordion-body mlt-prose">
+                    <p>Ideal para disfrutar sola, a pequeños sorbos, o como protagonista de una degustación. Su perfil combina especialmente bien con cocina mexicana, mariscos, ceviches, guacamole, quesos frescos y carnes al carbón.</p>
+                    <p>En coctelería, sus notas herbales y cítricas ofrecen una excelente base para creaciones con limón, toronja y otros ingredientes frescos que permitan apreciar la personalidad del destilado.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRODUCTO 2 · LA BELLA CRISTINA EXTRA AÑEJA (fondo crema)
+       data-bs-theme="light": Bootstrap usa su modo claro solo en esta sección.
+       --reverse: foto a la izquierda en tablet/escritorio.
+       ============================================================ -->
+  <section class="mlt-product mlt-product--reverse mlt-product--light" id="la-bella-cristina" aria-labelledby="anejo-title" data-bs-theme="light">
+    <div class="container-xxl">
+      <div class="mlt-product__grid">
+        <header class="mlt-product__head">
+          <!-- POR CONFIRMAR: el copy viene en MAYÚSCULAS; se pasó a altas y bajas siguiendo el cambio hecho en Figma para Maltraña -->
+          <h2 class="mlt-product__name" id="anejo-title">Raicilla La Bella Cristina<span class="mlt-reg">®</span> Extra Añeja</h2>
+          <p class="mlt-product__tagline">Herencia, madera y carácter de la Sierra Madre Occidental de Jalisco</p>
+        </header>
+
+        <div class="mlt-product__media-wrap">
+          <figure class="mlt-product__media">
+            <picture>
+              <source type="image/avif" srcset="assets/img/la-bella-cristina-673.avif">
+              <img src="assets/img/la-bella-cristina-673.webp"
+                   alt="Botella de La Bella Cristina Extra Añeja sobre una mesa de madera, con agaves al fondo"
+                   width="673" height="1066" loading="lazy">
+            </picture>
+          </figure>
+        </div>
+
+        <div class="mlt-product__body">
+          <div class="mlt-product__intro">
+            <p>La Bella Cristina<span class="mlt-reg">®</span> Extra Añeja es una expresión sofisticada de la tradición raicillera de la Sierra Madre Occidental de Jalisco. Elaborada con agaves silvestres Agave maximiliana de entre 12 y 16 años de edad, su elaboración comienza con una cocción lenta de tres días en horno de piedra calentado con leña.</p>
+            <p>Su añejamiento de más de tres años en barricas de roble que previamente contuvieron vino tinto desarrolla una personalidad aromática compleja, donde las notas del agave cocido se encuentran con matices amaderados, frutales y avainillados, acompañados de un delicado fondo ahumado.</p>
+            <p>El resultado es un destilado de carácter elegante y envolvente, con una textura redonda y un perfil que invita a disfrutar cada sorbo sin prisa.</p>
+          </div>
+
+          <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-2 gap-md-3 mlt-pills">
+            <li class="mlt-pill">40% Alc. Vol.</li>
+            <li class="mlt-pill">750 ml</li>
+            <li class="mlt-pill">250 ml</li>
+          </ul>
+
+          <div class="mlt-divider mlt-product__divider" aria-hidden="true">
+            <span class="mlt-divider__line"></span>
+            <img class="mlt-divider__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
+            <span class="mlt-divider__line"></span>
+          </div>
+
+          <div class="mlt-tabs">
+            <div class="nav nav-underline d-none d-md-flex" role="tablist" aria-label="Raicilla La Bella Cristina Extra Añeja">
+              <button class="nav-link active" id="anj-tab-1" data-bs-toggle="tab" data-bs-target="#anj-pane-1" type="button" role="tab" aria-controls="anj-pane-1" aria-selected="true">Características del producto</button>
+              <button class="nav-link" id="anj-tab-2" data-bs-toggle="tab" data-bs-target="#anj-pane-2" type="button" role="tab" aria-controls="anj-pane-2" aria-selected="false">Notas de cata</button>
+              <button class="nav-link" id="anj-tab-3" data-bs-toggle="tab" data-bs-target="#anj-pane-3" type="button" role="tab" aria-controls="anj-pane-3" aria-selected="false">Maridaje y servicio</button>
+            </div>
+
+            <div class="tab-content accordion accordion-flush pt-md-3" id="anj-acc">
+              <div class="tab-pane accordion-item active" id="anj-pane-1">
+                <h3 class="accordion-header d-md-none">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#anj-col-1" aria-expanded="true" aria-controls="anj-col-1">Características del producto</button>
+                </h3>
+                <div id="anj-col-1" class="accordion-collapse collapse show" data-bs-parent="#anj-acc">
+                  <div class="accordion-body">
+                    <ul class="mlt-list">
+                      <li>Origen: Sierra Madre Occidental de Jalisco, México</li>
+                      <li>Agave: Agave maximiliana</li>
+                      <li>Proceso: Cocción en horno de piedra con leña durante tres días y añejamiento superior a tres años en barricas de roble previamente utilizadas para vino tinto.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane accordion-item" id="anj-pane-2">
+                <h3 class="accordion-header d-md-none">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#anj-col-2" aria-expanded="false" aria-controls="anj-col-2">Notas de cata</button>
+                </h3>
+                <div id="anj-col-2" class="accordion-collapse collapse" data-bs-parent="#anj-acc">
+                  <div class="accordion-body">
+                    <ul class="mlt-list">
+                      <li>Vista: Ámbar o marrón dorado.</li>
+                      <li>Aroma: Agave cocido, vainilla, madera, frutos maduros y delicados recuerdos de uva roja.</li>
+                      <li>Paladar: Equilibrado y envolvente, con matices de agave dulce, madera y especias, acompañado de un final persistente.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane accordion-item" id="anj-pane-3">
+                <h3 class="accordion-header d-md-none">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#anj-col-3" aria-expanded="false" aria-controls="anj-col-3">Maridaje y servicio</button>
+                </h3>
+                <div id="anj-col-3" class="accordion-collapse collapse" data-bs-parent="#anj-acc">
+                  <div class="accordion-body mlt-prose">
+                    <p>Ideal para disfrutarse sola, a pequeños sorbos, y apreciar la evolución de sus aromas. Marida especialmente bien con ate acompañado de quesos maduros, moles mexicanos, carnes al carbón, frutos secos y chocolate oscuro.</p>
+                    <p>También puede aportar profundidad a cocteles de autor, como una versión de Negroni elaborada con raicilla, en la que sus matices amaderados y frutales complementen los ingredientes amargos y cítricos.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mlt-footer">
+  <div class="container-xxl">
+    <div class="row gy-4 text-center text-md-start">
+      <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
+        <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
+      </div>
+
+      <nav class="col-6 col-md-3" aria-label="Secciones">
+        <ul class="mlt-footer__list">
+          <li><a href="raicilla.html">Raicilla</a></li>
+          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="maltrana.html">Maltraña</a></li>
+          <li><a href="distribucion.html">Distribución</a></li>
+        </ul>
+      </nav>
+
+      <!-- Experiencias: menú padre con sus tres secciones (jerarquía con filete lateral) -->
+      <nav class="col-6 col-md-3" aria-labelledby="footer-exp">
+        <p class="mlt-footer__parent" id="footer-exp">Experiencias</p>
+        <ul class="mlt-footer__list mlt-footer__sub">
+          <li><a href="cocteleria.html">Coctelería</a></li>
+          <li><a href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+          <li><a href="catas.html">Catas</a></li>
+        </ul>
+      </nav>
+
+      <div class="col-12 col-md-3">
+        <ul class="mlt-footer__list">
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
+        </ul>
+        <ul class="mlt-social justify-content-center justify-content-md-start mt-1">
+          <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sellos y leyendas sanitarias -->
+    <div class="mlt-footer__seals d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-4">
+      <ul class="list-unstyled d-flex gap-3 m-0">
+        <!-- LOGO PENDIENTE: Consejo Mexicano Promotor de la Raicilla -->
+        <li class="mlt-seal">CMPR</li>
+        <!-- LOGO PENDIENTE: 100% Agave Maximiliana -->
+        <li class="mlt-seal">100% Agave Maximiliana</li>
+      </ul>
+      <div class="mlt-footer__warnings text-center text-md-end">
+        <p class="m-0">Evite el exceso.</p>
+        <p class="m-0">El exceso en el consumo de este producto es dañino para la salud.</p>
+      </div>
+    </div>
+
+    <div class="mlt-divider mt-3" aria-hidden="true">
+      <span class="mlt-divider__line"></span>
+      <img class="mlt-divider__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
+      <span class="mlt-divider__line"></span>
+    </div>
+
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-1 gap-md-2 mlt-footer__legal">
+      <p class="m-0 order-2 order-md-1">2026. Matraña Raicilla. All rights reserved.</p>
+      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-md-4 m-0 order-1 order-md-2">
+        <li><a href="privacidad.html">Politica de Privacidad</a></li>
+        <li><a href="cookies.html">Politica de Cookies</a></li>
+        <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="age-gate.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

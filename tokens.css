@@ -1,0 +1,23 @@
+/* Maltraña · colores y tipografías.
+   Los HEX del tema oscuro se ajustaron al diseño de Figma (12 nov 2026):
+   --text #F1EBDD → #FFFFFF · --gold #C9A24A → #BF9A3D · nuevos --cream y --band-deep.
+   --ink / --gold-ink / --amber-ink: colores de texto para secciones claras (crema)
+   dentro del tema oscuro; cumplen contraste AA sobre #F1EBDD.
+   El tema claro queda pendiente de confirmar; si no se usa, se borra. */
+:root{
+  --font-display:"Crimson Pro",Georgia,serif;
+  --font-body:"Barlow",system-ui,sans-serif;
+  /* Tinta para secciones claras (sirven en ambos temas) */
+  --ink:#2A2724; --gold-ink:#7A5C28; --amber-ink:#B5651A;
+  /* Tema claro (primario verde) */
+  --bg:#FBF9F4; --surface:#F3EEE2; --text:#2A2724; --muted:#5E5851; --link:#7A5C28; --border:#DCD3BF;
+  --primary:#2F4A3A; --primary-hover:#1F3328; --primary-active:#17271E; --on-primary:#FBF9F4;
+  --gold:#B8923F; --amber:#C9781E; --sage-100:#E6ECE5; --band:#2F4A3A;
+}
+:root[data-theme="dark"]{
+  /* Tema oscuro (el que usa el diseño de Figma) */
+  --bg:#141915; --surface:#1D2520; --text:#FFFFFF; --muted:#B4AD9E; --link:#DDBF74; --border:#33403A;
+  --primary:#C9A24A; --primary-hover:#D9B563; --primary-active:#B8923F; --on-primary:#1A1713;
+  --gold:#BF9A3D; --amber:#E08A2E; --sage-100:#2A3D32; --band:#243A2E; --sage:#6F9A80;
+  --cream:#F1EBDD; --gold-ornament:#C5A009; /* dorado del ornamento oficial del logo */ --band-deep:#1A2B22; /* final del degradado de la sección verde */
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maltraña</title>
+<meta name="description" content="[COPY PENDIENTE: meta descripción]">
+
+<!-- Orden de carga: Bootstrap → íconos → fuentes → tokens → estilos propios -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="tokens.css" rel="stylesheet">
+<!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
+<script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============================================================
+     AGE GATE (va en todas las páginas)
+     Modal de Bootstrap con fondo estático: no se cierra con clic
+     afuera ni con Esc. La lógica está en age-gate.js.
+     TEXTOS: de Maika; la línea del paso "menor" es propuesta, por aprobar.
+     ============================================================ -->
+<div class="modal fade mlt-agegate" id="mlt-agegate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="mlt-agegate-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <img class="mlt-agegate__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280">
+
+      <div class="mlt-agegate__step" data-agegate-step="ask">
+        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
+        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
+        </div>
+      </div>
+
+      <div class="mlt-agegate__step" data-agegate-step="minor" hidden>
+        <h2 class="mlt-agegate__title" tabindex="-1">Lo sentimos, debes ser mayor de edad para acceder al sitio.</h2>
+        <!-- Leyenda basada en la Ley General de Salud (art. 185 Bis): por aprobar -->
+        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas en cualquier cantidad por menores de edad es nocivo para la salud.</p>
+        <!-- ENLACE PENDIENTE: página sobre los riesgos del alcohol en menores (lo envía Maika) -->
+        <a class="btn mlt-btn" href="#" target="_blank" rel="noopener">Conoce los riesgos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp flotante en celular (zona del pulgar). WHATSAPP PENDIENTE -->
+<a class="mlt-wa d-md-none" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+
+
+<!-- ============================================================
+     HEADER
+     navbar-expand-md = menú colapsado (hamburguesa) en celular,
+     abierto desde md (768px)
+     ============================================================ -->
+<!-- sticky-top: utilidad de Bootstrap que deja el header fijo arriba al hacer scroll -->
+<header class="mlt-header sticky-top">
+  <nav class="navbar navbar-expand-md py-2" aria-label="Principal">
+    <div class="container-xxl flex-md-column position-relative">
+
+      <a class="navbar-brand m-0 mx-md-auto py-2" href="index.html" aria-current="page">
+        <img class="mlt-header__logo" src="assets/svg/logo-header.svg" alt="Maltraña" width="493" height="79">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mlt-nav" aria-controls="mlt-nav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
+        <ul class="navbar-nav align-items-md-center">
+          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
+          <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item dropdown dropdown-center">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cocteleria.html">Coctelería</a></li>
+              <li><a class="dropdown-item" href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+        </ul>
+
+        <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
+        <div class="mlt-header__utils">
+          <ul class="mlt-social">
+            <!-- WHATSAPP PENDIENTE: https://wa.me/52XXXXXXXXXX -->
+            <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+          </ul>
+          <!-- Selector de idioma: dropdown de Bootstrap -->
+          <div class="dropdown">
+            <button class="mlt-lang dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" lang="en">
+              English
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end mlt-lang__menu">
+              <li>
+                <a class="dropdown-item active" href="index.html" lang="es" hreflang="es" aria-current="true">
+                  Español
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" lang="en" hreflang="en">
+                  English
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h1 class="visually-hidden">Maltraña</h1>
+
+  <!-- ============================================================
+       INICIO · MOSAICO (bento)
+       Cada recuadro lleva a una sección. Todo el recuadro es clicable
+       gracias a .stretched-link de Bootstrap (en el enlace del título).
+       Celular: 2 columnas · Tablet/escritorio: el mosaico cabe en una pantalla.
+       COPY PENDIENTE: textos de cada recuadro en Lorem Ipsum.
+       ============================================================ -->
+  <section class="mlt-home" aria-label="Secciones">
+    <div class="container-xxl">
+      <div class="mlt-bento">
+
+        <article class="mlt-tile mlt-tile--prod">
+          <picture class="mlt-tile__media">
+            <source type="image/avif" srcset="assets/img/raicilla-maltrana-640.avif 640w, assets/img/raicilla-maltrana-1046.avif 1046w" sizes="(min-width: 768px) 30vw, 100vw">
+            <img src="assets/img/raicilla-maltrana-1046.webp" srcset="assets/img/raicilla-maltrana-640.webp 640w, assets/img/raicilla-maltrana-1046.webp 1046w" sizes="(min-width: 768px) 30vw, 100vw" alt="" width="1046" height="1656">
+          </picture>
+          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <div class="mlt-tile__body">
+            <h2 class="mlt-tile__title"><a class="stretched-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></h2>
+            <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
+          </div>
+        </article>
+
+        <article class="mlt-tile mlt-tile--rai">
+          <picture class="mlt-tile__media">
+            <source type="image/avif" srcset="assets/img/home/agave.avif">
+            <img src="assets/img/home/agave.webp" alt="" width="815" height="1200" loading="lazy">
+          </picture>
+          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <div class="mlt-tile__body">
+            <h2 class="mlt-tile__title"><a class="stretched-link" href="raicilla.html">Raicilla</a></h2>
+            <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+        </article>
+
+        <article class="mlt-tile mlt-tile--mal">
+          <div class="mlt-ph" data-ph="Foto: hacienda"></div>
+          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <div class="mlt-tile__body">
+            <h2 class="mlt-tile__title"><a class="stretched-link" href="maltrana.html">Maltraña</a></h2>
+            <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </article>
+
+        <!-- Experiencias no tiene página propia: el recuadro lleva a sus tres secciones -->
+        <article class="mlt-tile mlt-tile--exp">
+          <picture class="mlt-tile__media">
+            <source type="image/avif" srcset="assets/img/home/copa.avif">
+            <img src="assets/img/home/copa.webp" alt="" width="1026" height="1200" loading="lazy">
+          </picture>
+          <div class="mlt-tile__body">
+            <h2 class="mlt-tile__title">Experiencias</h2>
+            <ul class="mlt-tile__links">
+              <li><a href="cocteleria.html">Coctelería</a></li>
+              <li><a href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+              <li><a href="catas.html">Catas</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="mlt-tile mlt-tile--dis">
+          <div class="mlt-ph" data-ph="Foto: distribución"></div>
+          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <div class="mlt-tile__body">
+            <h2 class="mlt-tile__title"><a class="stretched-link" href="distribucion.html">Distribución</a></h2>
+            <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+            <ul class="mlt-tile__links">
+              <li><a href="catas.html">Catas</a></li>
+              <li><a href="cocteleria.html">Coctelería</a></li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HORNO DE PIEDRA (lo que distingue a Maltraña)
+       Texto tomado del guion "Raicilla". Título pendiente (Lorem Ipsum).
+       ============================================================ -->
+  <section class="mlt-horno" aria-labelledby="horno-title">
+    <div class="container-xxl">
+      <div class="mlt-horno__grid">
+        <div class="mlt-horno__media">
+          <div class="mlt-ph" data-ph="Foto: horno de piedra"></div>
+        </div>
+        <div>
+          <img class="mlt-horno__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
+          <h2 class="mlt-horno__title" id="horno-title">Lorem ipsum dolor sit amet</h2>
+          <p class="mlt-horno__text">Las piñas se cuecen durante 72 horas en hornos de piedra calentados con leña. Antes de introducirlas, retiramos la leña y las cenizas para conservar el carácter silvestre del agave, con un delicado toque ahumado.</p>
+          <a class="btn mlt-btn mlt-btn--outline mt-4" href="raicilla.html">Raicilla <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mlt-footer">
+  <div class="container-xxl">
+    <div class="row gy-4 text-center text-md-start">
+      <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
+        <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
+      </div>
+
+      <nav class="col-6 col-md-3" aria-label="Secciones">
+        <ul class="mlt-footer__list">
+          <li><a href="raicilla.html">Raicilla</a></li>
+          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="maltrana.html">Maltraña</a></li>
+          <li><a href="distribucion.html">Distribución</a></li>
+        </ul>
+      </nav>
+
+      <!-- Experiencias: menú padre con sus tres secciones (jerarquía con filete lateral) -->
+      <nav class="col-6 col-md-3" aria-labelledby="footer-exp">
+        <p class="mlt-footer__parent" id="footer-exp">Experiencias</p>
+        <ul class="mlt-footer__list mlt-footer__sub">
+          <li><a href="cocteleria.html">Coctelería</a></li>
+          <li><a href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+          <li><a href="catas.html">Catas</a></li>
+        </ul>
+      </nav>
+
+      <div class="col-12 col-md-3">
+        <ul class="mlt-footer__list">
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
+        </ul>
+        <ul class="mlt-social justify-content-center justify-content-md-start mt-1">
+          <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sellos y leyendas sanitarias -->
+    <div class="mlt-footer__seals d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-4">
+      <ul class="list-unstyled d-flex gap-3 m-0">
+        <!-- LOGO PENDIENTE: Consejo Mexicano Promotor de la Raicilla -->
+        <li class="mlt-seal">CMPR</li>
+        <!-- LOGO PENDIENTE: 100% Agave Maximiliana -->
+        <li class="mlt-seal">100% Agave Maximiliana</li>
+      </ul>
+      <div class="mlt-footer__warnings text-center text-md-end">
+        <p class="m-0">Evite el exceso.</p>
+        <p class="m-0">El exceso en el consumo de este producto es dañino para la salud.</p>
+      </div>
+    </div>
+
+    <div class="mlt-divider mt-3" aria-hidden="true">
+      <span class="mlt-divider__line"></span>
+      <img class="mlt-divider__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
+      <span class="mlt-divider__line"></span>
+    </div>
+
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-1 gap-md-2 mlt-footer__legal">
+      <p class="m-0 order-2 order-md-1">2026. Matraña Raicilla. All rights reserved.</p>
+      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-md-4 m-0 order-1 order-md-2">
+        <li><a href="privacidad.html">Politica de Privacidad</a></li>
+        <li><a href="cookies.html">Politica de Cookies</a></li>
+        <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="age-gate.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

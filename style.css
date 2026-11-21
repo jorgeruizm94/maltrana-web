@@ -1,0 +1,778 @@
+/* ============================================================
+   Maltraña · style.css
+   Se carga DESPUÉS de bootstrap.min.css y tokens.css.
+   Regla: primero utilidades/componentes de Bootstrap; aquí solo
+   lo que Bootstrap no resuelve. Clases propias con prefijo .mlt-
+   Breakpoints: < 768px celular · ≥ 768px (md) tablet y escritorio.
+   ============================================================ */
+
+/* ---------- 1. Bootstrap ← tokens de marca ---------- */
+:root[data-bs-theme="dark"] {
+  --bs-body-font-family: var(--font-body);
+  --bs-body-font-size: .9375rem;      /* 15px texto informativo */
+  --bs-body-line-height: 1.5;
+  --bs-body-bg: var(--band);
+  --bs-body-color: var(--text);
+  --bs-heading-color: var(--text);
+  --bs-emphasis-color: var(--text);
+  --bs-border-color: var(--border);
+  --bs-link-color: var(--gold);
+  --bs-link-color-rgb: 191, 154, 61;
+  --bs-link-hover-color: var(--text);
+  --bs-link-hover-color-rgb: 255, 255, 255;
+}
+
+/* Escala tipográfica (tercera mayor, 1.25, base 16px) · mínimo 15px */
+:root {
+  --mlt-fs-display: clamp(1.75rem, 1.45rem + 1vw, 2.25rem); /* 28 → 36px títulos */
+  --mlt-fs-subhead: 1.125rem;                              /* 18px pestañas/acordeón */
+  --mlt-fs-menu: 1.125rem;                                 /* 18px menú */
+  --mlt-fs-body: .9375rem;                                 /* 15px texto informativo */
+  --mlt-fs-small: .9375rem;                                /* 15px pills, tagline, legales (mínimo) */
+  --mlt-lh-body: 1.5;                                      /* interlineado del texto */
+
+  /* REGLAS DE ESPACIADO DE LA SECCIÓN DE PRODUCTO (aplican a todos los productos)
+     pegado: título ↔ tagline · normal: bloques de lectura · amplio: ornamento */
+  --mlt-space-tight: .25rem;    /*  4px */
+  --mlt-space-normal: 1.5rem;   /* 24px */
+  --mlt-space-loose: 2.5rem;    /* 40px */
+
+  /* Margen mínimo a los lados: la página nunca toca los bordes (20px → 48px) */
+  --mlt-page-gutter: clamp(2.5rem, 6vw, 6rem);
+  --mlt-section-py: clamp(3rem, 5vw, 4.5rem);   /* mismo espacio arriba y abajo de cada sección */
+  --mlt-radius: 12px;           /* redondeo sutil: fotos y submenús */
+  --mlt-radius-sm: 8px;
+  --mlt-header-h: 64px;
+  /* Sombra casi imperceptible para dar profundidad a todas las imágenes */
+  --mlt-shadow-img: 0 1px 2px rgba(0, 0, 0, .18), 0 16px 36px -16px rgba(0, 0, 0, .55);
+  --mlt-shadow-img-light: 0 1px 2px rgba(42, 39, 36, .10), 0 16px 36px -18px rgba(42, 39, 36, .35);   /* main.js lo actualiza con la altura real del header */
+
+  /* Flechas del acordeón (Bootstrap usa una imagen SVG; aquí van en dorado) */
+  --mlt-chevron-gold: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23BF9A3D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
+  --mlt-chevron-gold-ink: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%237A5C28' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
+}
+
+html { scroll-padding-top: var(--mlt-header-h); }
+
+/* Bootstrap pone 12px de margen al contenedor; lo subimos para que la página respire.
+   (el padding del contenedor = --bs-gutter-x / 2) */
+.container-xxl { --bs-gutter-x: var(--mlt-page-gutter); }   /* enlaces #sección no quedan bajo el header fijo */
+body { -webkit-font-smoothing: antialiased; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+/* ============================================================
+   2. HEADER (fijo con .sticky-top de Bootstrap)
+   ============================================================ */
+.mlt-header {
+  background: rgba(29, 37, 32, .82);              /* --surface con 18% de transparencia */
+  border-bottom: 1px solid rgba(255, 255, 255, .05); /* filete apenas perceptible */
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+.mlt-header__logo { display: block; height: 26px; width: auto; }
+
+.mlt-header .navbar {
+  --bs-navbar-color: var(--text);
+  --bs-navbar-hover-color: var(--gold);
+  --bs-navbar-active-color: var(--gold);
+  --bs-navbar-toggler-border-color: transparent;
+  --bs-navbar-toggler-focus-width: 0;
+  --bs-navbar-nav-link-padding-x: 0;
+}
+.mlt-header .nav-link { font-size: var(--mlt-fs-menu); letter-spacing: .02em; padding-block: .75rem; transition: color .2s; }  /* área táctil 48px */
+
+.mlt-header .dropdown-toggle::after {
+  border: 0;
+  width: .4em; height: .4em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: .5em;
+  vertical-align: .25em;
+}
+
+.mlt-header .dropdown-menu {
+  --bs-dropdown-bg: rgba(29, 37, 32, .98);
+  --bs-dropdown-border-color: rgba(191, 154, 61, .25);
+  --bs-dropdown-border-radius: var(--mlt-radius);
+  --bs-dropdown-padding-x: .375rem;
+  --bs-dropdown-padding-y: .375rem;
+  --bs-dropdown-spacer: .625rem;
+  --bs-dropdown-min-width: 13rem;
+  --bs-dropdown-link-color: var(--text);
+  --bs-dropdown-link-hover-color: var(--gold);
+  --bs-dropdown-link-hover-bg: rgba(255, 255, 255, .06);
+  --bs-dropdown-link-active-color: var(--gold);
+  --bs-dropdown-link-active-bg: rgba(191, 154, 61, .1);
+  --bs-dropdown-item-padding-y: .625rem;
+  --bs-dropdown-item-padding-x: 1rem;
+  --bs-dropdown-item-border-radius: var(--mlt-radius-sm);
+  --bs-dropdown-font-size: 1.0625rem;
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, .55);
+}
+.mlt-header .dropdown-item { display: flex; align-items: center; gap: .625rem; transition: background-color .15s, color .15s; }
+.mlt-header .dropdown-menu.show { animation: mlt-drop .18s ease-out; }
+@keyframes mlt-drop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.mlt-header__utils { display: flex; align-items: center; gap: 1.75rem; padding: 1rem 0 .5rem; }
+.mlt-social { display: flex; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.mlt-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 48px; min-height: 48px;
+  color: var(--text); font-size: 1.875rem;   /* íconos 30px */
+  text-decoration: none;
+}
+.mlt-social a:hover { color: var(--gold); }
+
+.mlt-lang { display: inline-flex; align-items: center; gap: .5rem; min-height: 48px; padding: 0; border: 0; background: none; color: var(--text); font-size: 1.0625rem; }
+.mlt-lang:hover { color: var(--gold); }
+
+/* Tablet y escritorio (≥ 768px): logo centrado con redes e idioma a su altura,
+   menú debajo. Más bajo que antes: ~120px */
+@media (min-width: 768px) {
+  .mlt-header .navbar { padding-block: .75rem .25rem; }
+  .mlt-header .navbar-brand { padding-block: .25rem; }
+  .mlt-header__logo { height: 32px; }
+  .mlt-header .navbar-collapse { margin-top: .25rem !important; }
+  .mlt-header .navbar-nav { gap: 2.25rem; }
+  .mlt-header .nav-link { padding-block: .375rem; }
+  .mlt-header__utils {
+    position: absolute;            /* superposición puntual: permitido */
+    top: .5rem;
+    right: calc(var(--bs-gutter-x) * .5);
+    padding: 0;
+    gap: 2rem;                     /* separa redes del idioma */
+  }
+  .mlt-header .mlt-social { gap: 0; }   /* redes juntas entre sí */
+  .mlt-social a { min-width: 34px; min-height: 36px; font-size: 1.25rem; }  /* 20px en tablet/escritorio */
+}
+@media (min-width: 1200px) {
+  .mlt-header__logo { height: 36px; }
+  .mlt-header .navbar-nav { gap: 3.75rem; }
+}
+
+/* ============================================================
+   3. SECCIÓN DE PRODUCTO
+   Cada sección define sus colores en variables; la versión clara
+   (crema) solo cambia las variables.
+   ============================================================ */
+.mlt-product {
+  --mlt-fg: var(--text);
+  --mlt-fg-80: rgba(255, 255, 255, .8);
+  --mlt-fg-60: rgba(255, 255, 255, .62);
+  --mlt-fg-20: rgba(255, 255, 255, .2);
+  --mlt-tagline: var(--gold);
+  --mlt-accent: var(--gold);
+  --mlt-chevron: var(--mlt-chevron-gold);
+
+  color: var(--mlt-fg);
+  background: linear-gradient(135deg, var(--band-deep) 0%, var(--band) 60%);  /* oscuro arriba-izq → claro */
+  padding-block: var(--mlt-section-py);
+}
+
+/* Sección clara (crema). En el HTML lleva data-bs-theme="light" para que los
+   componentes de Bootstrap dentro de ella usen su modo claro. */
+.mlt-product--light {
+  --mlt-fg: var(--ink);
+  --mlt-fg-80: rgba(42, 39, 36, .8);
+  --mlt-fg-60: rgba(42, 39, 36, .68);
+  --mlt-fg-20: rgba(42, 39, 36, .18);
+  --mlt-tagline: var(--gold-ink);
+  --mlt-accent: var(--amber-ink);   /* acento ámbar: Extra Añeja */
+  --mlt-chevron: var(--mlt-chevron-gold-ink);
+  background: var(--cream);
+}
+
+/* Grid: Bootstrap no permite que una columna ocupe dos filas,
+   así que aquí usamos CSS Grid con áreas con nombre.
+   Celular: título → foto → información */
+.mlt-product__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "media" "body";
+  row-gap: var(--mlt-space-normal);
+}
+.mlt-product__head { grid-area: head; text-align: center; }
+.mlt-product__media-wrap { grid-area: media; }
+.mlt-product__body { grid-area: body; }
+
+/* Tablet y escritorio: texto | foto (la foto ocupa las dos filas) */
+@media (min-width: 768px) {
+  .mlt-product__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "head media" "body media";
+    column-gap: clamp(2rem, 5vw, 5rem);
+    row-gap: var(--mlt-space-normal);
+  }
+  .mlt-product--reverse .mlt-product__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas: "media head" "media body";
+  }
+}
+
+/* Encabezado */
+.mlt-product__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--mlt-fs-display);
+  line-height: 1.15;
+  color: var(--mlt-fg);
+  margin: 0;
+}
+.mlt-product__tagline {
+  margin: var(--mlt-space-tight) 0 0;   /* REGLA: pegado al título */
+  color: var(--mlt-tagline);
+  font-weight: 600;
+  font-size: var(--mlt-fs-small);
+  letter-spacing: .06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Imagen */
+.mlt-product__media { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--mlt-radius); box-shadow: var(--mlt-shadow-img); }
+.mlt-product--light .mlt-product__media { box-shadow: var(--mlt-shadow-img-light); }
+/* --mlt-zoom lo actualiza main.js al hacer scroll (1 → 1.08 máximo) */
+.mlt-product__media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transform: scale(var(--mlt-zoom, 1));
+  transform-origin: 50% 60%;
+  will-change: transform;
+}
+@media (min-width: 768px) {
+  .mlt-product__media {
+    position: sticky;                                   /* se queda fija debajo del header */
+    top: calc(var(--mlt-header-h) + 1.5rem);
+    aspect-ratio: 523 / 828;                            /* proporción de Figma */
+    max-height: min(calc(100svh - var(--mlt-header-h) - 9rem), 640px);  /* alto máximo */
+  }
+}
+
+/* Intro: línea de ~62 caracteres para lectura cómoda */
+.mlt-product__intro { max-width: 84ch; margin-inline: auto; text-align: center; line-height: 1.45; }
+.mlt-product__intro p { margin: 0 0 .85em; }
+
+/* REGLA: pills a distancia normal del párrafo; ornamento despegado (amplio)
+   arriba y abajo; pestañas a la misma distancia amplia del ornamento */
+.mlt-pills { margin: var(--mlt-space-normal) 0 0; }
+.mlt-product__divider { margin-block: var(--mlt-space-loose); }
+.mlt-product__intro p:last-child { margin-bottom: 0; }
+
+/* Pills */
+.mlt-pill {
+  display: inline-block;
+  padding: .1875rem .75rem;
+  border: 1px solid var(--mlt-fg-80);
+  border-radius: 6px;
+  color: var(--mlt-fg-80);
+  font-size: var(--mlt-fs-small);
+  line-height: 1.4;
+  letter-spacing: .02em;
+}
+
+/* Divisor: línea · ornamento · línea */
+.mlt-divider { display: flex; align-items: center; justify-content: center; gap: 1.25rem; }
+.mlt-divider__line { flex: 1 1 auto; height: 1px; background: var(--gold-ornament); }   /* mismo dorado que el ornamento */
+.mlt-divider__ornament { width: 104px; height: auto; flex: none; }
+
+/* Listas y párrafos de las pestañas */
+.mlt-list { margin: 0; padding-left: 1.125rem; }
+.mlt-list li { margin-bottom: .5rem; }
+.mlt-list li:last-child { margin-bottom: 0; }
+.mlt-list li::marker { color: var(--mlt-accent); }
+.mlt-prose p { margin: 0 0 1.25em; }
+.mlt-prose p:last-child { margin-bottom: 0; }
+
+/* ---------- Pestañas (tablet y escritorio) ---------- */
+.mlt-tabs .nav-underline {
+  --bs-nav-link-color: var(--mlt-fg-60);
+  --bs-nav-link-hover-color: var(--mlt-fg);
+  --bs-nav-underline-link-active-color: var(--mlt-fg);
+  --bs-nav-underline-border-width: 2px;
+  border-bottom: 1px solid var(--mlt-fg-20);
+}
+.mlt-tabs .nav-underline .nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--mlt-fs-subhead);
+  white-space: nowrap;
+  margin-bottom: -1px;
+  padding-block: .625rem;
+}
+.mlt-tabs .nav-underline .nav-link.active { border-bottom-color: var(--mlt-accent); }
+
+/* Línea vertical fina entre pestañas: indica que hay más opciones a los lados */
+.mlt-tabs .nav-underline { --mlt-tab-gap: 2rem; --bs-nav-underline-gap: .25rem var(--mlt-tab-gap); }
+.mlt-tabs .nav-underline .nav-link { position: relative; }
+.mlt-tabs .nav-underline .nav-link + .nav-link::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--mlt-tab-gap) / -2);
+  top: 50%;
+  width: 1px;
+  height: 1.1em;
+  background: var(--mlt-fg-20);
+  transform: translateY(-50%);
+}
+
+/* ---------- Acordeón (celular) ---------- */
+.mlt-tabs .accordion {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-color: var(--mlt-fg);
+  --bs-accordion-border-color: var(--mlt-fg-20);
+  --bs-accordion-btn-padding-x: 0;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-body-padding-y: .25rem;
+  --bs-accordion-btn-color: var(--mlt-fg);
+  --bs-accordion-active-color: var(--mlt-fg);
+  --bs-accordion-active-bg: transparent;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+.mlt-tabs .accordion-button {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--mlt-fs-subhead);
+}
+.mlt-tabs .accordion-button:not(.collapsed) { box-shadow: none; }
+/* Bootstrap define la flecha directamente en ::after en modo oscuro (azul),
+   por eso hay que sobrescribirla en el mismo ::after */
+.mlt-tabs .accordion-button::after {
+  --bs-accordion-btn-icon: var(--mlt-chevron);
+  --bs-accordion-btn-active-icon: var(--mlt-chevron);
+}
+.mlt-tabs .accordion-body { padding-bottom: 1.5rem; }
+
+/* ---------- Un solo HTML, dos comportamientos ---------- */
+@media (max-width: 767.98px) {
+  .mlt-tabs .tab-content > .tab-pane { display: block; }
+}
+@media (min-width: 768px) {
+  .mlt-tabs .accordion-collapse { display: block !important; height: auto !important; }
+  .mlt-tabs .accordion-item { border: 0; }
+  .mlt-tabs .accordion-body { padding: 0; }
+  .mlt-tabs .tab-content { display: grid; }
+  .mlt-tabs .tab-content > .tab-pane { display: block; grid-area: 1 / 1; visibility: hidden; }
+  .mlt-tabs .tab-content > .tab-pane.active { visibility: visible; }
+}
+
+/* ============================================================
+   4. FOOTER
+   ============================================================ */
+.mlt-footer { background: var(--bg); padding-block: 2rem .75rem; font-size: 1rem; }
+.mlt-footer__logo { width: 150px; height: auto; }
+.mlt-footer__list { list-style: none; margin: 0; padding: 0; }
+.mlt-footer a { color: var(--text); text-decoration: none; display: inline-block; padding-block: .5rem; }
+.mlt-footer a:hover { color: var(--gold); }
+.mlt-footer .mlt-footer__mail { color: var(--gold); overflow-wrap: anywhere; }
+.mlt-footer .mlt-footer__mail:hover { color: var(--text); }
+.mlt-footer__label { display: inline-block; padding-block: .5rem; }
+.mlt-footer .mlt-social a { justify-content: flex-start; min-width: 44px; }
+.mlt-footer .mlt-divider { gap: 1.5rem; }
+.mlt-footer .mlt-divider__line { flex: 1 1 auto; }
+.mlt-footer .mlt-divider__ornament { width: 120px; }
+.mlt-footer__legal { font-size: var(--mlt-fs-small); }   /* 15px: el texto más chico */
+.mlt-footer__legal a { padding-block: .75rem; }
+.mlt-footer__legal p { padding-block: .25rem; }
+
+@media (min-width: 768px) {
+  .mlt-footer a, .mlt-footer__label { padding-block: .3125rem; }
+  .mlt-footer__legal a { padding-block: .375rem; }   /* pegados a la línea de arriba */
+}
+
+/* Flecha del selector de idioma: el botón es flex, así que se alinea con margen */
+.mlt-header .mlt-lang.dropdown-toggle::after { vertical-align: 0; margin-left: .125rem; margin-top: -.3em; }
+
+/* Celular: pills un poco más compactas para que quepan en un renglón */
+@media (max-width: 767.98px) {
+  .mlt-pill { padding-inline: .5rem; }
+}
+
+/* ============================================================
+   5. AGE GATE (aviso de mayoría de edad)
+   ============================================================ */
+/* Página detrás del aviso: oscura y desenfocada. Al responder "Sí"
+   se quita la clase y la página se aclara con una transición. */
+.mlt-header, main, .mlt-footer, .mlt-wa { transition: filter .6s ease; }
+html.mlt-gated { overflow: hidden; }
+html.mlt-gated .mlt-header,
+html.mlt-gated main,
+html.mlt-gated .mlt-footer,
+html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
+
+/* Fondo del modal de Bootstrap: casi transparente, el oscurecido lo hace el filtro */
+.modal-backdrop { --bs-backdrop-bg: #0b0e0c; --bs-backdrop-opacity: .35; }
+
+.mlt-agegate .modal-content {
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2.5rem 1.75rem 1.5rem;
+  text-align: center;
+  color: var(--text);
+  background: rgba(29, 37, 32, .92);
+  border: 1px solid rgba(191, 154, 61, .35);
+  border-radius: var(--mlt-radius);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .7);
+}
+.mlt-agegate .modal-dialog { max-width: 560px; }
+.mlt-agegate .mlt-btn { white-space: nowrap; }
+.mlt-agegate__logo { width: 170px; height: auto; }
+.mlt-agegate__ornament { width: 120px; height: auto; margin-top: -.5rem; }
+.mlt-agegate__step { display: grid; gap: 1rem; justify-items: center; }
+.mlt-agegate__step[hidden] { display: none; }
+.mlt-agegate__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.375rem, 1.2rem + .8vw, 1.75rem); text-wrap: balance; line-height: 1.15; margin: 0; color: var(--text); }
+.mlt-agegate__title:focus { outline: none; }
+.mlt-agegate__text { margin: 0; max-width: 34ch; }
+.mlt-agegate__legal {
+  margin: .5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  width: 100%;
+  font-size: var(--mlt-fs-small);
+  color: var(--mlt-on-band-60, rgba(255, 255, 255, .65));
+}
+
+/* Botones de marca (sobre Bootstrap .btn) */
+.mlt-btn {
+  --bs-btn-padding-x: 1.75rem;
+  --bs-btn-padding-y: .625rem;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #1A1713;
+  --bs-btn-bg: var(--gold);
+  --bs-btn-border-color: var(--gold);
+  --bs-btn-hover-color: #1A1713;
+  --bs-btn-hover-bg: #D9B563;
+  --bs-btn-hover-border-color: #D9B563;
+  --bs-btn-active-color: #1A1713;
+  --bs-btn-active-bg: #B8923F;
+  --bs-btn-active-border-color: #B8923F;
+  --bs-btn-border-radius: var(--mlt-radius-sm);
+  min-width: 7.5rem;
+  letter-spacing: .02em;
+}
+.mlt-btn--outline {
+  --bs-btn-color: var(--text);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: rgba(255, 255, 255, .55);
+  --bs-btn-hover-color: #1A1713;
+  --bs-btn-hover-bg: var(--text);
+  --bs-btn-hover-border-color: var(--text);
+}
+
+/* ============================================================
+   6. WHATSAPP
+   ============================================================ */
+/* En el header y footer se distingue en dorado */
+.mlt-social .mlt-social__wa { color: var(--gold); }
+.mlt-social .mlt-social__wa:hover { color: var(--text); }
+
+/* Botón flotante en celular: abajo a la derecha, al alcance del pulgar */
+.mlt-wa {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 1030;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #1A1713;
+  font-size: 1.875rem;            /* ícono 30px */
+  text-decoration: none;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, .5);
+}
+.mlt-wa:hover { color: #1A1713; background: #D9B563; }
+
+/* Marca registrada: pequeña y elevada, sin mover el interlineado */
+.mlt-reg { font-size: .55em; vertical-align: super; line-height: 0; margin-left: .05em; }
+
+/* ============================================================
+   7. FOOTER: sellos y leyendas
+   ============================================================ */
+/* Marcadores de los logos (CMPR, 100% Agave Maximiliana) hasta tener los archivos */
+.mlt-seal {
+  display: grid; place-items: center;
+  min-width: 88px; height: 56px; padding: 0 .75rem;
+  border: 1px dashed rgba(255, 255, 255, .35); border-radius: var(--mlt-radius-sm);
+  font-size: .75rem; line-height: 1.2; text-align: center; color: rgba(255, 255, 255, .7);
+}
+.mlt-footer__warnings { font-size: var(--mlt-fs-small); color: rgba(255, 255, 255, .8); }
+
+/* ============================================================
+   8. INICIO: mosaico (bento)
+   ============================================================ */
+.mlt-home { padding-block: clamp(1rem, 2.5vw, 2rem); background: linear-gradient(135deg, var(--band-deep) 0%, var(--band) 60%); }
+
+/* Celular: 2 columnas. Producto arriba a todo lo ancho */
+.mlt-bento {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "prod prod"
+    "rai  mal"
+    "exp  exp"
+    "dis  dis";
+}
+.mlt-tile--prod { grid-area: prod; min-height: 400px; }
+.mlt-tile--rai  { grid-area: rai;  min-height: 240px; }
+.mlt-tile--exp  { grid-area: exp;  min-height: 240px; }
+.mlt-tile--mal  { grid-area: mal;  min-height: 240px; }
+.mlt-tile--dis  { grid-area: dis;  min-height: 240px; }
+
+/* Tablet y escritorio: todo el mosaico cabe en una pantalla */
+@media (min-width: 768px) {
+  .mlt-bento {
+    gap: 1rem;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    grid-template-areas:
+      "prod rai mal"
+      "prod exp dis";
+    grid-template-rows: repeat(2, clamp(240px, calc((100svh - var(--mlt-header-h) - 4rem) / 2), 380px));
+  }
+  .mlt-tile--prod, .mlt-tile--rai, .mlt-tile--exp, .mlt-tile--mal, .mlt-tile--dis { min-height: 0; }
+}
+@media (min-width: 1200px) {
+  .mlt-bento {
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "prod rai mal mal"
+      "prod exp dis dis";
+  }
+}
+
+/* Recuadro */
+.mlt-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: var(--mlt-radius);
+  background: var(--surface);
+  isolation: isolate;
+  box-shadow: var(--mlt-shadow-img);
+}
+.mlt-tile__media, .mlt-tile__media img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mlt-tile__media { z-index: -2; }
+.mlt-tile__media img { object-fit: cover; transition: transform .6s ease; }
+/* Degradado para que el texto se lea sobre la foto */
+.mlt-tile::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, rgba(10, 14, 12, .88) 0%, rgba(10, 14, 12, .35) 50%, rgba(10, 14, 12, 0) 75%);
+}
+.mlt-tile__body { padding: 1.25rem; }
+.mlt-tile__title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.375rem, 1.2rem + .6vw, 1.75rem); line-height: 1.1;
+  margin: 0;
+}
+.mlt-tile__title a { color: var(--text); text-decoration: none; }
+.mlt-tile__title a:focus-visible { outline: none; }
+.mlt-tile:focus-within { outline: 2px solid var(--gold); outline-offset: 3px; }
+.mlt-tile__text { margin: .375rem 0 0; font-size: var(--mlt-fs-small); color: rgba(255, 255, 255, .82); max-width: 40ch; }
+
+/* Flecha arriba a la derecha */
+.mlt-tile__arrow {
+  position: absolute; top: 1rem; right: 1rem;
+  display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255, 255, 255, .14);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--text); font-size: 1rem;
+  transition: background-color .3s, color .3s, border-color .3s, transform .3s;
+}
+@media (hover: hover) {
+  .mlt-tile:hover .mlt-tile__media img { transform: scale(1.05); }
+  .mlt-tile:hover .mlt-tile__arrow { background: var(--gold); color: #1A1713; transform: rotate(-45deg); }
+}
+
+/* Enlaces secundarios dentro de un recuadro (quedan por encima del stretched-link) */
+.mlt-tile__links { display: flex; flex-wrap: wrap; gap: .5rem; margin: .875rem 0 0; padding: 0; list-style: none; }
+.mlt-tile__links a {
+  position: relative; z-index: 2;
+  display: inline-flex; align-items: center; min-height: 36px; padding: 0 .875rem;
+  border-radius: 999px;
+  color: var(--text); font-size: var(--mlt-fs-small); text-decoration: none;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); background: rgba(255, 255, 255, .14);
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.mlt-tile__links a:hover { background: var(--gold); color: #1A1713; }
+
+
+/* Fotos pendientes: fondo de marca con etiqueta (se reemplaza por <picture>) */
+.mlt-ph {
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(120% 80% at 80% 0%, rgba(191, 154, 61, .18), transparent 60%),
+    linear-gradient(160deg, #2c4537 0%, #17241d 100%);
+}
+.mlt-ph::before {
+  content: attr(data-ph);
+  position: absolute; top: 1rem; left: 1rem;
+  padding: .25rem .5rem; border-radius: 4px;
+  font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255, 255, 255, .6); border: 1px dashed rgba(255, 255, 255, .3);
+  max-width: calc(100% - 5rem);   /* no choca con la flecha */
+}
+
+/* ---------- Banda del horno ---------- */
+.mlt-horno { background: var(--surface); padding-block: var(--mlt-section-py); }
+.mlt-horno__grid { display: grid; gap: 1.5rem; align-items: center; }
+.mlt-horno__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--mlt-radius); isolation: isolate; box-shadow: var(--mlt-shadow-img); }
+.mlt-horno__ornament { width: 120px; height: auto; }
+.mlt-horno__title { font-family: var(--font-display); font-weight: 600; font-size: var(--mlt-fs-display); line-height: 1.15; margin: 1rem 0 0; }
+.mlt-horno__text { margin: 1rem 0 0; max-width: 52ch; line-height: 1.5; }
+@media (min-width: 768px) {
+  .mlt-horno__grid { grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); }
+  .mlt-horno__media { aspect-ratio: 16 / 11; }
+}
+
+/* ============================================================
+   9. FOOTER: jerarquía de Experiencias
+   ============================================================ */
+.mlt-footer__parent { margin: 0; padding-block: .5rem; font-weight: 600; letter-spacing: .02em; color: var(--text); }
+.mlt-footer__sub {
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  padding-left: .875rem;
+  font-size: var(--mlt-fs-small);
+}
+.mlt-footer__sub a { color: rgba(255, 255, 255, .8); }
+/* Filete blanco que agrupa los submenús; empieza y termina a la altura del texto */
+.mlt-footer__sub::before {
+  content: ""; position: absolute; left: 0; top: .65rem; bottom: .65rem;
+  width: 1px; background: rgba(255, 255, 255, .4);
+}
+@media (min-width: 768px) { .mlt-footer__sub::before { top: .5rem; bottom: .5rem; } }
+@media (min-width: 768px) { .mlt-footer__parent { padding-block: .3125rem; } }
+
+/* ============================================================
+   10. PÁGINAS INTERIORES
+   ============================================================ */
+.mlt-page-hero { background: linear-gradient(135deg, var(--band-deep) 0%, var(--band) 60%); padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2.5rem); }
+.mlt-page-hero__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.25rem, 1.7rem + 2vw, 3.25rem); line-height: 1.1; margin: 0; }
+.mlt-page-hero__ornament { width: 140px; height: auto; margin-top: .75rem; }
+.mlt-page-hero__lead { max-width: 60ch; margin: 1rem auto 0; }
+
+/* Migas de pan (componente breadcrumb de Bootstrap) */
+.mlt-breadcrumb {
+  --bs-breadcrumb-divider-color: rgba(255, 255, 255, .45);
+  --bs-breadcrumb-item-active-color: var(--gold);
+  --bs-breadcrumb-margin-bottom: .75rem;
+  font-size: var(--mlt-fs-small); letter-spacing: .06em; text-transform: uppercase;
+}
+.mlt-breadcrumb .breadcrumb-item { color: rgba(255, 255, 255, .65); }
+
+.mlt-section { padding-block: var(--mlt-section-py); background: var(--band); }
+.mlt-section--alt { background: var(--surface); }
+
+/* Texto + foto */
+.mlt-split { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 768px) {
+  .mlt-split { grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 5rem); }
+  .mlt-split--reverse > :first-child { order: 2; }
+}
+.mlt-media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--mlt-radius); isolation: isolate; box-shadow: var(--mlt-shadow-img); }
+@media (min-width: 768px) { .mlt-split .mlt-media { max-height: 640px; } }
+
+.mlt-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.75rem, 1.45rem + 1vw, 2.25rem); line-height: 1.15; margin: 0 0 1.25rem; }
+.mlt-subtitle { margin: -.75rem 0 1.25rem; color: var(--gold); font-weight: 600; font-size: var(--mlt-fs-small); letter-spacing: .06em; text-transform: uppercase; }
+.mlt-prose-block { max-width: 64ch; }
+.mlt-prose-block p { margin: 0 0 1em; line-height: 1.55; }
+.mlt-prose-block p:last-child { margin-bottom: 0; }
+.mlt-prose-block--center { margin-inline: auto; text-align: center; }
+.mlt-em { font-weight: 600; }
+
+/* Pasos del proceso */
+.mlt-steps { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; gap: 1rem; }
+@media (min-width: 768px) { .mlt-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1200px) { .mlt-steps { grid-template-columns: repeat(3, 1fr); } }
+.mlt-step { position: relative; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--mlt-radius); background: rgba(255, 255, 255, .02); }
+.mlt-step__num { display: block; font-family: var(--font-display); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--gold); margin-bottom: .75rem; }
+.mlt-step__text { margin: 0; line-height: 1.55; }
+/* El horno destaca: ocupa más espacio y lleva foto */
+.mlt-step--horno { border-color: rgba(191, 154, 61, .55); }
+.mlt-step__media { aspect-ratio: 16 / 10; margin-bottom: 1rem; }
+@media (min-width: 768px) { .mlt-step--horno { grid-row: span 2; } }
+.mlt-closing { max-width: 60ch; margin: 3rem auto 0; }
+.mlt-closing__ornament, .mlt-quote__ornament { width: 140px; height: auto; margin-top: 1rem; }
+
+/* Lema */
+.mlt-quote { padding-block: var(--mlt-section-py); background: var(--bg); }
+.mlt-quote__text { margin: 0; font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem); line-height: 1.25; }
+
+/* Portafolio de marcas */
+.mlt-brands { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 992px) { .mlt-brands { grid-template-columns: repeat(4, 1fr); } }
+.mlt-brand { position: relative; }
+.mlt-brand__media { aspect-ratio: 3 / 4; }
+.mlt-brand__name { margin: .75rem 0 0; font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; text-align: center; }
+.mlt-brand__name a { color: var(--text); text-decoration: none; }
+.mlt-brand:hover .mlt-brand__name a { color: var(--gold); }
+
+/* Tarjetas (Distribución) */
+.mlt-cards { display: grid; gap: 1rem; }
+@media (min-width: 768px) { .mlt-cards { grid-template-columns: repeat(2, 1fr); } }
+.mlt-card { padding: 1.75rem; border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--mlt-radius); background: rgba(255, 255, 255, .02); }
+.mlt-card__title { font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; margin: 0 0 1rem; color: var(--gold); }
+
+/* Llamado a la acción */
+.mlt-cta { padding-block: var(--mlt-section-py); background: linear-gradient(135deg, var(--band-deep) 0%, var(--band) 60%); }
+.mlt-cta__text { max-width: 52ch; margin: 0 auto; }
+
+/* "Más experiencias" */
+.mlt-more__title { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; margin: 0 0 1rem; }
+
+/* ============================================================
+   11. COCTELERÍA
+   ============================================================ */
+/* Categorías: pastillas de Bootstrap (nav-pills); en celular se deslizan de lado */
+.mlt-cats {
+  --bs-nav-pills-border-radius: 999px;
+  --bs-nav-pills-link-active-bg: var(--gold);
+  --bs-nav-pills-link-active-color: #1A1713;
+  --bs-nav-link-color: var(--text);
+  --bs-nav-link-hover-color: var(--gold);
+  --bs-nav-link-padding-x: 1.125rem;
+  --bs-nav-link-padding-y: .5rem;
+  --bs-nav-link-font-size: var(--mlt-fs-small);
+  gap: .5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-bottom: 2rem;
+  padding-bottom: .25rem;
+}
+.mlt-cats::-webkit-scrollbar { display: none; }
+.mlt-cats .nav-link { white-space: nowrap; background: rgba(255, 255, 255, .08); font-weight: 500; }
+.mlt-cats .nav-link.active { font-weight: 600; }
+.mlt-cats__count { margin-left: .375rem; font-size: .8em; opacity: .65; }
+@media (min-width: 768px) { .mlt-cats { justify-content: center; flex-wrap: wrap; overflow: visible; } }
+
+.mlt-cocktails { display: grid; gap: 1rem; }
+@media (min-width: 768px) { .mlt-cocktails { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1200px) { .mlt-cocktails { grid-template-columns: repeat(3, 1fr); } }
+.mlt-cocktail {
+  padding: 1.375rem 1.5rem;
+  border-radius: var(--mlt-radius);
+  background: rgba(255, 255, 255, .04);
+  box-shadow: var(--mlt-shadow-img);
+}
+.mlt-cocktail__name { font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; line-height: 1.15; margin: 0; }
+.mlt-cocktail__place { margin: .375rem 0 .75rem; font-size: var(--mlt-fs-small); color: var(--gold); }
+.mlt-cocktail__recipe { margin: 0; line-height: 1.5; color: rgba(255, 255, 255, .85); }
