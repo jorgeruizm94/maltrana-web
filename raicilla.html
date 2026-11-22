@@ -2,8 +2,8 @@
 <html lang="es" data-bs-theme="dark" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Raicilla</title>
 <meta name="description" content="[COPY PENDIENTE: meta descripción]">
 
@@ -13,6 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon: "M" simple en la pestaña; monograma completo en iPhone/Android -->
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#1D2520">
 <link href="tokens.css" rel="stylesheet">
 <!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
 <script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
@@ -34,8 +40,8 @@
       <div class="mlt-agegate__step" data-agegate-step="ask">
         <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
         <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
-          <button class="btn mlt-btn" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+        <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
         </div>
       </div>
@@ -75,8 +81,8 @@
 
       <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
         <ul class="navbar-nav align-items-md-center">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
           <li class="nav-item dropdown dropdown-center">
             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
@@ -87,6 +93,8 @@
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+          <!-- Contacto: solo en el menú de celular (en escritorio está en el footer) -->
+          <li class="nav-item d-md-none"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
 
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
@@ -122,59 +130,91 @@
 </header>
 
 <main>
-  <section class="mlt-page-hero">
+  <section class="mlt-page-hero mlt-page-hero--photo">
+    <picture class="mlt-page-hero__bg" aria-hidden="true">
+      <source type="image/avif" srcset="assets/img/raicilla/hero-bosque.avif">
+      <img src="assets/img/raicilla/hero-bosque.webp" alt="" width="1600" height="1066">
+    </picture>
     <div class="container-xxl text-center">
-      <h1 class="mlt-page-hero__title">Raicilla</h1>
-      <img class="mlt-page-hero__ornament" src="assets/svg/ornamento-linea.svg" alt="" width="399" height="94">
+      <h1 class="mlt-page-hero__title"><img class="mlt-page-hero__svg" src="assets/svg/raicilla-titulo.svg" alt="Raicilla" width="300" height="120"></h1>
     </div>
   </section>
 
   <section class="mlt-section">
     <div class="container-xxl">
-      <div class="mlt-split">
+      <div class="mlt-split mlt-split--short">
         <div class="mlt-prose-block">
-          <p class="mlt-em">La raicilla es un destilado artesanal de agave originario de Jalisco, México, protegido por la Denominación de Origen Raicilla que reconoce su autenticidad y su vínculo con el territorio. Elaborada mediante métodos tradicionales, ofrece una amplia diversidad de perfiles aromáticos y sabores que reflejan la riqueza de su origen.</p>
-          <p>Su historia se remonta al periodo colonial y está profundamente ligada a las comunidades rurales de la Sierra Occidental y la Costa de Jalisco, donde generaciones de productores han preservado los conocimientos y técnicas de su elaboración.</p>
-          <p>Hoy, la raicilla representa una expresión singular de la tradición destiladora mexicana y una categoría con identidad propia dentro del universo de los destilados de agave, con un atractivo especial para los mercados especializados y premium.</p>
+          <p>La raicilla es un destilado artesanal de agave originario de Jalisco, México, protegido por la <strong>Denominación de Origen Raicilla</strong> que reconoce su autenticidad y su vínculo con el territorio. Elaborada mediante métodos tradicionales, ofrece una amplia diversidad de perfiles aromáticos y sabores que reflejan la riqueza de su origen.</p>
+          <p>Su historia se remonta al periodo colonial y está profundamente ligada a las comunidades rurales de la <strong>Sierra Occidental y la Costa de Jalisco</strong>, donde generaciones de productores han preservado los conocimientos y técnicas de su elaboración.</p>
+          <p>Hoy, la raicilla representa una expresión singular de la tradición destiladora mexicana y una categoría con identidad propia dentro del universo de los destilados de agave, con un atractivo especial para los <strong>mercados especializados y premium</strong>.</p>
         </div>
-        <div class="mlt-media"><div class="mlt-ph" data-ph="Foto: agave en la sierra"></div></div>
+        <div class="mlt-media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/raicilla/sierra.avif">
+            <img src="assets/img/raicilla/sierra.webp" alt="Vista de la Sierra Madre Occidental entre pinos" width="1200" height="800" loading="lazy">
+          </picture>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Proceso de elaboración: el título del guion era una etiqueta; título pendiente -->
-  <section class="mlt-section mlt-section--alt" aria-labelledby="proceso-title">
+  <!-- Proceso de elaboración: una foto por paso.
+       Celular y tablet: tarjetas que se deslizan de lado (scroll-snap, sin JS).
+       Escritorio: los 5 pasos en una línea, unidos por un filete dorado. -->
+  <section class="mlt-section mlt-section--alt mlt-process-section" aria-labelledby="proceso-title">
     <div class="container-xxl">
       <h2 class="mlt-h2 text-center" id="proceso-title">Lorem ipsum dolor sit amet</h2>
-      <ol class="mlt-steps">
-          <li class="mlt-step">
-            <span class="mlt-step__num" aria-hidden="true">01</span>
-            
-            <p class="mlt-step__text">Todo comienza con la selección de agaves Maximiliana silvestres, maduros, de entre 12 y 16 años, que crecen a más de 1,200 metros de altitud y nacen de semilla. Una vez jimados con coa, los llevamos a nuestra taberna, Casa Maltraña.</p>
-          </li>
-          <li class="mlt-step mlt-step--horno">
-            <span class="mlt-step__num" aria-hidden="true">02</span>
-            <div class="mlt-media mlt-step__media"><div class="mlt-ph" data-ph="Foto: horno de piedra"></div></div>
-            <p class="mlt-step__text">Las piñas se cuecen durante 72 horas en hornos de piedra calentados con leña. Antes de introducirlas, retiramos la leña y las cenizas para conservar el carácter silvestre del agave, con un delicado toque ahumado.</p>
-          </li>
-          <li class="mlt-step">
-            <span class="mlt-step__num" aria-hidden="true">03</span>
-            
-            <p class="mlt-step__text">Después de la cocción, el agave se machaca artesanalmente con mazos de madera y se deposita en barricas para su fermentación natural, que toma entre 7 y 14 días, dependiendo del clima, sin añadir aceleradores.</p>
-          </li>
-          <li class="mlt-step">
-            <span class="mlt-step__num" aria-hidden="true">04</span>
-            
-            <p class="mlt-step__text">El mosto se destila una sola vez, separando cuidadosamente cabezas, corazones y colas para obtener el corazón del destilado: la esencia de nuestra raicilla.</p>
-          </li>
-          <li class="mlt-step">
-            <span class="mlt-step__num" aria-hidden="true">05</span>
-            
-            <p class="mlt-step__text">Finalmente, el destilado reposa durante tres meses en recipientes de vidrio, en un espacio oscuro, para estabilizarse antes de ser embotellado, etiquetado y lacrado.</p>
-          </li>
-      </ol>
+    </div>
+    <ol class="mlt-process">
+        <li class="mlt-process__step">
+          <div class="mlt-media mlt-process__media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/raicilla/paso-agave.avif">
+            <img src="assets/img/raicilla/paso-agave.webp" alt="Recolección de agave Maximiliana en la sierra" width="1000" height="667" loading="lazy">
+          </picture>
+        </div>
+          <span class="mlt-process__num" aria-hidden="true">01</span>
+          <p class="mlt-process__text">Todo comienza con la selección de <strong>agaves Maximiliana silvestres</strong>, maduros, de entre 12 y 16 años, que crecen a más de 1,200 metros de altitud y nacen de semilla. Una vez jimados con coa, los llevamos a nuestra taberna, Casa Maltraña.</p>
+        </li>
+        <li class="mlt-process__step">
+          <div class="mlt-media mlt-process__media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/raicilla/horno.avif">
+            <img src="assets/img/raicilla/horno.webp" alt="Horno de piedra para la cocción del agave" width="1200" height="800" loading="lazy">
+          </picture>
+        </div>
+          <span class="mlt-process__num" aria-hidden="true">02</span>
+          <p class="mlt-process__text">Las piñas se cuecen durante <strong>72 horas en hornos de piedra</strong> calentados con leña. Antes de introducirlas, retiramos la leña y las cenizas para conservar el carácter silvestre del agave, con un delicado toque ahumado.</p>
+        </li>
+        <li class="mlt-process__step">
+          <div class="mlt-media mlt-process__media"><div class="mlt-ph" data-ph="Foto: machacado y fermentación"></div></div>
+          <span class="mlt-process__num" aria-hidden="true">03</span>
+          <p class="mlt-process__text">Después de la cocción, el agave se machaca artesanalmente con mazos de madera y se deposita en barricas para su <strong>fermentación natural</strong>, que toma entre 7 y 14 días, dependiendo del clima, sin añadir aceleradores.</p>
+        </li>
+        <li class="mlt-process__step">
+          <div class="mlt-media mlt-process__media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/maltrana/taberna.avif">
+            <img src="assets/img/maltrana/taberna.webp" alt="Alambique de la taberna Casa Maltraña" width="1200" height="800" loading="lazy">
+          </picture>
+        </div>
+          <span class="mlt-process__num" aria-hidden="true">04</span>
+          <p class="mlt-process__text">El mosto se <strong>destila una sola vez</strong>, separando cuidadosamente cabezas, corazones y colas para obtener el corazón del destilado: la esencia de nuestra raicilla.</p>
+        </li>
+        <li class="mlt-process__step">
+          <div class="mlt-media mlt-process__media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/raicilla/paso-reposo.avif">
+            <img src="assets/img/raicilla/paso-reposo.webp" alt="Botella de Raicilla Maltraña en la sierra" width="1000" height="667" loading="lazy">
+          </picture>
+        </div>
+          <span class="mlt-process__num" aria-hidden="true">05</span>
+          <p class="mlt-process__text">Finalmente, el destilado <strong>reposa durante tres meses</strong> en recipientes de vidrio, en un espacio oscuro, para estabilizarse antes de ser embotellado, etiquetado y lacrado.</p>
+        </li>
+    </ol>
+    <div class="container-xxl">
       <div class="mlt-closing text-center">
-        <p class="mlt-em">Cada botella de Maltraña es única, numerada y trazable por lote. Lleva el alma de cada horneada y la firma de nuestro maestro raicillero, Moisés Seimandi.</p>
+        <p>Cada botella de Maltraña es <strong>única, numerada y trazable por lote</strong>. Lleva el alma de cada horneada y la firma de nuestro maestro raicillero, Moisés Seimandi.</p>
         <img class="mlt-closing__ornament" src="assets/svg/ornamento-linea.svg" alt="" width="399" height="94">
       </div>
     </div>
@@ -183,15 +223,15 @@
 
 <footer class="mlt-footer">
   <div class="container-xxl">
-    <div class="row gy-4 text-center text-md-start">
-      <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
+    <div class="row gy-4">
+      <div class="col-12 col-md-3 mlt-footer__brand">
         <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
       </div>
 
       <nav class="col-6 col-md-3" aria-label="Secciones">
         <ul class="mlt-footer__list">
-          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="maltrana.html">Maltraña</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
@@ -207,30 +247,16 @@
         </ul>
       </nav>
 
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3 mlt-footer__contact">
         <ul class="mlt-footer__list">
           <li><a href="contacto.html">Contacto</a></li>
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
-        <ul class="mlt-social justify-content-center justify-content-md-start mt-1">
+        <ul class="mlt-social mt-1">
           <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
-      </div>
-    </div>
-
-    <!-- Sellos y leyendas sanitarias -->
-    <div class="mlt-footer__seals d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-4">
-      <ul class="list-unstyled d-flex gap-3 m-0">
-        <!-- LOGO PENDIENTE: Consejo Mexicano Promotor de la Raicilla -->
-        <li class="mlt-seal">CMPR</li>
-        <!-- LOGO PENDIENTE: 100% Agave Maximiliana -->
-        <li class="mlt-seal">100% Agave Maximiliana</li>
-      </ul>
-      <div class="mlt-footer__warnings text-center text-md-end">
-        <p class="m-0">Evite el exceso.</p>
-        <p class="m-0">El exceso en el consumo de este producto es dañino para la salud.</p>
       </div>
     </div>
 
@@ -240,13 +266,17 @@
       <span class="mlt-divider__line"></span>
     </div>
 
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-1 gap-md-2 mlt-footer__legal">
-      <p class="m-0 order-2 order-md-1">2026. Matraña Raicilla. All rights reserved.</p>
-      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-md-4 m-0 order-1 order-md-2">
+    <!-- Leyendas sanitarias en un solo párrafo, centrado bajo el ornamento -->
+    <p class="mlt-footer__warnings">Evite el exceso. El exceso en el consumo de este producto es dañino para la salud.</p>
+
+    <!-- Legales juntos como grupo; después, el aviso de derechos -->
+    <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
+      <ul class="mlt-footer__legal-links list-unstyled m-0">
         <li><a href="privacidad.html">Politica de Privacidad</a></li>
         <li><a href="cookies.html">Politica de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
+      <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>
     </div>
   </div>
 </footer>

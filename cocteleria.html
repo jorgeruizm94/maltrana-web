@@ -2,8 +2,8 @@
 <html lang="es" data-bs-theme="dark" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Coctelería</title>
 <meta name="description" content="[COPY PENDIENTE: meta descripción]">
 
@@ -13,6 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon: "M" simple en la pestaña; monograma completo en iPhone/Android -->
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#1D2520">
 <link href="tokens.css" rel="stylesheet">
 <!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
 <script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
@@ -34,8 +40,8 @@
       <div class="mlt-agegate__step" data-agegate-step="ask">
         <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
         <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
-          <button class="btn mlt-btn" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+        <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
         </div>
       </div>
@@ -75,8 +81,8 @@
 
       <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
         <ul class="navbar-nav align-items-md-center">
-          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
           <li class="nav-item dropdown dropdown-center">
             <button class="nav-link dropdown-toggle active" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
@@ -87,6 +93,8 @@
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+          <!-- Contacto: solo en el menú de celular (en escritorio está en el footer) -->
+          <li class="nav-item d-md-none"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
 
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
@@ -122,14 +130,18 @@
 </header>
 
 <main>
-  <section class="mlt-page-hero">
+  <section class="mlt-page-hero mlt-page-hero--photo">
+    <picture class="mlt-page-hero__bg" aria-hidden="true">
+      <source type="image/avif" srcset="assets/img/cocteleria/hero.avif">
+      <img src="assets/img/cocteleria/hero.webp" alt="" width="1600" height="1066">
+    </picture>
     <div class="container-xxl text-center">
       <nav aria-label="Ruta de navegación">
         <ol class="breadcrumb mlt-breadcrumb justify-content-center"><li class="breadcrumb-item">Experiencias</li><li class="breadcrumb-item active" aria-current="page">Coctelería</li></ol>
       </nav>
       <h1 class="mlt-page-hero__title">Coctelería</h1>
       <img class="mlt-page-hero__ornament" src="assets/svg/ornamento-linea.svg" alt="" width="399" height="94">
-      <p class="mlt-page-hero__lead">Un portafolio curado que entrelaza la tradición artesanal de nuestra Raicilla Premium con las visiones vanguardistas de las barras más prestigiosas del país. Cada cóctel se acompaña de una representación visual única ajustada a su perfil cromático y sensorial.</p>
+      <p class="mlt-page-hero__lead mlt-page-hero__lead--wide">Un portafolio curado que entrelaza la tradición artesanal de nuestra Raicilla Premium con las visiones vanguardistas de las barras más prestigiosas del país. Cada cóctel se acompaña de una representación visual única ajustada a su perfil cromático y sensorial.</p>
     </div>
   </section>
 
@@ -142,7 +154,7 @@
        ============================================================ -->
   <section class="mlt-section" aria-label="Cócteles por categoría">
     <div class="container-xxl">
-      <ul class="nav nav-pills mlt-cats" role="tablist">
+      <ul class="nav nav-pills mlt-cats" id="categorias" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="tab-frescos" data-bs-toggle="pill" data-bs-target="#cat-frescos" type="button" role="tab" aria-controls="cat-frescos" aria-selected="true">Frescos y cítricos <span class="mlt-cats__count">6</span></button>
         </li>
@@ -161,34 +173,52 @@
         <h2 class="visually-hidden">Frescos y cítricos</h2>
         <div class="mlt-cocktails">
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Chica Fresa</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Lolo andares</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lolo andares</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + puré de fresa, vermut seco, miel de agave y limón amarillo.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Golden star</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Skybar</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Skybar</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 1 ½ oz + carambola 1 rebanada y ½ oz + miel de agave ½ oz + jugo de maracuyá ¾ oz + jugo de piña ¾ oz + costra de sal volcánica.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Puerca Amarilla</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Miguel en Punto Puerco</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Miguel en Punto Puerco</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + maracuyá + jugo de toronja + jarabe de romero + jugo de limón.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">De la tierra</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Veneno restaurante</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Veneno restaurante</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + Jarabe de tomillo, jengibre, rábano, jugo de sandía, jugo de limón y jugo de piña.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Maltra honey</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Sangrantino y La Pasta</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Sangrantino y La Pasta</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 30ml + controy 30ml, limón real, limón sin semilla y miel de agave.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Raicilla Tropical</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Skybar | Jefe de barra: Arnold</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Skybar | Jefe de barra: Arnold</p>
             <p class="mlt-cocktail__recipe">Maltraña Raicilla<span class="mlt-reg">®</span> + controy, piña, mango, maracuyá, menta, jarabe de agave y limón.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -196,39 +226,60 @@
         <h2 class="visually-hidden">Perfiles de autor y especiados</h2>
         <div class="mlt-cocktails">
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Raíz de Diablo</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Lolo andares</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lolo andares</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + aperol, licor de chile ancho, biter de habanero, jugo de limón y jarabe para endulzar.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Pepino Spicy</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Cortazar</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Cortazar</p>
             <p class="mlt-cocktail__recipe">2oz Raicilla Maltraña<span class="mlt-reg">®</span> + 1oz licor de chile ancho reyes verde + miel de agave + 2 rebanadas de pepino y 2 de chile serrano macerados y colados.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Izakaya bar</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Izakaya bar (Plaza La Perla) | Mixólogo: Mani</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Izakaya bar (Plaza La Perla) | Mixólogo: Mani</p>
             <p class="mlt-cocktail__recipe">1 ½ oz Raicilla Maltraña<span class="mlt-reg">®</span> 45ml + 2oz Cordial de Piña con Habanero + 1oz de Jugo de limón + Topping de Agua Mineral.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Cantarito Spicy</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Miguel en Punto Puerco</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Miguel en Punto Puerco</p>
             <p class="mlt-cocktail__recipe">(Vaso de 14oz) 2 oz Raicilla Maltraña<span class="mlt-reg">®</span> 45ml + 1 Rodaja chile serrano + 1/2 oz limón + pizca de Sal + hielo + 3 oz naranja natural + 3 oz toronja natural + topping de squirt.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Izakaya bar</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Many</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Many</p>
             <p class="mlt-cocktail__recipe">1 1/2 oz Raicilla Maltraña<span class="mlt-reg">®</span> 45ml + 2oz Cordial de Piña con Habanero + 1oz de Jugo de limón + Topping de Agua Mineral.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">De Mascota a la copa</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: SSAM</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> SSAM</p>
             <p class="mlt-cocktail__recipe">Experiencia de 3 cócteles: El Origen (pura con limón y jengibre), El Camino (versión del Maltraño) y La Evolución (con toronja, limón, agave y jengibre).</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Talpa</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Casa Luna | Jefe de barra: Sebastián Rodríguez</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Casa Luna | Jefe de barra: Sebastián Rodríguez</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + jarabe de guayaba, maracuyá, biter de cacao, tintura de café y solución salina.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -236,24 +287,36 @@
         <h2 class="visually-hidden">Botánicos y vanguardia verde</h2>
         <div class="mlt-cocktails">
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Maltraña verde</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Lolo andares</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lolo andares</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + jugo de tomatillo, miel de agave y limón.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">The green Ritual</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Skybar</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Skybar</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 1 ½ oz + St Germain ¾ oz + vino tinto 1 oz + limón real ¾ oz + miel de agave ½ oz + brillo dorado + colorante verde + incrusta de Jamaica.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Dalia</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Hueso</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Hueso</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 1 ½ oz + licor de hierbas + cordial de ciruela amarilla + jugo de limón + jugo de toronja + jugo de piña.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Jaguar</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Skybar | Jefe de barra: Arnold</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Skybar | Jefe de barra: Arnold</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + St Germain, vino espumoso, limón real, maracuyá y granadina.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -261,45 +324,69 @@
         <h2 class="visually-hidden">Experimentales y notas de tierra</h2>
         <div class="mlt-cocktails">
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Fungi King</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Isaac Hueso</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Isaac Hueso</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + Coñac + Limoncello hecho en casa + Maíz dulce + Huitlacoche + Agave Syrup.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Funky Fngui</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Isaac Hueso</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Isaac Hueso</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + Vermouth artesano + Amargo de menta + Baño de mantequilla + Hongos + Hierbas.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Honguillo</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Isaac Hueso</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Isaac Hueso</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + expresso + Mermelada de hongos, piña y nuez + Licor de hinojo + Menta.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Elote Ancestral Malteado</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Diego Mendoza Vidanta</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Diego Mendoza Vidanta</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 45ml + jarabe de tortilla 30ml + miel de agave 15ml + jugo de limón 30ml + licor de elote 30ml.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Crema de Maíz Envinada</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Diego Mendoza Vidanta</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Diego Mendoza Vidanta</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 45ml + grand marnier 30ml + mix de elote 150ml + extracto de vainilla 15ml + leche carnation 150ml + cajeta envinada 100gr + elote amarillo 200gr.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Lechón Ahumado</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: Miguel en Punto Puerco</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Miguel en Punto Puerco</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> 45ml + campari + jugo de toronja + jugo de limón + jarabe de romero + ahumado con romero.</p>
+            </div>
           </article>
           <article class="mlt-cocktail">
+            <div class="mlt-cocktail__media"><div class="mlt-ph" data-ph="Foto"></div></div>
+            <div class="mlt-cocktail__body">
             <h3 class="mlt-cocktail__name">Maltraño</h3>
-            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> Lugar: De la casa</p>
+            <p class="mlt-cocktail__place"><i class="bi bi-geo-alt" aria-hidden="true"></i> De la casa</p>
             <p class="mlt-cocktail__recipe">Raicilla Maltraña<span class="mlt-reg">®</span> + coca cola + squirt + limón + sal de grano.</p>
+            </div>
           </article>
         </div>
       </div>
       </div>
     </div>
   </section>
+
+  <!-- Flecha para regresar a las categorías: aparece solo cuando ya bajaste mucho (main.js) -->
+  <a class="mlt-totop" href="#categorias" aria-label="Regresar a las categorías" hidden><i class="bi bi-arrow-up" aria-hidden="true"></i></a>
 
   <section class="mlt-section mlt-section--alt mlt-more" aria-labelledby="mas-exp">
     <div class="container-xxl text-center">
@@ -311,15 +398,15 @@
 
 <footer class="mlt-footer">
   <div class="container-xxl">
-    <div class="row gy-4 text-center text-md-start">
-      <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
+    <div class="row gy-4">
+      <div class="col-12 col-md-3 mlt-footer__brand">
         <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
       </div>
 
       <nav class="col-6 col-md-3" aria-label="Secciones">
         <ul class="mlt-footer__list">
-          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="maltrana.html">Maltraña</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
@@ -335,30 +422,16 @@
         </ul>
       </nav>
 
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3 mlt-footer__contact">
         <ul class="mlt-footer__list">
           <li><a href="contacto.html">Contacto</a></li>
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
-        <ul class="mlt-social justify-content-center justify-content-md-start mt-1">
+        <ul class="mlt-social mt-1">
           <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
-      </div>
-    </div>
-
-    <!-- Sellos y leyendas sanitarias -->
-    <div class="mlt-footer__seals d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-4">
-      <ul class="list-unstyled d-flex gap-3 m-0">
-        <!-- LOGO PENDIENTE: Consejo Mexicano Promotor de la Raicilla -->
-        <li class="mlt-seal">CMPR</li>
-        <!-- LOGO PENDIENTE: 100% Agave Maximiliana -->
-        <li class="mlt-seal">100% Agave Maximiliana</li>
-      </ul>
-      <div class="mlt-footer__warnings text-center text-md-end">
-        <p class="m-0">Evite el exceso.</p>
-        <p class="m-0">El exceso en el consumo de este producto es dañino para la salud.</p>
       </div>
     </div>
 
@@ -368,13 +441,17 @@
       <span class="mlt-divider__line"></span>
     </div>
 
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-1 gap-md-2 mlt-footer__legal">
-      <p class="m-0 order-2 order-md-1">2026. Matraña Raicilla. All rights reserved.</p>
-      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-md-4 m-0 order-1 order-md-2">
+    <!-- Leyendas sanitarias en un solo párrafo, centrado bajo el ornamento -->
+    <p class="mlt-footer__warnings">Evite el exceso. El exceso en el consumo de este producto es dañino para la salud.</p>
+
+    <!-- Legales juntos como grupo; después, el aviso de derechos -->
+    <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
+      <ul class="mlt-footer__legal-links list-unstyled m-0">
         <li><a href="privacidad.html">Politica de Privacidad</a></li>
         <li><a href="cookies.html">Politica de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
+      <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>
     </div>
   </div>
 </footer>

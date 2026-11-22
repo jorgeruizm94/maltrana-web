@@ -2,8 +2,8 @@
 <html lang="es" data-bs-theme="dark" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Distribución</title>
 <meta name="description" content="[COPY PENDIENTE: meta descripción]">
 
@@ -13,6 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon: "M" simple en la pestaña; monograma completo en iPhone/Android -->
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#1D2520">
 <link href="tokens.css" rel="stylesheet">
 <!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
 <script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
@@ -34,8 +40,8 @@
       <div class="mlt-agegate__step" data-agegate-step="ask">
         <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
         <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
-          <button class="btn mlt-btn" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+        <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
         </div>
       </div>
@@ -75,8 +81,8 @@
 
       <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
         <ul class="navbar-nav align-items-md-center">
-          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
           <li class="nav-item dropdown dropdown-center">
             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
@@ -87,6 +93,8 @@
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="distribucion.html">Distribución</a></li>
+          <!-- Contacto: solo en el menú de celular (en escritorio está en el footer) -->
+          <li class="nav-item d-md-none"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
 
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
@@ -122,7 +130,11 @@
 </header>
 
 <main>
-  <section class="mlt-page-hero">
+  <section class="mlt-page-hero mlt-page-hero--photo">
+    <picture class="mlt-page-hero__bg" aria-hidden="true">
+      <source type="image/avif" srcset="assets/img/distribucion/hero.avif">
+      <img src="assets/img/distribucion/hero.webp" alt="" width="1600" height="1066">
+    </picture>
     <div class="container-xxl text-center">
       <h1 class="mlt-page-hero__title">Distribución</h1>
       <img class="mlt-page-hero__ornament" src="assets/svg/ornamento-linea.svg" alt="" width="399" height="94">
@@ -134,52 +146,108 @@
       <div class="mlt-split">
         <div class="mlt-prose-block">
           <h2 class="mlt-h2">Más que un producto, un socio de confianza</h2>
-          <p>En MALTRAÑA entendemos que una relación comercial sólida comienza con un producto auténtico, calidad constante y la capacidad de responder a las necesidades de cada mercado.</p>
+          <p>En MALTRAÑA entendemos que una relación comercial sólida comienza con un <strong>producto auténtico, calidad constante</strong> y la capacidad de responder a las necesidades de cada mercado.</p>
           <p>Por eso, acompañamos a nuestros distribuidores en cada etapa, desde el origen de la raicilla hasta su comercialización.</p>
         </div>
-        <div class="mlt-media"><div class="mlt-ph" data-ph="Foto: distribución"></div></div>
+        <div class="mlt-media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/distribucion/barrica.avif">
+            <img src="assets/img/distribucion/barrica.webp" alt="Servicio de raicilla desde una barrica" width="1200" height="800" loading="lazy">
+          </picture>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Lo que ofrecemos: índice de 4 pilares, cada uno con su foto.
+       Escritorio: lista a la izquierda y una foto grande que cambia según el pilar elegido.
+       Celular: cada pilar se muestra completo con su propia foto. -->
   <section class="mlt-section mlt-section--alt" aria-label="Lo que ofrecemos">
     <div class="container-xxl">
-      <div class="mlt-cards">
-        <article class="mlt-card">
-          <h3 class="mlt-card__title">Calidad desde el origen</h3>
-          <ul class="mlt-list">
-            <li>Raicilla 100% auténtica, elaborada bajo los estándares de su Denominación de Origen.</li>
+      <div class="mlt-pillars">
+        <ol class="mlt-pillars__list">
+        <li class="mlt-pillar is-active" data-pilar="0">
+          <picture class="mlt-pillar__media" data-pilar="0">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-origen.avif">
+            <img src="assets/img/distribucion/pilar-origen.webp" alt="Recolector de agave silvestre en el bosque de la sierra" width="1200" height="800" loading="lazy">
+          </picture>
+          <button class="mlt-pillar__head" type="button" aria-expanded="true" aria-controls="pilar-0">
+            <span class="mlt-pillar__num" aria-hidden="true">01</span>
+            <span class="mlt-pillar__title">Calidad desde el origen</span>
+          </button>
+          <ul class="mlt-list mlt-pillar__list" id="pilar-0">
+            <li><strong>Raicilla 100% auténtica</strong>, elaborada bajo los estándares de su Denominación de Origen.</li>
             <li>Selección de las fracciones de mayor calidad de la destilación.</li>
             <li>Control y cuidado de cada etapa para mantener un perfil de producto consistente.</li>
             <li>Participación integral en el proceso: desde la recolección silvestre y el cultivo hasta la elaboración y el envasado.</li>
           </ul>
-        </article>
-        <article class="mlt-card">
-          <h3 class="mlt-card__title">Producción y capacidad de respuesta</h3>
-          <ul class="mlt-list">
-            <li>Gran capacidad de producción, sin descuidar los detalles que distinguen nuestro producto.</li>
+        </li>
+        <li class="mlt-pillar" data-pilar="1">
+          <picture class="mlt-pillar__media" data-pilar="1">
+            <source type="image/avif" srcset="assets/img/raicilla/horno.avif">
+            <img src="assets/img/raicilla/horno.webp" alt="Horno de piedra de la taberna" width="1200" height="800" loading="lazy">
+          </picture>
+          <button class="mlt-pillar__head" type="button" aria-expanded="false" aria-controls="pilar-1">
+            <span class="mlt-pillar__num" aria-hidden="true">02</span>
+            <span class="mlt-pillar__title">Producción y capacidad de respuesta</span>
+          </button>
+          <ul class="mlt-list mlt-pillar__list" id="pilar-1">
+            <li><strong>Gran capacidad de producción</strong>, sin descuidar los detalles que distinguen nuestro producto.</li>
             <li>Control directo de los procesos de elaboración y envasado.</li>
             <li>Flexibilidad para atender las necesidades de nuestros socios comerciales.</li>
           </ul>
-        </article>
-        <article class="mlt-card">
-          <h3 class="mlt-card__title">Respaldo y cumplimiento</h3>
-          <ul class="mlt-list">
+        </li>
+        <li class="mlt-pillar" data-pilar="2">
+          <picture class="mlt-pillar__media" data-pilar="2">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-respaldo.avif">
+            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Botellas de Maltraña en exhibición" width="1200" height="800" loading="lazy">
+          </picture>
+          <button class="mlt-pillar__head" type="button" aria-expanded="false" aria-controls="pilar-2">
+            <span class="mlt-pillar__num" aria-hidden="true">03</span>
+            <span class="mlt-pillar__title">Respaldo y cumplimiento</span>
+          </button>
+          <ul class="mlt-list mlt-pillar__list" id="pilar-2">
             <li>Compromiso con los requisitos normativos y comerciales de cada mercado.</li>
-            <li>Experiencia y preparación para atender operaciones de exportación.</li>
+            <li>Experiencia y preparación para atender <strong>operaciones de exportación</strong>.</li>
             <li>Adscripción al Consejo Mexicano Promotor de la Raicilla (CMPR).</li>
             <li>Vinculación con el Sistema Producto Raicilla.</li>
           </ul>
-        </article>
-        <article class="mlt-card">
-          <h3 class="mlt-card__title">Acompañamiento comercial</h3>
-          <ul class="mlt-list">
-            <li>Catas y presentaciones especializadas para distribuidores.</li>
+        </li>
+        <li class="mlt-pillar" data-pilar="3">
+          <picture class="mlt-pillar__media" data-pilar="3">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-acompanamiento.avif">
+            <img src="assets/img/distribucion/pilar-acompanamiento.webp" alt="Activación de Maltraña con botellas y cócteles" width="1200" height="900" loading="lazy">
+          </picture>
+          <button class="mlt-pillar__head" type="button" aria-expanded="false" aria-controls="pilar-3">
+            <span class="mlt-pillar__num" aria-hidden="true">04</span>
+            <span class="mlt-pillar__title">Acompañamiento comercial</span>
+          </button>
+          <ul class="mlt-list mlt-pillar__list" id="pilar-3">
+            <li><strong>Catas y presentaciones especializadas</strong> para distribuidores.</li>
             <li>Capacitación sobre el producto, su origen y sus características.</li>
             <li>Apoyo en activaciones y actividades de promoción.</li>
             <li>Atención cercana y compromiso con el desarrollo de cada relación comercial.</li>
           </ul>
-        </article>
+        </li>
+        </ol>
+        <div class="mlt-pillars__stage" aria-hidden="true">
+          <picture class="mlt-pillars__photo is-active" data-pilar="0">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-origen.avif">
+            <img src="assets/img/distribucion/pilar-origen.webp" alt="Recolector de agave silvestre en el bosque de la sierra" width="1200" height="800" loading="lazy">
+          </picture>
+          <picture class="mlt-pillars__photo" data-pilar="1">
+            <source type="image/avif" srcset="assets/img/raicilla/horno.avif">
+            <img src="assets/img/raicilla/horno.webp" alt="Horno de piedra de la taberna" width="1200" height="800" loading="lazy">
+          </picture>
+          <picture class="mlt-pillars__photo" data-pilar="2">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-respaldo.avif">
+            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Botellas de Maltraña en exhibición" width="1200" height="800" loading="lazy">
+          </picture>
+          <picture class="mlt-pillars__photo" data-pilar="3">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-acompanamiento.avif">
+            <img src="assets/img/distribucion/pilar-acompanamiento.webp" alt="Activación de Maltraña con botellas y cócteles" width="1200" height="900" loading="lazy">
+          </picture>
+        </div>
       </div>
     </div>
   </section>
@@ -201,15 +269,15 @@
 
 <footer class="mlt-footer">
   <div class="container-xxl">
-    <div class="row gy-4 text-center text-md-start">
-      <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
+    <div class="row gy-4">
+      <div class="col-12 col-md-3 mlt-footer__brand">
         <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
       </div>
 
       <nav class="col-6 col-md-3" aria-label="Secciones">
         <ul class="mlt-footer__list">
-          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="maltrana.html">Maltraña</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
@@ -225,30 +293,16 @@
         </ul>
       </nav>
 
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3 mlt-footer__contact">
         <ul class="mlt-footer__list">
           <li><a href="contacto.html">Contacto</a></li>
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
-        <ul class="mlt-social justify-content-center justify-content-md-start mt-1">
+        <ul class="mlt-social mt-1">
           <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
-      </div>
-    </div>
-
-    <!-- Sellos y leyendas sanitarias -->
-    <div class="mlt-footer__seals d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-4">
-      <ul class="list-unstyled d-flex gap-3 m-0">
-        <!-- LOGO PENDIENTE: Consejo Mexicano Promotor de la Raicilla -->
-        <li class="mlt-seal">CMPR</li>
-        <!-- LOGO PENDIENTE: 100% Agave Maximiliana -->
-        <li class="mlt-seal">100% Agave Maximiliana</li>
-      </ul>
-      <div class="mlt-footer__warnings text-center text-md-end">
-        <p class="m-0">Evite el exceso.</p>
-        <p class="m-0">El exceso en el consumo de este producto es dañino para la salud.</p>
       </div>
     </div>
 
@@ -258,13 +312,17 @@
       <span class="mlt-divider__line"></span>
     </div>
 
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-1 gap-md-2 mlt-footer__legal">
-      <p class="m-0 order-2 order-md-1">2026. Matraña Raicilla. All rights reserved.</p>
-      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-md-4 m-0 order-1 order-md-2">
+    <!-- Leyendas sanitarias en un solo párrafo, centrado bajo el ornamento -->
+    <p class="mlt-footer__warnings">Evite el exceso. El exceso en el consumo de este producto es dañino para la salud.</p>
+
+    <!-- Legales juntos como grupo; después, el aviso de derechos -->
+    <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
+      <ul class="mlt-footer__legal-links list-unstyled m-0">
         <li><a href="privacidad.html">Politica de Privacidad</a></li>
         <li><a href="cookies.html">Politica de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
+      <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>
     </div>
   </div>
 </footer>

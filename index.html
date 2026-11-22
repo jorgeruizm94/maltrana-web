@@ -2,8 +2,8 @@
 <html lang="es" data-bs-theme="dark" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Maltraña</title>
 <meta name="description" content="[COPY PENDIENTE: meta descripción]">
 
@@ -13,6 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon: "M" simple en la pestaña; monograma completo en iPhone/Android -->
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#1D2520">
 <link href="tokens.css" rel="stylesheet">
 <!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
 <script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
@@ -34,8 +40,8 @@
       <div class="mlt-agegate__step" data-agegate-step="ask">
         <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
         <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
-          <button class="btn mlt-btn" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+        <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
         </div>
       </div>
@@ -75,8 +81,8 @@
 
       <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
         <ul class="navbar-nav align-items-md-center">
-          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
           <li class="nav-item dropdown dropdown-center">
             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
@@ -87,6 +93,8 @@
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+          <!-- Contacto: solo en el menú de celular (en escritorio está en el footer) -->
+          <li class="nav-item d-md-none"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
 
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
@@ -132,15 +140,20 @@
        COPY PENDIENTE: textos de cada recuadro en Lorem Ipsum.
        ============================================================ -->
   <section class="mlt-home" aria-label="Secciones">
+    <!-- Textura de fondo: foto de agaves bajo un verde muy oscuro -->
+    <picture class="mlt-home__bg" aria-hidden="true">
+      <source type="image/avif" srcset="assets/img/inicio/fondo-sierra.avif">
+      <img src="assets/img/inicio/fondo-sierra.webp" alt="" width="1600" height="1066">
+    </picture>
     <div class="container-xxl">
       <div class="mlt-bento">
 
         <article class="mlt-tile mlt-tile--prod">
           <picture class="mlt-tile__media">
-            <source type="image/avif" srcset="assets/img/raicilla-maltrana-640.avif 640w, assets/img/raicilla-maltrana-1046.avif 1046w" sizes="(min-width: 768px) 30vw, 100vw">
-            <img src="assets/img/raicilla-maltrana-1046.webp" srcset="assets/img/raicilla-maltrana-640.webp 640w, assets/img/raicilla-maltrana-1046.webp 1046w" sizes="(min-width: 768px) 30vw, 100vw" alt="" width="1046" height="1656">
+            <source type="image/avif" srcset="assets/img/inicio/bento-raicillas-maltrana.avif">
+            <img src="assets/img/inicio/bento-raicillas-maltrana.webp" alt="" width="1100" height="1650">
           </picture>
-          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <span class="mlt-tile__arrow" aria-hidden="true"><img class="mlt-tile__agave" src="assets/svg/agave.svg" alt="" width="20" height="20"><i class="bi bi-arrow-right"></i></span>
           <div class="mlt-tile__body">
             <h2 class="mlt-tile__title"><a class="stretched-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></h2>
             <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
@@ -149,10 +162,10 @@
 
         <article class="mlt-tile mlt-tile--rai">
           <picture class="mlt-tile__media">
-            <source type="image/avif" srcset="assets/img/home/agave.avif">
-            <img src="assets/img/home/agave.webp" alt="" width="815" height="1200" loading="lazy">
+            <source type="image/avif" srcset="assets/img/inicio/bento-raicilla.avif">
+            <img src="assets/img/inicio/bento-raicilla.webp" alt="" width="1100" height="733" loading="lazy">
           </picture>
-          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <span class="mlt-tile__arrow" aria-hidden="true"><img class="mlt-tile__agave" src="assets/svg/agave.svg" alt="" width="20" height="20"><i class="bi bi-arrow-right"></i></span>
           <div class="mlt-tile__body">
             <h2 class="mlt-tile__title"><a class="stretched-link" href="raicilla.html">Raicilla</a></h2>
             <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur.</p>
@@ -160,8 +173,11 @@
         </article>
 
         <article class="mlt-tile mlt-tile--mal">
-          <div class="mlt-ph" data-ph="Foto: hacienda"></div>
-          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          <picture class="mlt-tile__media">
+            <source type="image/avif" srcset="assets/img/inicio/bento-maltrana.avif">
+            <img src="assets/img/inicio/bento-maltrana.webp" alt="" width="960" height="593" loading="lazy">
+          </picture>
+          <span class="mlt-tile__arrow" aria-hidden="true"><img class="mlt-tile__agave" src="assets/svg/agave.svg" alt="" width="20" height="20"><i class="bi bi-arrow-right"></i></span>
           <div class="mlt-tile__body">
             <h2 class="mlt-tile__title"><a class="stretched-link" href="maltrana.html">Maltraña</a></h2>
             <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -171,8 +187,8 @@
         <!-- Experiencias no tiene página propia: el recuadro lleva a sus tres secciones -->
         <article class="mlt-tile mlt-tile--exp">
           <picture class="mlt-tile__media">
-            <source type="image/avif" srcset="assets/img/home/copa.avif">
-            <img src="assets/img/home/copa.webp" alt="" width="1026" height="1200" loading="lazy">
+            <source type="image/avif" srcset="assets/img/inicio/bento-experiencias.avif">
+            <img src="assets/img/inicio/bento-experiencias.webp" alt="" width="1100" height="1467" loading="lazy">
           </picture>
           <div class="mlt-tile__body">
             <h2 class="mlt-tile__title">Experiencias</h2>
@@ -184,38 +200,30 @@
           </div>
         </article>
 
-        <article class="mlt-tile mlt-tile--dis">
-          <div class="mlt-ph" data-ph="Foto: distribución"></div>
-          <span class="mlt-tile__arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
-          <div class="mlt-tile__body">
-            <h2 class="mlt-tile__title"><a class="stretched-link" href="distribucion.html">Distribución</a></h2>
-            <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
-            <ul class="mlt-tile__links">
-              <li><a href="catas.html">Catas</a></li>
-              <li><a href="cocteleria.html">Coctelería</a></li>
-            </ul>
-          </div>
-        </article>
 
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       HORNO DE PIEDRA (lo que distingue a Maltraña)
-       Texto tomado del guion "Raicilla". Título pendiente (Lorem Ipsum).
+       DISTRIBUCIÓN: el único llamado a la acción de la página.
+       Va después del mosaico, cuando el visitante ya recorrió el contenido.
+       Texto tomado del guion "Distribución".
        ============================================================ -->
-  <section class="mlt-horno" aria-labelledby="horno-title">
+  <section class="mlt-horno mlt-dist" aria-labelledby="dist-title">
     <div class="container-xxl">
       <div class="mlt-horno__grid">
         <div class="mlt-horno__media">
-          <div class="mlt-ph" data-ph="Foto: horno de piedra"></div>
+          <picture>
+            <source type="image/avif" srcset="assets/img/distribucion/barrica.avif">
+            <img src="assets/img/distribucion/barrica.webp" alt="Servicio de Raicilla Maltraña desde una barrica" width="1200" height="800" loading="lazy">
+          </picture>
         </div>
-        <div>
-          <img class="mlt-horno__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
-          <h2 class="mlt-horno__title" id="horno-title">Lorem ipsum dolor sit amet</h2>
-          <p class="mlt-horno__text">Las piñas se cuecen durante 72 horas en hornos de piedra calentados con leña. Antes de introducirlas, retiramos la leña y las cenizas para conservar el carácter silvestre del agave, con un delicado toque ahumado.</p>
-          <a class="btn mlt-btn mlt-btn--outline mt-4" href="raicilla.html">Raicilla <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+        <div class="mlt-horno__content">
+          <h2 class="mlt-horno__title" id="dist-title">Distribución</h2>
+          <img class="mlt-horno__ornament" src="assets/svg/ornamento-linea.svg" alt="" width="399" height="94">
+          <p class="mlt-horno__text">En MALTRAÑA entendemos que una relación comercial sólida comienza con un <strong>producto auténtico, calidad constante</strong> y la capacidad de responder a las necesidades de cada mercado.</p>
+          <a class="btn mlt-btn mlt-btn--block mt-4" href="distribucion.html">Visita Distribución <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -224,15 +232,15 @@
 
 <footer class="mlt-footer">
   <div class="container-xxl">
-    <div class="row gy-4 text-center text-md-start">
-      <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
+    <div class="row gy-4">
+      <div class="col-12 col-md-3 mlt-footer__brand">
         <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
       </div>
 
       <nav class="col-6 col-md-3" aria-label="Secciones">
         <ul class="mlt-footer__list">
-          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="maltrana.html">Maltraña</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
@@ -248,30 +256,16 @@
         </ul>
       </nav>
 
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3 mlt-footer__contact">
         <ul class="mlt-footer__list">
           <li><a href="contacto.html">Contacto</a></li>
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
-        <ul class="mlt-social justify-content-center justify-content-md-start mt-1">
+        <ul class="mlt-social mt-1">
           <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
-      </div>
-    </div>
-
-    <!-- Sellos y leyendas sanitarias -->
-    <div class="mlt-footer__seals d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-4">
-      <ul class="list-unstyled d-flex gap-3 m-0">
-        <!-- LOGO PENDIENTE: Consejo Mexicano Promotor de la Raicilla -->
-        <li class="mlt-seal">CMPR</li>
-        <!-- LOGO PENDIENTE: 100% Agave Maximiliana -->
-        <li class="mlt-seal">100% Agave Maximiliana</li>
-      </ul>
-      <div class="mlt-footer__warnings text-center text-md-end">
-        <p class="m-0">Evite el exceso.</p>
-        <p class="m-0">El exceso en el consumo de este producto es dañino para la salud.</p>
       </div>
     </div>
 
@@ -281,13 +275,17 @@
       <span class="mlt-divider__line"></span>
     </div>
 
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-1 gap-md-2 mlt-footer__legal">
-      <p class="m-0 order-2 order-md-1">2026. Matraña Raicilla. All rights reserved.</p>
-      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-md-4 m-0 order-1 order-md-2">
+    <!-- Leyendas sanitarias en un solo párrafo, centrado bajo el ornamento -->
+    <p class="mlt-footer__warnings">Evite el exceso. El exceso en el consumo de este producto es dañino para la salud.</p>
+
+    <!-- Legales juntos como grupo; después, el aviso de derechos -->
+    <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
+      <ul class="mlt-footer__legal-links list-unstyled m-0">
         <li><a href="privacidad.html">Politica de Privacidad</a></li>
         <li><a href="cookies.html">Politica de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
+      <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>
     </div>
   </div>
 </footer>

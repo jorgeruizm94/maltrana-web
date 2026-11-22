@@ -39,9 +39,11 @@
 
   /* Margen mínimo a los lados: la página nunca toca los bordes (20px → 48px) */
   --mlt-page-gutter: clamp(2.5rem, 6vw, 6rem);
-  --mlt-section-py: clamp(3rem, 5vw, 4.5rem);   /* mismo espacio arriba y abajo de cada sección */
-  --mlt-radius: 12px;           /* redondeo sutil: fotos y submenús */
-  --mlt-radius-sm: 8px;
+  --mlt-section-py: clamp(2.25rem, 4.25vw, 3.5rem); /* espacio común arriba y abajo de TODAS las secciones */
+  --mlt-hero-py: clamp(2.5rem, 5vw, 4rem);         /* primera sección con título y foto: más baja */
+  --mlt-radius: 5px;
+  --mlt-radius-img: 4px;        /* imágenes */            /* redondeo casi imperceptible: nítido pero no un rectángulo duro */
+  --mlt-radius-sm: 3px;
   --mlt-header-h: 64px;
   /* Sombra casi imperceptible para dar profundidad a todas las imágenes */
   --mlt-shadow-img: 0 1px 2px rgba(0, 0, 0, .18), 0 16px 36px -16px rgba(0, 0, 0, .55);
@@ -70,7 +72,7 @@ button:focus-visible {
    2. HEADER (fijo con .sticky-top de Bootstrap)
    ============================================================ */
 .mlt-header {
-  background: rgba(29, 37, 32, .82);              /* --surface con 18% de transparencia */
+  background: rgba(22, 29, 25, .88);              /* un tono más oscuro que --surface */
   border-bottom: 1px solid rgba(255, 255, 255, .05); /* filete apenas perceptible */
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
@@ -78,7 +80,7 @@ button:focus-visible {
 .mlt-header__logo { display: block; height: 26px; width: auto; }
 
 .mlt-header .navbar {
-  --bs-navbar-color: var(--text);
+  --bs-navbar-color: rgba(255, 255, 255, .78);   /* menú un tono abajo del logo */
   --bs-navbar-hover-color: var(--gold);
   --bs-navbar-active-color: var(--gold);
   --bs-navbar-toggler-border-color: transparent;
@@ -99,7 +101,7 @@ button:focus-visible {
 
 .mlt-header .dropdown-menu {
   --bs-dropdown-bg: rgba(29, 37, 32, .98);
-  --bs-dropdown-border-color: rgba(191, 154, 61, .25);
+  --bs-dropdown-border-color: transparent;
   --bs-dropdown-border-radius: var(--mlt-radius);
   --bs-dropdown-padding-x: .375rem;
   --bs-dropdown-padding-y: .375rem;
@@ -142,15 +144,16 @@ button:focus-visible {
   .mlt-header .navbar { padding-block: .75rem .25rem; }
   .mlt-header .navbar-brand { padding-block: .25rem; }
   .mlt-header__logo { height: 32px; }
-  .mlt-header .navbar-collapse { margin-top: .25rem !important; }
+  .mlt-header .navbar-collapse { margin-top: 1rem !important; }   /* aire entre logo y menú */
   .mlt-header .navbar-nav { gap: 2.25rem; }
   .mlt-header .nav-link { padding-block: .375rem; }
   .mlt-header__utils {
     position: absolute;            /* superposición puntual: permitido */
-    top: .5rem;
+    top: .125rem;                  /* arriba, sin alinearse al logo */
     right: calc(var(--bs-gutter-x) * .5);
     padding: 0;
-    gap: 2rem;                     /* separa redes del idioma */
+    align-items: center;           /* iconos centrados con "English" */
+    gap: 1rem;                     /* redes e idioma más cerca */
   }
   .mlt-header .mlt-social { gap: 0; }   /* redes juntas entre sí */
   .mlt-social a { min-width: 34px; min-height: 36px; font-size: 1.25rem; }  /* 20px en tablet/escritorio */
@@ -240,7 +243,7 @@ button:focus-visible {
 }
 
 /* Imagen */
-.mlt-product__media { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--mlt-radius); box-shadow: var(--mlt-shadow-img); }
+.mlt-product__media { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--mlt-radius-img); box-shadow: var(--mlt-shadow-img); }
 .mlt-product--light .mlt-product__media { box-shadow: var(--mlt-shadow-img-light); }
 /* --mlt-zoom lo actualiza main.js al hacer scroll (1 → 1.08 máximo) */
 .mlt-product__media img {
@@ -370,23 +373,24 @@ button:focus-visible {
    4. FOOTER
    ============================================================ */
 .mlt-footer { background: var(--bg); padding-block: 2rem .75rem; font-size: 1rem; }
-.mlt-footer__logo { width: 150px; height: auto; }
+.mlt-footer__logo { width: 170px; height: auto; }
+.mlt-footer__brand { display: flex; justify-content: center; align-items: center; }
 .mlt-footer__list { list-style: none; margin: 0; padding: 0; }
-.mlt-footer a { color: var(--text); text-decoration: none; display: inline-block; padding-block: .5rem; }
+.mlt-footer a { color: var(--text); text-decoration: none; display: inline-block; padding-block: .25rem; }
 .mlt-footer a:hover { color: var(--gold); }
 .mlt-footer .mlt-footer__mail { color: var(--gold); overflow-wrap: anywhere; }
 .mlt-footer .mlt-footer__mail:hover { color: var(--text); }
 .mlt-footer__label { display: inline-block; padding-block: .5rem; }
-.mlt-footer .mlt-social a { justify-content: flex-start; min-width: 44px; }
+.mlt-footer .mlt-social a { justify-content: flex-start; min-width: 40px; min-height: 40px; }
 .mlt-footer .mlt-divider { gap: 1.5rem; }
 .mlt-footer .mlt-divider__line { flex: 1 1 auto; }
 .mlt-footer .mlt-divider__ornament { width: 120px; }
 .mlt-footer__legal { font-size: var(--mlt-fs-small); }   /* 15px: el texto más chico */
-.mlt-footer__legal a { padding-block: .75rem; }
+.mlt-footer__legal a { padding-block: .25rem; }
 .mlt-footer__legal p { padding-block: .25rem; }
 
 @media (min-width: 768px) {
-  .mlt-footer a, .mlt-footer__label { padding-block: .3125rem; }
+  .mlt-footer a, .mlt-footer__label { padding-block: .1875rem; }
   .mlt-footer__legal a { padding-block: .375rem; }   /* pegados a la línea de arriba */
 }
 
@@ -415,24 +419,31 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 
 .mlt-agegate .modal-content {
   align-items: center;
-  gap: 1.5rem;
-  padding: 2.5rem 1.75rem 1.5rem;
+  gap: 1.75rem;
+  padding: 3rem 1.75rem 2.75rem;
   text-align: center;
   color: var(--text);
-  background: rgba(29, 37, 32, .92);
-  border: 1px solid rgba(191, 154, 61, .35);
+  background: rgba(29, 37, 32, .96);
+  border: 0;
   border-radius: var(--mlt-radius);
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .7);
+  box-shadow: 0 40px 100px -24px rgba(0, 0, 0, .9), 0 0 0 1px rgba(0, 0, 0, .4);
 }
-.mlt-agegate .modal-dialog { max-width: 560px; }
+.mlt-agegate .modal-dialog { max-width: 660px; padding-inline: .75rem; }
+/* Marco dorado fino DENTRO del contenedor */
+.mlt-agegate .modal-content::before {
+  content: ""; position: absolute; inset: 10px; pointer-events: none;
+  border: 1px solid rgba(197, 160, 9, .4); border-radius: var(--mlt-radius-sm);
+}
+@media (min-width: 576px) { .mlt-agegate .modal-content { padding: 3.5rem 3.5rem 3rem; } }
 .mlt-agegate .mlt-btn { white-space: nowrap; }
-.mlt-agegate__logo { width: 170px; height: auto; }
+.mlt-agegate__logo { width: 160px; height: auto; }
 .mlt-agegate__ornament { width: 120px; height: auto; margin-top: -.5rem; }
-.mlt-agegate__step { display: grid; gap: 1rem; justify-items: center; }
+.mlt-agegate__step { display: grid; gap: 1.25rem; justify-items: center; width: 100%; }
 .mlt-agegate__step[hidden] { display: none; }
-.mlt-agegate__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.375rem, 1.2rem + .8vw, 1.75rem); text-wrap: balance; line-height: 1.15; margin: 0; color: var(--text); }
+.mlt-agegate__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.375rem, 1.2rem + .8vw, 1.75rem); text-wrap: balance; max-width: 36ch; line-height: 1.15; margin: 0; color: var(--text); }
 .mlt-agegate__title:focus { outline: none; }
-.mlt-agegate__text { margin: 0; max-width: 34ch; }
+.mlt-agegate__text { margin: -.625rem 0 0; max-width: 52ch; line-height: 1.55; }   /* pegado al título */
+.mlt-agegate__actions { margin-top: 1rem; }   /* más separado de los botones */
 .mlt-agegate__legal {
   margin: .5rem 0 0;
   padding-top: 1rem;
@@ -457,7 +468,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
   --bs-btn-active-color: #1A1713;
   --bs-btn-active-bg: #B8923F;
   --bs-btn-active-border-color: #B8923F;
-  --bs-btn-border-radius: var(--mlt-radius-sm);
+  --bs-btn-border-radius: 999px;   /* botones: muy redondeados */
   min-width: 7.5rem;
   letter-spacing: .02em;
 }
@@ -476,6 +487,8 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 /* En el header y footer se distingue en dorado */
 .mlt-social .mlt-social__wa { color: var(--gold); }
 .mlt-social .mlt-social__wa:hover { color: var(--text); }
+.mlt-footer .mlt-social .mlt-social__wa { color: var(--text); }   /* en el footer, blanco */
+.mlt-footer .mlt-social .mlt-social__wa:hover { color: var(--gold); }
 
 /* Botón flotante en celular: abajo a la derecha, al alcance del pulgar */
 .mlt-wa {
@@ -500,58 +513,43 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 .mlt-reg { font-size: .55em; vertical-align: super; line-height: 0; margin-left: .05em; }
 
 /* ============================================================
-   7. FOOTER: sellos y leyendas
+   7. FOOTER: leyendas (ver sección 12)
    ============================================================ */
-/* Marcadores de los logos (CMPR, 100% Agave Maximiliana) hasta tener los archivos */
-.mlt-seal {
-  display: grid; place-items: center;
-  min-width: 88px; height: 56px; padding: 0 .75rem;
-  border: 1px dashed rgba(255, 255, 255, .35); border-radius: var(--mlt-radius-sm);
-  font-size: .75rem; line-height: 1.2; text-align: center; color: rgba(255, 255, 255, .7);
-}
-.mlt-footer__warnings { font-size: var(--mlt-fs-small); color: rgba(255, 255, 255, .8); }
 
 /* ============================================================
    8. INICIO: mosaico (bento)
    ============================================================ */
-.mlt-home { padding-block: clamp(1rem, 2.5vw, 2rem); background: linear-gradient(135deg, var(--band-deep) 0%, var(--band) 60%); }
+.mlt-home { padding-block: var(--mlt-section-py); background: linear-gradient(135deg, var(--band-deep) 0%, var(--band) 60%); }
 
-/* Celular: 2 columnas. Producto arriba a todo lo ancho */
+/* Celular: producto, Experiencias, y Maltraña + Raicilla lado a lado */
 .mlt-bento {
   display: grid;
   gap: .75rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas:
     "prod prod"
-    "rai  mal"
     "exp  exp"
-    "dis  dis";
+    "mal  rai";
 }
-.mlt-tile--prod { grid-area: prod; min-height: 400px; }
-.mlt-tile--rai  { grid-area: rai;  min-height: 240px; }
-.mlt-tile--exp  { grid-area: exp;  min-height: 240px; }
-.mlt-tile--mal  { grid-area: mal;  min-height: 240px; }
-.mlt-tile--dis  { grid-area: dis;  min-height: 240px; }
+.mlt-tile--prod { grid-area: prod; min-height: 260px; }
+.mlt-tile--exp  { grid-area: exp;  min-height: 220px; }
+.mlt-tile--mal  { grid-area: mal;  min-height: 200px; }
+.mlt-tile--rai  { grid-area: rai;  min-height: 200px; }
 
-/* Tablet y escritorio: todo el mosaico cabe en una pantalla */
+/* Tablet y escritorio: Raicillas Maltraña vertical ancho, Experiencias vertical
+   más angosto, y Maltraña / Raicilla chicos uno sobre otro */
 @media (min-width: 768px) {
   .mlt-bento {
     gap: 1rem;
-    grid-template-columns: 1.15fr 1fr 1fr;
+    grid-template-columns: 1.25fr .95fr 1fr;
     grid-template-areas:
-      "prod rai mal"
-      "prod exp dis";
-    grid-template-rows: repeat(2, clamp(240px, calc((100svh - var(--mlt-header-h) - 4rem) / 2), 380px));
+      "prod exp mal"
+      "prod exp rai";
+    grid-template-rows: repeat(2, clamp(210px, calc((100svh - var(--mlt-header-h) - 12rem) / 2), 300px));
   }
-  .mlt-tile--prod, .mlt-tile--rai, .mlt-tile--exp, .mlt-tile--mal, .mlt-tile--dis { min-height: 0; }
-}
-@media (min-width: 1200px) {
-  .mlt-bento {
-    grid-template-columns: 1.2fr 1fr 1fr 1fr;
-    grid-template-areas:
-      "prod rai mal mal"
-      "prod exp dis dis";
-  }
+  .mlt-tile--prod, .mlt-tile--rai, .mlt-tile--exp, .mlt-tile--mal { min-height: 0; }
+  /* Experiencias: sus tres opciones una debajo de otra */
+  .mlt-tile--exp .mlt-tile__links { flex-direction: column; align-items: flex-start; }
 }
 
 /* Recuadro */
@@ -561,7 +559,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  border-radius: var(--mlt-radius);
+  border-radius: var(--mlt-radius-img);
   background: var(--surface);
   isolation: isolate;
   box-shadow: var(--mlt-shadow-img);
@@ -590,7 +588,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
   position: absolute; top: 1rem; right: 1rem;
   display: grid; place-items: center;
   width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(255, 255, 255, .14);
+  background: rgba(20, 31, 25, .55);   /* verde oscuro difuminado */
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   color: var(--text); font-size: 1rem;
   transition: background-color .3s, color .3s, border-color .3s, transform .3s;
@@ -623,16 +621,16 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 .mlt-ph::before {
   content: attr(data-ph);
   position: absolute; top: 1rem; left: 1rem;
-  padding: .25rem .5rem; border-radius: 4px;
+  padding: .25rem .5rem; border-radius: var(--mlt-radius-sm);
   font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(255, 255, 255, .6); border: 1px dashed rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .6); background: rgba(0, 0, 0, .25);
   max-width: calc(100% - 5rem);   /* no choca con la flecha */
 }
 
 /* ---------- Banda del horno ---------- */
 .mlt-horno { background: var(--surface); padding-block: var(--mlt-section-py); }
 .mlt-horno__grid { display: grid; gap: 1.5rem; align-items: center; }
-.mlt-horno__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--mlt-radius); isolation: isolate; box-shadow: var(--mlt-shadow-img); }
+.mlt-horno__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--mlt-radius-img); isolation: isolate; box-shadow: var(--mlt-shadow-img); }
 .mlt-horno__ornament { width: 120px; height: auto; }
 .mlt-horno__title { font-family: var(--font-display); font-weight: 600; font-size: var(--mlt-fs-display); line-height: 1.15; margin: 1rem 0 0; }
 .mlt-horno__text { margin: 1rem 0 0; max-width: 52ch; line-height: 1.5; }
@@ -644,7 +642,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 /* ============================================================
    9. FOOTER: jerarquía de Experiencias
    ============================================================ */
-.mlt-footer__parent { margin: 0; padding-block: .5rem; font-weight: 600; letter-spacing: .02em; color: var(--text); }
+.mlt-footer__parent { margin: 0; padding-block: .25rem; font-weight: 600; letter-spacing: .02em; color: var(--text); }
 .mlt-footer__sub {
   display: inline-block;
   text-align: left;
@@ -659,7 +657,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
   width: 1px; background: rgba(255, 255, 255, .4);
 }
 @media (min-width: 768px) { .mlt-footer__sub::before { top: .5rem; bottom: .5rem; } }
-@media (min-width: 768px) { .mlt-footer__parent { padding-block: .3125rem; } }
+@media (min-width: 768px) { .mlt-footer__parent { padding-block: .1875rem; } }
 
 /* ============================================================
    10. PÁGINAS INTERIORES
@@ -668,6 +666,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 .mlt-page-hero__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.25rem, 1.7rem + 2vw, 3.25rem); line-height: 1.1; margin: 0; }
 .mlt-page-hero__ornament { width: 140px; height: auto; margin-top: .75rem; }
 .mlt-page-hero__lead { max-width: 60ch; margin: 1rem auto 0; }
+.mlt-page-hero__lead--wide { max-width: 100ch; }
 
 /* Migas de pan (componente breadcrumb de Bootstrap) */
 .mlt-breadcrumb {
@@ -687,7 +686,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
   .mlt-split { grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 5rem); }
   .mlt-split--reverse > :first-child { order: 2; }
 }
-.mlt-media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--mlt-radius); isolation: isolate; box-shadow: var(--mlt-shadow-img); }
+.mlt-media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--mlt-radius-img); isolation: isolate; box-shadow: var(--mlt-shadow-img); }
 @media (min-width: 768px) { .mlt-split .mlt-media { max-height: 640px; } }
 
 .mlt-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.75rem, 1.45rem + 1vw, 2.25rem); line-height: 1.15; margin: 0 0 1.25rem; }
@@ -698,17 +697,6 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 .mlt-prose-block--center { margin-inline: auto; text-align: center; }
 .mlt-em { font-weight: 600; }
 
-/* Pasos del proceso */
-.mlt-steps { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; gap: 1rem; }
-@media (min-width: 768px) { .mlt-steps { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1200px) { .mlt-steps { grid-template-columns: repeat(3, 1fr); } }
-.mlt-step { position: relative; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--mlt-radius); background: rgba(255, 255, 255, .02); }
-.mlt-step__num { display: block; font-family: var(--font-display); font-weight: 600; font-size: 2rem; line-height: 1; color: var(--gold); margin-bottom: .75rem; }
-.mlt-step__text { margin: 0; line-height: 1.55; }
-/* El horno destaca: ocupa más espacio y lleva foto */
-.mlt-step--horno { border-color: rgba(191, 154, 61, .55); }
-.mlt-step__media { aspect-ratio: 16 / 10; margin-bottom: 1rem; }
-@media (min-width: 768px) { .mlt-step--horno { grid-row: span 2; } }
 .mlt-closing { max-width: 60ch; margin: 3rem auto 0; }
 .mlt-closing__ornament, .mlt-quote__ornament { width: 140px; height: auto; margin-top: 1rem; }
 
@@ -728,7 +716,7 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 /* Tarjetas (Distribución) */
 .mlt-cards { display: grid; gap: 1rem; }
 @media (min-width: 768px) { .mlt-cards { grid-template-columns: repeat(2, 1fr); } }
-.mlt-card { padding: 1.75rem; border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--mlt-radius); background: rgba(255, 255, 255, .02); }
+.mlt-card { padding: 1.75rem; border-radius: var(--mlt-radius); background: rgba(255, 255, 255, .04); box-shadow: var(--mlt-shadow-img); }
 .mlt-card__title { font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; margin: 0 0 1rem; color: var(--gold); }
 
 /* Llamado a la acción */
@@ -744,8 +732,8 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 /* Categorías: pastillas de Bootstrap (nav-pills); en celular se deslizan de lado */
 .mlt-cats {
   --bs-nav-pills-border-radius: 999px;
-  --bs-nav-pills-link-active-bg: var(--gold);
-  --bs-nav-pills-link-active-color: #1A1713;
+  --bs-nav-pills-link-active-bg: transparent;
+  --bs-nav-pills-link-active-color: var(--gold);
   --bs-nav-link-color: var(--text);
   --bs-nav-link-hover-color: var(--gold);
   --bs-nav-link-padding-x: 1.125rem;
@@ -759,7 +747,8 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
   padding-bottom: .25rem;
 }
 .mlt-cats::-webkit-scrollbar { display: none; }
-.mlt-cats .nav-link { white-space: nowrap; background: rgba(255, 255, 255, .08); font-weight: 500; }
+.mlt-cats .nav-link { white-space: nowrap; background: transparent; border: 1px solid rgba(255, 255, 255, .7); font-weight: 500; }
+.mlt-cats .nav-link.active { border-color: var(--gold); }
 .mlt-cats .nav-link.active { font-weight: 600; }
 .mlt-cats__count { margin-left: .375rem; font-size: .8em; opacity: .65; }
 @media (min-width: 768px) { .mlt-cats { justify-content: center; flex-wrap: wrap; overflow: visible; } }
@@ -768,11 +757,324 @@ html.mlt-gated .mlt-wa { filter: blur(14px) brightness(.4); }
 @media (min-width: 768px) { .mlt-cocktails { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1200px) { .mlt-cocktails { grid-template-columns: repeat(3, 1fr); } }
 .mlt-cocktail {
-  padding: 1.375rem 1.5rem;
+  overflow: hidden;
   border-radius: var(--mlt-radius);
   background: rgba(255, 255, 255, .04);
   box-shadow: var(--mlt-shadow-img);
 }
-.mlt-cocktail__name { font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; line-height: 1.15; margin: 0; }
-.mlt-cocktail__place { margin: .375rem 0 .75rem; font-size: var(--mlt-fs-small); color: var(--gold); }
-.mlt-cocktail__recipe { margin: 0; line-height: 1.5; color: rgba(255, 255, 255, .85); }
+.mlt-cocktail__name { font-family: var(--font-display); font-weight: 600; font-size: 1.625rem; line-height: 1.1; margin: 0; }
+.mlt-cocktail__place { margin: .125rem 0 1rem;   /* pegado al título, separado de la receta */ font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+.mlt-cocktail__recipe { margin: 0; line-height: 1.4; color: rgba(255, 255, 255, .85); }
+
+/* ============================================================
+   12. AJUSTES 21 NOV: agave, footer, fondos con foto, galería
+   ============================================================ */
+
+/* Ícono del mosaico: agave en reposo → flecha al pasar el cursor */
+.mlt-tile__arrow > * { position: absolute; transition: opacity .3s, transform .3s; }
+.mlt-tile__agave { width: 20px; height: 20px; }
+.mlt-tile__arrow i { opacity: 0; transform: scale(.6); }
+@media (hover: hover) {
+  .mlt-tile:hover .mlt-tile__agave { opacity: 0; transform: scale(.6); }
+  .mlt-tile:hover .mlt-tile__arrow i { opacity: 1; transform: none; }
+}
+
+/* Viñetas de agave en las pestañas de producto */
+.mlt-tabs .mlt-list, .mlt-pillar__list { list-style: none; padding-left: 0; }
+.mlt-tabs .mlt-list li, .mlt-pillar__list li { position: relative; padding-left: 1.625rem; }
+.mlt-tabs .mlt-list li::before, .mlt-pillar__list li::before {
+  content: ""; position: absolute; left: 0; top: .15em;
+  width: 1.05rem; height: 1.05rem;
+  background: url("assets/svg/agave.svg") center / contain no-repeat;
+}
+
+/* Inicio: textura de agaves casi imperceptible bajo el verde */
+.mlt-home { position: relative; isolation: isolate; overflow: hidden; }
+.mlt-home__bg { position: absolute; inset: 0; z-index: -1; }
+.mlt-home__bg img { width: 100%; height: 100%; object-fit: cover; }
+/* Velo verde oscuro encima de la foto: se siente como fondo, no como imagen */
+.mlt-home__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(14, 22, 17, .9) 0%, rgba(18, 30, 23, .84) 100%); }
+
+/* Banda del horno: título → ornamento → texto → botón, centrados */
+.mlt-horno__content { text-align: center; }
+.mlt-horno__title { margin-top: 0; }
+.mlt-horno__ornament { display: block; width: 130px; margin: .75rem auto 0; }
+.mlt-horno__text { margin-inline: auto; }
+.mlt-horno__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Botón a todo lo ancho en celular (alcance del pulgar) */
+.mlt-btn--block { width: 100%; }
+@media (min-width: 768px) { .mlt-btn--block { width: auto; } }
+
+/* Fotos dentro de .mlt-media */
+.mlt-media picture, .mlt-media img { display: block; width: 100%; height: 100%; }
+.mlt-media img { object-fit: cover; }
+
+/* Título como SVG (página Raicilla) */
+.mlt-page-hero__svg { width: clamp(150px, 16vw, 200px); height: auto; }
+
+/* Hero con foto de fondo (Maltraña) */
+.mlt-page-hero--photo { position: relative; isolation: isolate; overflow: hidden; padding-block: var(--mlt-hero-py); }
+.mlt-page-hero__bg { position: absolute; inset: 0; z-index: -2; }
+.mlt-page-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+.mlt-page-hero--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(135deg, rgba(26, 43, 34, .86) 0%, rgba(20, 31, 25, .72) 100%);   /* verde oscuro de marca; la foto apenas se asoma */
+}
+
+/* Foto primero en celular, a todo lo ancho (Maltraña) */
+@media (max-width: 767.98px) {
+  .mlt-split--photo-first > .mlt-media {
+    order: -1;
+    margin-inline: calc(var(--bs-gutter-x) * -.5);
+    margin-top: calc(var(--mlt-section-py) * -1);
+    border-radius: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Galería deslizable */
+.mlt-gallery { background: var(--surface); padding-block: 0 var(--mlt-section-py); }
+.mlt-gallery__track {
+  display: flex; gap: .75rem; margin: 0; padding: 0 calc(var(--mlt-page-gutter) * .5); list-style: none;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: calc(var(--mlt-page-gutter) * .5);
+  scrollbar-width: none;
+}
+.mlt-gallery__track::-webkit-scrollbar { display: none; }
+.mlt-gallery__item { flex: 0 0 78%; aspect-ratio: 4 / 5; scroll-snap-align: start; border-radius: var(--mlt-radius-img); overflow: hidden; box-shadow: var(--mlt-shadow-img); }
+.mlt-gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (min-width: 768px) { .mlt-gallery__item { flex-basis: 38%; } }
+@media (min-width: 1200px) { .mlt-gallery__item { flex-basis: 24%; } }
+
+/* Lema sobre foto */
+.mlt-quote--photo { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(5rem, 14vw, 9rem); }
+.mlt-quote__bg { position: absolute; inset: 0; z-index: -2; }
+.mlt-quote__bg img { width: 100%; height: 100%; object-fit: cover; }
+.mlt-quote--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(10, 14, 12, .62); }
+
+/* NOM (Distribución) */
+.mlt-nom {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem;
+  margin-top: 1rem; padding: 1.25rem 1.75rem;
+  border-radius: var(--mlt-radius); background: rgba(255, 255, 255, .04); box-shadow: var(--mlt-shadow-img);
+}
+.mlt-nom__title { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; color: var(--gold); }
+.mlt-nom__status { margin: 0; color: rgba(255, 255, 255, .8); }
+
+/* Coctelería: espacio para la foto de cada cóctel */
+.mlt-cocktail { display: grid; grid-template-columns: 120px 1fr; align-items: stretch; padding: .5rem; }
+/* La foto llega a los bordes de la tarjeta (arriba, abajo e izquierda) */
+.mlt-cocktail__media { position: relative; min-height: 100%; overflow: hidden; isolation: isolate; border-radius: var(--mlt-radius-img); }
+.mlt-cocktail__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mlt-cocktail__body { padding: .75rem .875rem .875rem 1.125rem; }
+.mlt-cocktail__media .mlt-ph::before { top: .375rem; left: .375rem; font-size: .625rem; padding: .125rem .25rem; max-width: calc(100% - .75rem); }
+@media (min-width: 1200px) { .mlt-cocktail { grid-template-columns: 136px 1fr; } }
+
+/* Contacto */
+.mlt-contact { display: grid; gap: 1rem; margin: 1.5rem 0 0; }
+.mlt-contact dt { font-size: .8125rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .6); }
+.mlt-contact dd { margin: .125rem 0 0; }
+.mlt-contact a { color: var(--gold); text-decoration: none; }
+.mlt-map { display: block; }
+.mlt-map__media { aspect-ratio: 4 / 3; }
+
+/* Footer: leyendas centradas bajo el ornamento; legales agrupados; derechos al final */
+.mlt-footer__warnings { margin: .75rem 0 0; text-align: center; font-size: var(--mlt-fs-small); color: rgba(255, 255, 255, .8); }
+.mlt-footer__legal { margin-top: 1.25rem; }
+.mlt-footer__legal-links { display: grid; gap: 0; }
+.mlt-footer__legal-links a { padding-block: .25rem; }
+@media (min-width: 768px) { .mlt-footer__legal-links a { padding-block: .125rem; } }
+.mlt-footer__copy { margin-top: 1rem !important; color: rgba(255, 255, 255, .7); }
+@media (min-width: 768px) {
+  .mlt-footer__legal-links { display: flex; gap: 1.75rem; }
+  .mlt-footer__copy { margin-top: 0 !important; }
+}
+
+/* ============================================================
+   13. AJUSTES 21 NOV (2): negritas, foto chaparra, proceso
+   ============================================================ */
+/* Negritas solo en frases clave dentro del texto */
+strong, b { font-weight: 600; color: inherit; }
+
+/* Foto horizontal y baja junto al texto (Raicilla, 2ª sección) */
+.mlt-split--short .mlt-media { aspect-ratio: 16 / 9; }
+@media (min-width: 768px) { .mlt-split--short .mlt-media { aspect-ratio: 16 / 11; max-height: 360px; } }
+
+/* Proceso: una foto por paso.
+   Celular/tablet: tarjetas que se deslizan de lado. Escritorio: 5 en línea. */
+.mlt-process {
+  --mlt-gap: 1rem;
+  display: flex; gap: var(--mlt-gap);
+  margin: 2.5rem 0 0; padding: 0 calc(var(--mlt-page-gutter) * .5);
+  list-style: none;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-padding-inline: calc(var(--mlt-page-gutter) * .5);
+  scrollbar-width: none;
+}
+.mlt-process::-webkit-scrollbar { display: none; }
+.mlt-process__step { flex: 0 0 80%; scroll-snap-align: start; display: flex; flex-direction: column; }
+.mlt-process__media { aspect-ratio: 4 / 5; }
+.mlt-process__num {
+  display: flex; align-items: center; gap: .75rem;
+  margin: 1.25rem 0 .625rem;
+  font-family: var(--font-display); font-weight: 600; font-size: 1.75rem; line-height: 1; color: var(--gold);
+}
+/* Filete dorado que une los pasos */
+.mlt-process__num::after { content: ""; flex: 1; height: 1px; background: rgba(197, 160, 9, .45); }
+.mlt-process__step:last-child .mlt-process__num::after { background: linear-gradient(to right, rgba(197, 160, 9, .45), transparent); }
+.mlt-process__text { margin: 0; line-height: 1.55; font-size: var(--mlt-fs-small); color: rgba(255, 255, 255, .86); }
+@media (min-width: 768px) { .mlt-process__step { flex-basis: 40%; } }
+@media (min-width: 1200px) {
+  .mlt-process {
+    max-width: 1140px; margin-inline: auto;   /* mismo ancho que .container-xxl */
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;
+    overflow: visible;
+  }
+}
+@media (min-width: 1400px) { .mlt-process { max-width: 1320px; } }
+
+/* ============================================================
+   14. FOTO POR TAMAÑO (Raicillas Maltraña)
+   Al pasar el cursor (o enfocar con teclado) por "250 ml" o "50 ml"
+   aparece la foto de ese tamaño encima; al salir, vuelve la original.
+   ============================================================ */
+@media (max-width: 767.98px) { .mlt-product__media { position: relative; } }   /* en escritorio ya es sticky */
+.mlt-product__alt {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .35s ease; pointer-events: none;
+}
+.mlt-product__media[data-show="250"] .mlt-product__alt[data-size="250"],
+.mlt-product__media[data-show="50"] .mlt-product__alt[data-size="50"] { opacity: 1; }
+.mlt-pill--size { cursor: default; transition: border-color .2s, color .2s; }
+.mlt-pill--size:hover, .mlt-pill--size:focus-visible { border-color: var(--gold); color: var(--gold); outline: none; }
+
+/* ============================================================
+   15. AJUSTES 21 NOV (4)
+   ============================================================ */
+
+/* Pastillas de tamaño como botones */
+button.mlt-pill { background: transparent; font-family: inherit; }
+.mlt-pill--size[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+.mlt-product--light .mlt-pill--size[aria-pressed="true"] { border-color: var(--gold-ink); color: var(--gold-ink); }
+
+/* Raicilla (celular): párrafo 1 y 2 → foto → párrafo 3 */
+@media (max-width: 767.98px) {
+  .mlt-split--short { display: flex; flex-direction: column; gap: 0; }
+  .mlt-split--short > .mlt-prose-block { display: contents; }
+  .mlt-split--short > .mlt-media { order: 2; margin-block: .5rem 1.5rem; }
+  .mlt-split--short > .mlt-prose-block > :last-child { order: 3; }
+}
+
+/* Coctelería (celular): todas las categorías visibles, sin deslizar */
+@media (max-width: 767.98px) {
+  .mlt-cats { flex-wrap: wrap; justify-content: center; overflow: visible; --bs-nav-link-padding-x: .875rem; --bs-nav-link-font-size: .8125rem; }
+}
+#categorias { scroll-margin-top: calc(var(--mlt-header-h) + 1rem); }
+
+/* Flecha para regresar a las categorías: a la derecha, arriba del WhatsApp */
+.mlt-totop {
+  position: fixed; z-index: 1029;
+  right: calc(1rem + 4px + env(safe-area-inset-right));
+  bottom: calc(1rem + 56px + .75rem + env(safe-area-inset-bottom));
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(22, 29, 25, .92); color: var(--text); font-size: 1.25rem; text-decoration: none;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, .5);
+  animation: mlt-drop .2s ease-out;
+}
+.mlt-totop[hidden] { display: none; }
+.mlt-totop:hover { color: var(--gold); }
+@media (min-width: 768px) { .mlt-totop { bottom: calc(1.5rem + env(safe-area-inset-bottom)); right: 1.5rem; } }
+
+/* ============================================================
+   Menú de celular
+   Cada opción entre dos líneas finas (toda la franja es tocable).
+   Las líneas no tocan los bordes: respetan el margen de la página.
+   ============================================================ */
+@media (max-width: 767.98px) {
+  .mlt-header .navbar-collapse {
+    margin-top: 2rem;                                      /* aire entre el logo y el menú */
+    max-height: calc(100svh - 5rem); overflow-y: auto;     /* si no cabe, se desplaza hacia abajo */
+    overflow-x: hidden; overscroll-behavior: contain;      /* nunca de lado */
+  }
+  .mlt-header .navbar-nav { border-top: 1px solid rgba(255, 255, 255, .14); }
+  .mlt-header .navbar-nav > .nav-item { border-bottom: 1px solid rgba(255, 255, 255, .14); }
+  .mlt-header .navbar-nav .nav-link {
+    display: flex; align-items: center; width: 100%;
+    font-size: 1.25rem; padding-block: .6875rem; text-align: left;
+  }
+  .mlt-header .navbar-nav .dropdown-toggle::after { margin-left: auto; }   /* flecha al extremo derecho */
+  .mlt-header .navbar-nav .dropdown-menu { margin-bottom: .75rem; }
+
+  /* Idioma: botón largo con contorno blanco; "English" a la izquierda, flecha a la derecha */
+  .mlt-header__utils { flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.5rem 0 1rem; }
+  .mlt-header__utils > .dropdown { order: -1; }
+  .mlt-header .mlt-lang {
+    width: 100%; justify-content: space-between;
+    padding: 0 1.125rem; border: 1px solid rgba(255, 255, 255, .75); border-radius: 999px;
+    font-size: 1.125rem; color: var(--text);
+  }
+  .mlt-header .mlt-lang__menu { width: 100%; }
+  .mlt-header .mlt-social { justify-content: center; }
+  .mlt-header .mlt-social .mlt-social__wa { color: var(--text); }   /* el botón flotante ya es dorado */
+}
+
+/* Hamburguesa → cruz cuando el menú está abierto */
+.mlt-header .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-width='2' d='M8 8l14 14M22 8L8 22'/%3e%3c/svg%3e");
+}
+
+/* Con el menú abierto: el resto se oscurece y se difumina; picar fuera lo cierra */
+.mlt-menu-veil { display: none; }
+@media (max-width: 767.98px) {
+  html.mlt-menu-open main, html.mlt-menu-open .mlt-footer, html.mlt-menu-open .mlt-wa {
+    filter: blur(4px) brightness(.5); transition: filter .3s ease;
+  }
+  html.mlt-menu-open { overflow: hidden; }   /* la página no se mueve mientras el menú está abierto */
+  html.mlt-menu-open .mlt-menu-veil { display: block; position: fixed; inset: 0; z-index: 1019; background: rgba(0, 0, 0, .15); }
+}
+
+/* Footer en celular: contacto, correo, redes y legales centrados */
+@media (max-width: 767.98px) {
+  .mlt-footer__contact { text-align: center; }
+  .mlt-footer__contact .mlt-social { justify-content: center; }
+  .mlt-footer .mlt-footer__contact .mlt-social a { justify-content: center; }
+  .mlt-footer__legal-links { justify-items: center; text-align: center; }
+  .mlt-footer__copy { text-align: center; }
+}
+
+/* Distribución: pilares con foto */
+.mlt-pillars__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.5rem; }
+.mlt-pillar__media { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--mlt-radius-img); box-shadow: var(--mlt-shadow-img); margin-bottom: 1.25rem; }
+.mlt-pillar__media img, .mlt-pillars__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mlt-pillar__head {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  padding: 0; border: 0; background: none; color: var(--text); text-align: left;
+  pointer-events: none;   /* en celular no es interactivo */
+}
+.mlt-pillar__num { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; line-height: 1; color: var(--gold); }
+.mlt-pillar__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.375rem, 1.2rem + .8vw, 1.875rem); line-height: 1.15; }
+.mlt-pillar__list { margin: .875rem 0 0; }
+.mlt-pillars__stage { display: none; }
+
+@media (min-width: 992px) {
+  .mlt-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  .mlt-pillars__list { gap: 0; }
+  .mlt-pillar { border-bottom: 1px solid rgba(255, 255, 255, .1); }
+  .mlt-pillar:first-child { border-top: 1px solid rgba(255, 255, 255, .1); }
+  .mlt-pillar__media { display: none; }
+  .mlt-pillar__head { pointer-events: auto; cursor: pointer; padding-block: 1.25rem; }
+  .mlt-pillar__title { color: rgba(255, 255, 255, .6); transition: color .25s; }
+  .mlt-pillar__num { opacity: .5; transition: opacity .25s; }
+  .mlt-pillar.is-active .mlt-pillar__title, .mlt-pillar__head:hover .mlt-pillar__title { color: var(--text); }
+  .mlt-pillar.is-active .mlt-pillar__num { opacity: 1; }
+  /* Lista que se abre en el pilar activo */
+  .mlt-pillar__list { margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .4s ease, opacity .3s ease, padding .3s ease; }
+  .mlt-pillar.is-active .mlt-pillar__list { max-height: 32rem; opacity: 1; padding-bottom: 1.5rem; }
+  /* Foto grande que cambia según el pilar */
+  .mlt-pillars__stage {
+    display: block; position: sticky; top: calc(var(--mlt-header-h) + 2rem);
+    aspect-ratio: 4 / 5; max-height: 560px; width: 100%;
+    overflow: hidden; border-radius: var(--mlt-radius-img); box-shadow: var(--mlt-shadow-img);
+  }
+  .mlt-pillars__photo { position: absolute; inset: 0; opacity: 0; transition: opacity .45s ease; }
+  .mlt-pillars__photo.is-active { opacity: 1; }
+}
