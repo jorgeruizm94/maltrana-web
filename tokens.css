@@ -1,9 +1,8 @@
-/* Maltraña · colores y tipografías.
-   Los HEX del tema oscuro se ajustaron al diseño de Figma (12 nov 2026):
-   --text #F1EBDD → #FFFFFF · --gold #C9A24A → #BF9A3D · nuevos --cream y --band-deep.
+/* Maltraña · tokens.css
+   Colores y tipografías de la marca como variables CSS.
+   El sitio usa el tema oscuro (:root[data-theme="dark"], en <html>).
    --ink / --gold-ink / --amber-ink: colores de texto para secciones claras (crema)
-   dentro del tema oscuro; cumplen contraste AA sobre #F1EBDD.
-   El tema claro queda pendiente de confirmar; si no se usa, se borra. */
+   dentro del tema oscuro; cumplen contraste AA sobre #F1EBDD. */
 :root{
   --font-display:"Crimson Pro",Georgia,serif;
   --font-body:"Barlow",system-ui,sans-serif;
@@ -19,5 +18,6 @@
   --bg:#141915; --surface:#1D2520; --text:#FFFFFF; --muted:#B4AD9E; --link:#DDBF74; --border:#33403A;
   --primary:#C9A24A; --primary-hover:#D9B563; --primary-active:#B8923F; --on-primary:#1A1713;
   --gold:#BF9A3D; --amber:#E08A2E; --sage-100:#2A3D32; --band:#243A2E; --sage:#6F9A80;
-  --cream:#F1EBDD; --gold-ornament:#C5A009; /* dorado del ornamento oficial del logo */ --band-deep:#1A2B22; /* final del degradado de la sección verde */
+  --cream:#F1EBDD; --gold-ornament:#C5A009; /* dorado del ornamento oficial del logo */ --band-deep:#1A2B22; /* verde más oscuro (recuadros sobre el fondo verde) */
+  --footer:#141915; /* fondo del footer */
 }

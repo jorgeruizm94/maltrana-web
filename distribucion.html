@@ -38,20 +38,19 @@
       <img class="mlt-agegate__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280">
 
       <div class="mlt-agegate__step" data-agegate-step="ask">
-        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
-        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
+        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Eres mayor de edad?</h2>
         <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
         </div>
+        <p class="mlt-agegate__text mlt-agegate__text--note"><span>El consumo de bebidas alcohólicas es exclusivo para adultos.</span> <span>Disfruta con responsabilidad.</span></p>
       </div>
 
       <div class="mlt-agegate__step" data-agegate-step="minor" hidden>
         <h2 class="mlt-agegate__title" tabindex="-1">Lo sentimos, debes ser mayor de edad para acceder al sitio.</h2>
         <!-- Leyenda basada en la Ley General de Salud (art. 185 Bis): por aprobar -->
         <p class="mlt-agegate__text">El consumo de bebidas alcohólicas en cualquier cantidad por menores de edad es nocivo para la salud.</p>
-        <!-- ENLACE PENDIENTE: página sobre los riesgos del alcohol en menores (lo envía Maika) -->
-        <a class="btn mlt-btn" href="#" target="_blank" rel="noopener">Conoce los riesgos</a>
+        <a class="btn mlt-btn" href="https://alcoholinformate.org.mx/cero-consumo-de-alcohol-en-menores-de-edad-y-en-personas-embarazadas/" rel="noopener">Conoce los riesgos</a>
       </div>
     </div>
   </div>
@@ -81,20 +80,23 @@
 
       <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
         <ul class="navbar-nav align-items-md-center">
-          <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
+          <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="distribucion.html">Distribución</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <!-- Experiencias: menú desplegable desactivado por ahora (las experiencias se
+               enlazan desde el footer y el mosaico de Inicio). Para activarlo, quitar el
+               comentario y colocar este <li> donde deba ir en el menú.
           <li class="nav-item dropdown dropdown-center">
             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
               <li><a class="dropdown-item" href="cocteleria.html">Coctelería</a></li>
               <li><a class="dropdown-item" href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
-              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="distribucion.html">Distribución</a></li>
-          <!-- Contacto: solo en el menú de celular (en escritorio está en el footer) -->
-          <li class="nav-item d-md-none"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          -->
         </ul>
 
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
@@ -130,24 +132,28 @@
 </header>
 
 <main>
-  <section class="mlt-page-hero mlt-page-hero--photo">
+  <section class="mlt-page-hero mlt-page-hero--compact mlt-page-hero--photo">
     <picture class="mlt-page-hero__bg" aria-hidden="true">
       <source type="image/avif" srcset="assets/img/distribucion/hero.avif">
-      <img src="assets/img/distribucion/hero.webp" alt="" width="1600" height="1066">
+      <img src="assets/img/distribucion/hero.webp" alt="" width="864" height="1152" style="object-position: 50% 58%">
     </picture>
     <div class="container-xxl text-center">
       <h1 class="mlt-page-hero__title">Distribución</h1>
-      <img class="mlt-page-hero__ornament" src="assets/svg/ornamento-linea.svg" alt="" width="399" height="94">
+      <img class="mlt-page-hero__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
     </div>
   </section>
 
   <section class="mlt-section">
     <div class="container-xxl">
-      <div class="mlt-split">
+      <div class="mlt-split mlt-split--wide-text mlt-split--match">
         <div class="mlt-prose-block">
           <h2 class="mlt-h2">Más que un producto, un socio de confianza</h2>
           <p>En MALTRAÑA entendemos que una relación comercial sólida comienza con un <strong>producto auténtico, calidad constante</strong> y la capacidad de responder a las necesidades de cada mercado.</p>
           <p>Por eso, acompañamos a nuestros distribuidores en cada etapa, desde el origen de la raicilla hasta su comercialización.</p>
+          <div class="mlt-actions">
+            <a class="btn mlt-btn" href="contacto.html">Contacto</a>
+            <a class="btn mlt-btn mlt-btn--outline" href="catas.html">Catas</a>
+          </div>
         </div>
         <div class="mlt-media">
           <picture>
@@ -162,7 +168,7 @@
   <!-- Lo que ofrecemos: índice de 4 pilares, cada uno con su foto.
        Escritorio: lista a la izquierda y una foto grande que cambia según el pilar elegido.
        Celular: cada pilar se muestra completo con su propia foto. -->
-  <section class="mlt-section mlt-section--alt" aria-label="Lo que ofrecemos">
+  <section class="mlt-section mlt-section--cream" data-bs-theme="light" aria-label="Lo que ofrecemos">
     <div class="container-xxl">
       <div class="mlt-pillars">
         <ol class="mlt-pillars__list">
@@ -172,8 +178,8 @@
             <img src="assets/img/distribucion/pilar-origen.webp" alt="Recolector de agave silvestre en el bosque de la sierra" width="1200" height="800" loading="lazy">
           </picture>
           <button class="mlt-pillar__head" type="button" aria-expanded="true" aria-controls="pilar-0">
-            <span class="mlt-pillar__num" aria-hidden="true">01</span>
             <span class="mlt-pillar__title">Calidad desde el origen</span>
+            <span class="mlt-pillar__chevron" aria-hidden="true"></span>
           </button>
           <ul class="mlt-list mlt-pillar__list" id="pilar-0">
             <li><strong>Raicilla 100% auténtica</strong>, elaborada bajo los estándares de su Denominación de Origen.</li>
@@ -184,12 +190,12 @@
         </li>
         <li class="mlt-pillar" data-pilar="1">
           <picture class="mlt-pillar__media" data-pilar="1">
-            <source type="image/avif" srcset="assets/img/raicilla/horno.avif">
-            <img src="assets/img/raicilla/horno.webp" alt="Horno de piedra de la taberna" width="1200" height="800" loading="lazy">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-produccion.avif">
+            <img src="assets/img/distribucion/pilar-produccion.webp" alt="Fila de botellas de La Bella Cristina en la taberna" width="864" height="1152" loading="lazy">
           </picture>
           <button class="mlt-pillar__head" type="button" aria-expanded="false" aria-controls="pilar-1">
-            <span class="mlt-pillar__num" aria-hidden="true">02</span>
             <span class="mlt-pillar__title">Producción y capacidad de respuesta</span>
+            <span class="mlt-pillar__chevron" aria-hidden="true"></span>
           </button>
           <ul class="mlt-list mlt-pillar__list" id="pilar-1">
             <li><strong>Gran capacidad de producción</strong>, sin descuidar los detalles que distinguen nuestro producto.</li>
@@ -200,11 +206,11 @@
         <li class="mlt-pillar" data-pilar="2">
           <picture class="mlt-pillar__media" data-pilar="2">
             <source type="image/avif" srcset="assets/img/distribucion/pilar-respaldo.avif">
-            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Botellas de Maltraña en exhibición" width="1200" height="800" loading="lazy">
+            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Hojas de agave" width="1000" height="1500" loading="lazy">
           </picture>
           <button class="mlt-pillar__head" type="button" aria-expanded="false" aria-controls="pilar-2">
-            <span class="mlt-pillar__num" aria-hidden="true">03</span>
             <span class="mlt-pillar__title">Respaldo y cumplimiento</span>
+            <span class="mlt-pillar__chevron" aria-hidden="true"></span>
           </button>
           <ul class="mlt-list mlt-pillar__list" id="pilar-2">
             <li>Compromiso con los requisitos normativos y comerciales de cada mercado.</li>
@@ -216,11 +222,11 @@
         <li class="mlt-pillar" data-pilar="3">
           <picture class="mlt-pillar__media" data-pilar="3">
             <source type="image/avif" srcset="assets/img/distribucion/pilar-acompanamiento.avif">
-            <img src="assets/img/distribucion/pilar-acompanamiento.webp" alt="Activación de Maltraña con botellas y cócteles" width="1200" height="900" loading="lazy">
+            <img src="assets/img/distribucion/pilar-acompanamiento.webp" alt="Botella de Raicilla Maltraña con cócteles servidos" width="1152" height="864" loading="lazy">
           </picture>
           <button class="mlt-pillar__head" type="button" aria-expanded="false" aria-controls="pilar-3">
-            <span class="mlt-pillar__num" aria-hidden="true">04</span>
             <span class="mlt-pillar__title">Acompañamiento comercial</span>
+            <span class="mlt-pillar__chevron" aria-hidden="true"></span>
           </button>
           <ul class="mlt-list mlt-pillar__list" id="pilar-3">
             <li><strong>Catas y presentaciones especializadas</strong> para distribuidores.</li>
@@ -236,32 +242,18 @@
             <img src="assets/img/distribucion/pilar-origen.webp" alt="Recolector de agave silvestre en el bosque de la sierra" width="1200" height="800" loading="lazy">
           </picture>
           <picture class="mlt-pillars__photo" data-pilar="1">
-            <source type="image/avif" srcset="assets/img/raicilla/horno.avif">
-            <img src="assets/img/raicilla/horno.webp" alt="Horno de piedra de la taberna" width="1200" height="800" loading="lazy">
+            <source type="image/avif" srcset="assets/img/distribucion/pilar-produccion.avif">
+            <img src="assets/img/distribucion/pilar-produccion.webp" alt="Fila de botellas de La Bella Cristina en la taberna" width="864" height="1152" loading="lazy">
           </picture>
           <picture class="mlt-pillars__photo" data-pilar="2">
             <source type="image/avif" srcset="assets/img/distribucion/pilar-respaldo.avif">
-            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Botellas de Maltraña en exhibición" width="1200" height="800" loading="lazy">
+            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Hojas de agave" width="1000" height="1500" loading="lazy">
           </picture>
           <picture class="mlt-pillars__photo" data-pilar="3">
             <source type="image/avif" srcset="assets/img/distribucion/pilar-acompanamiento.avif">
-            <img src="assets/img/distribucion/pilar-acompanamiento.webp" alt="Activación de Maltraña con botellas y cócteles" width="1200" height="900" loading="lazy">
+            <img src="assets/img/distribucion/pilar-acompanamiento.webp" alt="Botella de Raicilla Maltraña con cócteles servidos" width="1152" height="864" loading="lazy">
           </picture>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Llamado a la acción B2B: enlaces a Catas y Coctelería + WhatsApp. Texto pendiente -->
-  <section class="mlt-cta">
-    <div class="container-xxl text-center">
-      <h2 class="mlt-h2">Lorem ipsum dolor sit amet</h2>
-      <p class="mlt-cta__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
-        <!-- WHATSAPP PENDIENTE -->
-        <a class="btn mlt-btn" href="#"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>WhatsApp</a>
-        <a class="btn mlt-btn mlt-btn--outline" href="catas.html">Catas</a>
-        <a class="btn mlt-btn mlt-btn--outline" href="cocteleria.html">Coctelería</a>
       </div>
     </div>
   </section>
@@ -274,22 +266,22 @@
         <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
       </div>
 
-      <nav class="col-6 col-md-3" aria-label="Secciones">
+      <nav class="col-6 col-md-3 mlt-footer__nav" aria-label="Secciones">
         <ul class="mlt-footer__list">
-          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li><a href="raicilla.html">Raicilla</a></li>
+          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li><a href="maltrana.html">Maltraña</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
       </nav>
 
       <!-- Experiencias: menú padre con sus tres secciones (jerarquía con filete lateral) -->
-      <nav class="col-6 col-md-3" aria-labelledby="footer-exp">
+      <nav class="col-6 col-md-3 mlt-footer__nav" aria-labelledby="footer-exp">
         <p class="mlt-footer__parent" id="footer-exp">Experiencias</p>
         <ul class="mlt-footer__list mlt-footer__sub">
+          <li><a href="catas.html">Catas</a></li>
           <li><a href="cocteleria.html">Coctelería</a></li>
           <li><a href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
-          <li><a href="catas.html">Catas</a></li>
         </ul>
       </nav>
 

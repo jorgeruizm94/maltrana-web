@@ -38,20 +38,19 @@
       <img class="mlt-agegate__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280">
 
       <div class="mlt-agegate__step" data-agegate-step="ask">
-        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Tienes la edad legal para consumir bebidas alcohólicas en tu país de residencia?</h2>
-        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas es exclusivo para adultos. Disfruta con responsabilidad.</p>
+        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Eres mayor de edad?</h2>
         <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
           <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
         </div>
+        <p class="mlt-agegate__text mlt-agegate__text--note"><span>El consumo de bebidas alcohólicas es exclusivo para adultos.</span> <span>Disfruta con responsabilidad.</span></p>
       </div>
 
       <div class="mlt-agegate__step" data-agegate-step="minor" hidden>
         <h2 class="mlt-agegate__title" tabindex="-1">Lo sentimos, debes ser mayor de edad para acceder al sitio.</h2>
         <!-- Leyenda basada en la Ley General de Salud (art. 185 Bis): por aprobar -->
         <p class="mlt-agegate__text">El consumo de bebidas alcohólicas en cualquier cantidad por menores de edad es nocivo para la salud.</p>
-        <!-- ENLACE PENDIENTE: página sobre los riesgos del alcohol en menores (lo envía Maika) -->
-        <a class="btn mlt-btn" href="#" target="_blank" rel="noopener">Conoce los riesgos</a>
+        <a class="btn mlt-btn" href="https://alcoholinformate.org.mx/cero-consumo-de-alcohol-en-menores-de-edad-y-en-personas-embarazadas/" rel="noopener">Conoce los riesgos</a>
       </div>
     </div>
   </div>
@@ -81,20 +80,23 @@
 
       <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
         <ul class="navbar-nav align-items-md-center">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <!-- Experiencias: menú desplegable desactivado por ahora (las experiencias se
+               enlazan desde el footer y el mosaico de Inicio). Para activarlo, quitar el
+               comentario y colocar este <li> donde deba ir en el menú.
           <li class="nav-item dropdown dropdown-center">
             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
               <li><a class="dropdown-item" href="cocteleria.html">Coctelería</a></li>
               <li><a class="dropdown-item" href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
-              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
-          <!-- Contacto: solo en el menú de celular (en escritorio está en el footer) -->
-          <li class="nav-item d-md-none"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          -->
         </ul>
 
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
@@ -156,12 +158,12 @@
                    srcset="assets/img/raicilla-maltrana-640.webp 640w, assets/img/raicilla-maltrana-1046.webp 1046w"
                    sizes="(min-width: 768px) 40vw, 100vw"
                    alt="Botella de Raicilla Maltraña sobre una mesa de madera, con hojas de agave al fondo"
-                   width="1046" height="1656">
+                   width="1046" height="1568">
             </picture>
             <!-- Foto de 250 ml: aparece al picar la pastilla "250 ml" -->
-            <img class="mlt-product__alt" data-size="250" src="assets/img/productos/raicilla-maltrana-250.webp" alt="" width="1046" height="1656" loading="lazy">
+            <img class="mlt-product__alt" data-size="250" src="assets/img/productos/raicilla-maltrana-250.webp" alt="" width="1046" height="1568" loading="lazy">
             <!-- Foto de 50 ml: aparece al picar la pastilla "50 ml" -->
-            <img class="mlt-product__alt" data-size="50" src="assets/img/productos/raicilla-maltrana-50.webp" alt="" width="1046" height="1656" loading="lazy">
+            <img class="mlt-product__alt" data-size="50" src="assets/img/productos/raicilla-maltrana-50.webp" alt="" width="1046" height="1568" loading="lazy">
           </figure>
         </div>
 
@@ -258,10 +260,10 @@
         <div class="mlt-product__media-wrap">
           <figure class="mlt-product__media">
             <picture>
-              <source type="image/avif" srcset="assets/img/la-bella-cristina-673.avif">
-              <img src="assets/img/la-bella-cristina-673.webp"
+              <source type="image/avif" srcset="assets/img/la-bella-cristina-producto.avif">
+              <img src="assets/img/la-bella-cristina-producto.webp"
                    alt="Botella de La Bella Cristina Extra Añeja sobre una mesa de madera, con agaves al fondo"
-                   width="673" height="1066" loading="lazy">
+                   width="589" height="933" loading="lazy">
             </picture>
             <!-- Foto de 250 ml: aparece al picar la pastilla "250 ml" -->
             <img class="mlt-product__alt" data-size="250" src="assets/img/productos/la-bella-cristina-250.webp" alt="" width="673" height="1066" loading="lazy">
@@ -351,22 +353,22 @@
         <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
       </div>
 
-      <nav class="col-6 col-md-3" aria-label="Secciones">
+      <nav class="col-6 col-md-3 mlt-footer__nav" aria-label="Secciones">
         <ul class="mlt-footer__list">
-          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li><a href="raicilla.html">Raicilla</a></li>
+          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
           <li><a href="maltrana.html">Maltraña</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
       </nav>
 
       <!-- Experiencias: menú padre con sus tres secciones (jerarquía con filete lateral) -->
-      <nav class="col-6 col-md-3" aria-labelledby="footer-exp">
+      <nav class="col-6 col-md-3 mlt-footer__nav" aria-labelledby="footer-exp">
         <p class="mlt-footer__parent" id="footer-exp">Experiencias</p>
         <ul class="mlt-footer__list mlt-footer__sub">
+          <li><a href="catas.html">Catas</a></li>
           <li><a href="cocteleria.html">Coctelería</a></li>
           <li><a href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
-          <li><a href="catas.html">Catas</a></li>
         </ul>
       </nav>
 

@@ -171,3 +171,48 @@
     p.querySelector('.mlt-pillar__head').addEventListener('click', () => activar(i));
   });
 })();
+
+/* ------------------------------------------------------------
+   Carta de coctelería
+   - Marca en la barra la categoría que estás viendo (IntersectionObserver).
+   - --mlt-catnav-h: alto de la barra, para que al picar una categoría
+     su título no quede escondido debajo del header y la barra.
+   ------------------------------------------------------------ */
+(() => {
+  const nav = document.getElementById('catnav');
+  if (!nav || !window.bootstrap) return;
+  const medir = () => document.documentElement.style.setProperty('--mlt-catnav-h', nav.offsetHeight + 'px');
+  medir();
+  new ResizeObserver(medir).observe(nav);
+  // Marca la categoría cuyo bloque cruza una franja a ~35% de la pantalla
+  const links = [...nav.querySelectorAll('.mlt-catnav__link')];
+  const grupos = links.map((a) => document.querySelector(a.hash)).filter(Boolean);
+  const marcar = (id) => links.forEach((a) => {
+    const on = a.hash === '#' + id;
+    a.classList.toggle('active', on);
+    if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+  });
+  const obs = new IntersectionObserver((entradas) => {
+    entradas.forEach((e) => { if (e.isIntersecting) marcar(e.target.id); });
+  }, { rootMargin: '-35% 0px -60% 0px', threshold: 0 });
+  grupos.forEach((g) => obs.observe(g));
+})();
+
+/* ------------------------------------------------------------
+   Relato del proceso (Raicilla, escritorio)
+   El momento que cruza el centro de la pantalla se ilumina y la foto
+   fija de la izquierda cambia a la suya.
+   ------------------------------------------------------------ */
+(() => {
+  const pasos = [...document.querySelectorAll('.mlt-story__step')];
+  const fotos = [...document.querySelectorAll('.mlt-story__photo')];
+  if (!pasos.length) return;
+  const activar = (i) => {
+    pasos.forEach((p, n) => p.classList.toggle('is-active', n === i));
+    fotos.forEach((f, n) => f.classList.toggle('is-active', n === i));
+  };
+  const obs = new IntersectionObserver((entradas) => {
+    entradas.forEach((e) => { if (e.isIntersecting) activar(Number(e.target.dataset.step)); });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  pasos.forEach((p) => obs.observe(p));
+})();
