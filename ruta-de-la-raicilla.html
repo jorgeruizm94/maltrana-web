@@ -57,7 +57,7 @@
 </div>
 
 <!-- WhatsApp flotante en celular (zona del pulgar). WHATSAPP PENDIENTE -->
-<a class="mlt-wa d-md-none" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+<a class="mlt-wa d-md-none" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
 
 
 <!-- ============================================================
@@ -82,7 +82,7 @@
         <ul class="navbar-nav align-items-md-center">
           <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
-          <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
           <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
           <!-- Experiencias: menú desplegable desactivado por ahora (las experiencias se
@@ -102,8 +102,7 @@
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
         <div class="mlt-header__utils">
           <ul class="mlt-social">
-            <!-- WHATSAPP PENDIENTE: https://wa.me/52XXXXXXXXXX -->
-            <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
           </ul>
@@ -135,7 +134,7 @@
   <section class="mlt-page-hero mlt-page-hero--compact mlt-page-hero--photo">
     <picture class="mlt-page-hero__bg" aria-hidden="true">
       <source type="image/avif" srcset="assets/img/ruta/hero.avif">
-      <img src="assets/img/ruta/hero.webp" alt="" width="1600" height="1066">
+      <img src="assets/img/ruta/hero.webp" alt="" width="1600" height="1200" style="object-position: 50% 88%">
     </picture>
     <div class="container-xxl text-center">
       <nav aria-label="Ruta de navegación">
@@ -146,27 +145,68 @@
     </div>
   </section>
 
-  <!-- COPY PENDIENTE: guion de Ruta de la Raicilla -->
-  <section class="mlt-section">
+  <section class="mlt-section mlt-section--depth-soft" aria-labelledby="ruta-title">
     <div class="container-xxl">
-      <div class="mlt-split">
+      <!-- La foto pesa más que el texto: columna de texto angosta y foto más alta que el texto -->
+      <div class="mlt-split mlt-split--short mlt-split--media-wide">
         <div class="mlt-prose-block">
-          <h2 class="mlt-h2">En proceso</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h2 class="mlt-h2" id="ruta-title">Un recorrido por el origen, la tradición y el alma de Jalisco.</h2>
+          <p>La raicilla es mucho más que un destilado: es una <strong>expresión de la tierra, la historia y la cultura</strong> de las regiones de Jalisco donde nace.</p>
+          <p>Recorrer la Ruta de la Raicilla es adentrarse en sus paisajes, conocer las comunidades que la producen y descubrir el trabajo de los <strong>maestros taberneros</strong> que han conservado, generación tras generación, los conocimientos de su elaboración.</p>
+          <p>Desde los agaves que crecen en nuestras tierras hasta las tabernas donde la tradición cobra vida, cada parada revela una parte de la identidad de este destilado único.</p>
+          <p>En MALTRAÑA<span class="mlt-reg">®</span> creemos que conocer la raicilla es también conocer su origen, valorar a quienes la hacen posible y comprender la riqueza de una tradición que merece trascender fronteras.</p>
         </div>
         <div class="mlt-media">
           <picture>
-            <source type="image/avif" srcset="assets/img/ruta/ruta.avif">
-            <img src="assets/img/ruta/ruta.webp" alt="Raicillero en el bosque de la sierra" width="1200" height="800" loading="lazy">
+            <source type="image/avif" srcset="assets/img/ruta/ruta-camionetas.avif">
+            <img src="assets/img/ruta/ruta-camionetas.webp" alt="Camionetas de Maltraña entre campos de agave al atardecer" width="1024" height="768" loading="lazy">
           </picture>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cierre: foto de fondo + las otras experiencias.
-       COPY PENDIENTE (título y texto). -->
+  <!-- Foto de fondo completa, oscurecida, y el texto encima (igual que Filosofía), más alta que una tira.
+       object-position 12% 61%: el logo de la chamarra (a la izquierda) nunca queda fuera del recorte,
+       ni en escritorio ni en celular. Velo un poco más ligero para que el logo se alcance a ver. -->
+  <section class="mlt-section mlt-section--photo mlt-section--tall mlt-section--photo-soft" aria-labelledby="ruta-mejor">
+    <picture class="mlt-section__bg" aria-hidden="true">
+      <source type="image/avif" srcset="assets/img/ruta/ruta-mirador.avif">
+      <img src="assets/img/ruta/ruta-mirador.webp" alt="" width="2000" height="1002" loading="lazy" style="object-position: 12% 61%">
+    </picture>
+    <div class="container-xxl">
+      <div class="mlt-prose-block mlt-prose-block--center">
+        <h2 class="mlt-h2" id="ruta-mejor">La mejor manera de descubrir la raicilla es conocer la tierra y las historias que le dan vida.</h2>
+        <p class="mlt-pullquote">MALTRAÑA, orgullosamente comprometida con la difusión y preservación de la cultura de la raicilla.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección en tema claro (crema y verde oscuro, como los pilares de Distribución) -->
+  <section class="mlt-section mlt-section--cream" data-bs-theme="light" aria-labelledby="descubre-title">
+    <div class="container-xxl">
+      <!-- En celular, mismo orden que la 2ª sección: título, texto, foto y enlaces -->
+      <div class="mlt-split mlt-split--reverse mlt-split--stack-short">
+        <div class="mlt-prose-block mlt-prose-block--narrow">
+          <h2 class="mlt-h2" id="descubre-title">Descubre la Ruta de la Raicilla</h2>
+          <p>Conoce sus destinos, explora sus tradiciones y descubre los lugares que dan vida a este emblemático destilado de Jalisco.</p>
+          <!-- Enlaces de texto (no botones), abren en otra pestaña. Ícono: agave que se vuelve flecha al pasar el cursor -->
+          <ul class="mlt-textlinks">
+            <li><a class="mlt-textlink" href="https://visitjalisco.mx/route/ruta-de-la-raicilla" target="_blank" rel="noopener">Conoce la Ruta de la Raicilla<span class="mlt-textlink__icon" aria-hidden="true"><span class="mlt-textlink__agave"></span><i class="bi bi-arrow-up-right"></i></span></a></li>
+            <li><a class="mlt-textlink" href="https://www.google.com/maps/dir/San+Sebasti%C3%A1n+del+Oeste,+Jalisco/Guachinango,+Jalisco/Atenguillo,+Jalisco/Puerto+Vallarta,+Jalisco/Mascota,+Jalisco/Mixtl%C3%A1n,+Jalisco/Atengo,+Jalisco/Tecolotl%C3%A1n,+Jalisco/Cabo+Corrientes,+Jalisco/Tomatl%C3%A1n,+Jalisco/Talpa+de+Allende,+Jalisco/Cuautla,+Jalisco/Chiquilistl%C3%A1n,+Jalisco/Ayutla,+Jalisco/Juchitl%C3%A1n,+Jalisco/Villa+Purificaci%C3%B3n,+Jalisco/" target="_blank" rel="noopener">Explora el recorrido en Google Maps<span class="mlt-textlink__icon" aria-hidden="true"><span class="mlt-textlink__agave"></span><i class="bi bi-arrow-up-right"></i></span></a></li>
+          </ul>
+        </div>
+        <div class="mlt-media">
+          <picture>
+            <source type="image/avif" srcset="assets/img/ruta/ruta-sierra.avif">
+            <img src="assets/img/ruta/ruta-sierra.webp" alt="Dos personas con camisas de Maltraña frente a la sierra de Jalisco" width="1200" height="1600" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cierre: navegación hacia las otras experiencias -->
   <section class="mlt-expcta" aria-labelledby="mas-exp">
     <picture class="mlt-expcta__bg" aria-hidden="true">
       <source type="image/avif" srcset="assets/img/experiencias/cta-fondo.avif">
@@ -175,11 +215,10 @@
     <div class="container-xxl">
       <div class="mlt-expcta__head">
         <p class="mlt-eyebrow">Experiencias</p>
-        <h2 class="mlt-h2" id="mas-exp">Lorem ipsum dolor sit amet</h2>
-        <p class="mlt-expcta__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2 class="mlt-h2" id="mas-exp">Sigue explorando</h2>
       </div>
       <div class="mlt-expcta__cards">
-          <a class="mlt-expcard" href="catas.html">
+          <a class="mlt-expcard mlt-expcard--catas" href="catas.html">
             <picture class="mlt-expcard__media">
               <source type="image/avif" srcset="assets/img/catas/hero.avif">
               <img src="assets/img/catas/hero.webp" alt="" width="1600" height="1066" loading="lazy">
@@ -188,7 +227,7 @@
             <!-- Mismo ícono que el mosaico de Inicio: agave que se vuelve flecha al pasar el cursor -->
             <span class="mlt-tile__arrow mlt-expcard__arrow" aria-hidden="true"><img class="mlt-tile__agave" src="assets/svg/agave.svg" alt="" width="20" height="20"><i class="bi bi-arrow-right"></i></span>
           </a>
-          <a class="mlt-expcard" href="cocteleria.html">
+          <a class="mlt-expcard mlt-expcard--cocteleria" href="cocteleria.html">
             <picture class="mlt-expcard__media">
               <source type="image/avif" srcset="assets/img/cocteleria/hero.avif">
               <img src="assets/img/cocteleria/hero.webp" alt="" width="1600" height="1066" loading="lazy">
@@ -213,7 +252,7 @@
         <ul class="mlt-footer__list">
           <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
-          <li><a href="maltrana.html">Maltraña</a></li>
+          <li><a href="empresa.html">Empresa</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
       </nav>
@@ -234,7 +273,7 @@
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
         <ul class="mlt-social mt-1">
-          <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
@@ -253,8 +292,9 @@
     <!-- Legales juntos como grupo; después, el aviso de derechos -->
     <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
       <ul class="mlt-footer__legal-links list-unstyled m-0">
-        <li><a href="privacidad.html">Politica de Privacidad</a></li>
-        <li><a href="cookies.html">Politica de Cookies</a></li>
+        <li><a href="privacidad.html">Aviso de Privacidad</a></li>
+        <li><a href="terminos.html">Términos de Uso</a></li>
+        <li><a href="cookies.html">Política de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
       <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>

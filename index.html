@@ -57,7 +57,7 @@
 </div>
 
 <!-- WhatsApp flotante en celular (zona del pulgar). WHATSAPP PENDIENTE -->
-<a class="mlt-wa d-md-none" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+<a class="mlt-wa d-md-none" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
 
 
 <!-- ============================================================
@@ -82,7 +82,7 @@
         <ul class="navbar-nav align-items-md-center">
           <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
-          <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
           <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
           <!-- Experiencias: menú desplegable desactivado por ahora (las experiencias se
@@ -102,8 +102,7 @@
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
         <div class="mlt-header__utils">
           <ul class="mlt-social">
-            <!-- WHATSAPP PENDIENTE: https://wa.me/52XXXXXXXXXX -->
-            <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
           </ul>
@@ -165,6 +164,9 @@
 
         <article class="mlt-tile mlt-tile--prod">
           <picture class="mlt-tile__media">
+            <!-- En celular, foto propia para el recuadro horizontal -->
+            <source type="image/avif" media="(max-width: 767.98px)" srcset="assets/img/inicio/bento-raicillas-maltrana-mobile.avif">
+            <source type="image/webp" media="(max-width: 767.98px)" srcset="assets/img/inicio/bento-raicillas-maltrana-mobile.webp">
             <source type="image/avif" srcset="assets/img/inicio/bento-raicillas-maltrana.avif">
             <img src="assets/img/inicio/bento-raicillas-maltrana.webp" alt="" width="1400" height="1115">
           </picture>
@@ -175,14 +177,14 @@
           </div>
         </article>
 
-        <article class="mlt-tile mlt-tile--mal">
+        <article class="mlt-tile mlt-tile--empresa">
           <picture class="mlt-tile__media">
-            <source type="image/avif" srcset="assets/img/inicio/bento-maltrana.avif">
-            <img src="assets/img/inicio/bento-maltrana.webp" alt="" width="1400" height="933" loading="lazy">
+            <source type="image/avif" srcset="assets/img/inicio/bento-empresa.avif">
+            <img src="assets/img/inicio/bento-empresa.webp" alt="" width="1400" height="933" loading="lazy">
           </picture>
           <span class="mlt-tile__arrow" aria-hidden="true"><img class="mlt-tile__agave" src="assets/svg/agave.svg" alt="" width="20" height="20"><i class="bi bi-arrow-right"></i></span>
           <div class="mlt-tile__body">
-            <h2 class="mlt-tile__title"><a class="stretched-link" href="maltrana.html">Maltraña</a></h2>
+            <h2 class="mlt-tile__title"><a class="stretched-link" href="empresa.html">Empresa</a></h2>
             <p class="mlt-tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </article>
@@ -215,7 +217,7 @@
         <ul class="mlt-footer__list">
           <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
-          <li><a href="maltrana.html">Maltraña</a></li>
+          <li><a href="empresa.html">Empresa</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
       </nav>
@@ -236,7 +238,7 @@
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
         <ul class="mlt-social mt-1">
-          <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
@@ -255,8 +257,9 @@
     <!-- Legales juntos como grupo; después, el aviso de derechos -->
     <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
       <ul class="mlt-footer__legal-links list-unstyled m-0">
-        <li><a href="privacidad.html">Politica de Privacidad</a></li>
-        <li><a href="cookies.html">Politica de Cookies</a></li>
+        <li><a href="privacidad.html">Aviso de Privacidad</a></li>
+        <li><a href="terminos.html">Términos de Uso</a></li>
+        <li><a href="cookies.html">Política de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
       <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>

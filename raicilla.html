@@ -57,7 +57,7 @@
 </div>
 
 <!-- WhatsApp flotante en celular (zona del pulgar). WHATSAPP PENDIENTE -->
-<a class="mlt-wa d-md-none" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+<a class="mlt-wa d-md-none" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
 
 
 <!-- ============================================================
@@ -82,7 +82,7 @@
         <ul class="navbar-nav align-items-md-center">
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="raicilla.html">Raicilla</a></li>
           <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
-          <li class="nav-item"><a class="nav-link" href="maltrana.html">Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
           <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
           <!-- Experiencias: menú desplegable desactivado por ahora (las experiencias se
@@ -102,8 +102,7 @@
         <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
         <div class="mlt-header__utils">
           <ul class="mlt-social">
-            <!-- WHATSAPP PENDIENTE: https://wa.me/52XXXXXXXXXX -->
-            <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
           </ul>
@@ -143,9 +142,11 @@
     </div>
   </section>
 
-  <section class="mlt-section">
+  <!-- Degradado: verde más oscuro arriba que se desvanece hacia el verde de fondo -->
+  <section class="mlt-section mlt-section--depth">
     <div class="container-xxl">
-      <div class="mlt-split mlt-split--short mlt-split--match">
+      <!-- En celular la foto es más alta (se ve la copa completa, la sal y la naranja) -->
+      <div class="mlt-split mlt-split--short mlt-split--match mlt-split--media-tall-m">
         <div class="mlt-prose-block">
           <h2 class="mlt-h2">¿Qué es la raicilla?</h2>
           <p>La raicilla es un destilado artesanal de agave originario de Jalisco, México, protegido por la <strong>Denominación de Origen Raicilla</strong> que reconoce su autenticidad y su vínculo con el territorio. Elaborada mediante métodos tradicionales, ofrece una amplia diversidad de perfiles aromáticos y sabores que reflejan la riqueza de su origen.</p>
@@ -165,8 +166,9 @@
   <!-- Proceso de elaboración contado como relato (scrollytelling).
        Escritorio: la foto se queda fija a la izquierda y cambia según el
        momento del proceso que vas leyendo a la derecha (main.js).
-       Celular: cada momento con su foto arriba y su texto abajo. -->
-  <section class="mlt-section mlt-section--alt" aria-labelledby="proceso-title">
+       Celular: cada momento con su foto arriba y su texto abajo.
+       Tema claro (crema y verde oscuro); los acentos siguen en dorado. -->
+  <section class="mlt-section mlt-section--cream" data-bs-theme="light" aria-labelledby="proceso-title">
     <div class="container-xxl">
       <div class="mlt-story">
         <div class="mlt-story__stage" aria-hidden="true">
@@ -179,12 +181,12 @@
             <img src="assets/img/raicilla/horno.webp" alt="Horno de piedra para la cocción del agave" width="1200" height="800" loading="lazy">
           </picture>
           <picture class="mlt-story__photo">
-            <source type="image/avif" srcset="assets/img/distribucion/pilar-respaldo.avif">
-            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Hojas de agave" width="1000" height="1500" loading="lazy">
+            <source type="image/avif" srcset="assets/img/raicilla/paso-machacado.avif">
+            <img src="assets/img/raicilla/paso-machacado.webp" alt="Machacado del agave cocido con mazo de madera junto a las barricas de fermentación" width="1200" height="1552" loading="lazy">
           </picture>
           <picture class="mlt-story__photo">
-            <source type="image/avif" srcset="assets/img/maltrana/taberna.avif">
-            <img src="assets/img/maltrana/taberna.webp" alt="Alambique de la taberna Casa Maltraña" width="1200" height="800" loading="lazy">
+            <source type="image/avif" srcset="assets/img/raicilla/taberna.avif">
+            <img src="assets/img/raicilla/taberna.webp" alt="Alambique de la taberna Casa Maltraña" width="1200" height="800" loading="lazy">
           </picture>
           <picture class="mlt-story__photo">
             <source type="image/avif" srcset="assets/img/raicilla/paso-reposo.avif">
@@ -212,16 +214,16 @@
         </li>
         <li class="mlt-story__step" data-step="2">
           <picture class="mlt-story__media">
-            <source type="image/avif" srcset="assets/img/distribucion/pilar-respaldo.avif">
-            <img src="assets/img/distribucion/pilar-respaldo.webp" alt="Hojas de agave" width="1000" height="1500" loading="lazy">
+            <source type="image/avif" srcset="assets/img/raicilla/paso-machacado.avif">
+            <img src="assets/img/raicilla/paso-machacado.webp" alt="Machacado del agave cocido con mazo de madera junto a las barricas de fermentación" width="1200" height="1552" loading="lazy">
           </picture>
           <img class="mlt-story__mark" src="assets/svg/agave.svg" alt="" width="22" height="19">
           <p class="mlt-story__text">Después de la cocción, el agave se machaca artesanalmente con mazos de madera y se deposita en barricas para su <strong>fermentación natural</strong>, que toma entre 7 y 14 días, dependiendo del clima, sin añadir aceleradores.</p>
         </li>
         <li class="mlt-story__step" data-step="3">
           <picture class="mlt-story__media">
-            <source type="image/avif" srcset="assets/img/maltrana/taberna.avif">
-            <img src="assets/img/maltrana/taberna.webp" alt="Alambique de la taberna Casa Maltraña" width="1200" height="800" loading="lazy">
+            <source type="image/avif" srcset="assets/img/raicilla/taberna.avif">
+            <img src="assets/img/raicilla/taberna.webp" alt="Alambique de la taberna Casa Maltraña" width="1200" height="800" loading="lazy">
           </picture>
           <img class="mlt-story__mark" src="assets/svg/agave.svg" alt="" width="22" height="19">
           <p class="mlt-story__text">El mosto se <strong>destila una sola vez</strong>, separando cuidadosamente cabezas, corazones y colas para obtener el corazón del destilado: la esencia de nuestra raicilla.</p>
@@ -260,7 +262,7 @@
         <ul class="mlt-footer__list">
           <li><a href="raicilla.html">Raicilla</a></li>
           <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
-          <li><a href="maltrana.html">Maltraña</a></li>
+          <li><a href="empresa.html">Empresa</a></li>
           <li><a href="distribucion.html">Distribución</a></li>
         </ul>
       </nav>
@@ -281,7 +283,7 @@
           <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
         </ul>
         <ul class="mlt-social mt-1">
-          <li><a class="mlt-social__wa" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
           <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
         </ul>
@@ -300,8 +302,9 @@
     <!-- Legales juntos como grupo; después, el aviso de derechos -->
     <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
       <ul class="mlt-footer__legal-links list-unstyled m-0">
-        <li><a href="privacidad.html">Politica de Privacidad</a></li>
-        <li><a href="cookies.html">Politica de Cookies</a></li>
+        <li><a href="privacidad.html">Aviso de Privacidad</a></li>
+        <li><a href="terminos.html">Términos de Uso</a></li>
+        <li><a href="cookies.html">Política de Cookies</a></li>
         <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
       </ul>
       <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>

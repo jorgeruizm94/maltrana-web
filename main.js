@@ -207,9 +207,12 @@
   const pasos = [...document.querySelectorAll('.mlt-story__step')];
   const fotos = [...document.querySelectorAll('.mlt-story__photo')];
   if (!pasos.length) return;
+  const titulo = document.querySelector('.mlt-story__title');
   const activar = (i) => {
     pasos.forEach((p, n) => p.classList.toggle('is-active', n === i));
     fotos.forEach((f, n) => f.classList.toggle('is-active', n === i));
+    // en el último momento el título se desvanece, para que no se quede solo al final
+    if (titulo) titulo.classList.toggle('is-faded', i === pasos.length - 1);
   };
   const obs = new IntersectionObserver((entradas) => {
     entradas.forEach((e) => { if (e.isIntersecting) activar(Number(e.target.dataset.step)); });

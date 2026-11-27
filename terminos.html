@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Términos de Uso</title>
+<meta name="description" content="[COPY PENDIENTE: meta descripción]">
+
+<!-- Orden de carga: Bootstrap → íconos → fuentes → tokens → estilos propios -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon: "M" simple en la pestaña; monograma completo en iPhone/Android -->
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#1D2520">
+<link href="tokens.css" rel="stylesheet">
+<!-- Si no hay cookie de mayoría de edad, la página arranca desenfocada (evita un destello) -->
+<script>if(!document.cookie.split('; ').includes('mlt_mayor_edad=1'))document.documentElement.classList.add('mlt-gated');</script>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============================================================
+     AGE GATE (va en todas las páginas)
+     Modal de Bootstrap con fondo estático: no se cierra con clic
+     afuera ni con Esc. La lógica está en age-gate.js.
+     TEXTOS: de Maika; la línea del paso "menor" es propuesta, por aprobar.
+     ============================================================ -->
+<div class="modal fade mlt-agegate" id="mlt-agegate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="mlt-agegate-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <img class="mlt-agegate__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280">
+
+      <div class="mlt-agegate__step" data-agegate-step="ask">
+        <h2 class="mlt-agegate__title" id="mlt-agegate-title">¿Eres mayor de edad?</h2>
+        <div class="mlt-agegate__actions d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 w-100">
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="yes">Sí, soy mayor de edad</button>
+          <button class="btn mlt-btn mlt-btn--outline" type="button" data-agegate="no">No, soy menor de edad</button>
+        </div>
+        <p class="mlt-agegate__text mlt-agegate__text--note"><span>El consumo de bebidas alcohólicas es exclusivo para adultos.</span> <span>Disfruta con responsabilidad.</span></p>
+      </div>
+
+      <div class="mlt-agegate__step" data-agegate-step="minor" hidden>
+        <h2 class="mlt-agegate__title" tabindex="-1">Lo sentimos, debes ser mayor de edad para acceder al sitio.</h2>
+        <!-- Leyenda basada en la Ley General de Salud (art. 185 Bis): por aprobar -->
+        <p class="mlt-agegate__text">El consumo de bebidas alcohólicas en cualquier cantidad por menores de edad es nocivo para la salud.</p>
+        <a class="btn mlt-btn" href="https://alcoholinformate.org.mx/cero-consumo-de-alcohol-en-menores-de-edad-y-en-personas-embarazadas/" rel="noopener">Conoce los riesgos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp flotante en celular (zona del pulgar). WHATSAPP PENDIENTE -->
+<a class="mlt-wa d-md-none" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+
+
+<!-- ============================================================
+     HEADER
+     navbar-expand-md = menú colapsado (hamburguesa) en celular,
+     abierto desde md (768px)
+     ============================================================ -->
+<!-- sticky-top: utilidad de Bootstrap que deja el header fijo arriba al hacer scroll -->
+<header class="mlt-header sticky-top">
+  <nav class="navbar navbar-expand-md py-2" aria-label="Principal">
+    <div class="container-xxl flex-md-column position-relative">
+
+      <a class="navbar-brand m-0 mx-md-auto py-2" href="index.html">
+        <img class="mlt-header__logo" src="assets/svg/logo-header.svg" alt="Maltraña" width="493" height="79">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mlt-nav" aria-controls="mlt-nav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center w-100 mt-md-3" id="mlt-nav">
+        <ul class="navbar-nav align-items-md-center">
+          <li class="nav-item"><a class="nav-link" href="raicilla.html">Raicilla</a></li>
+          <li class="nav-item"><a class="nav-link" href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
+          <li class="nav-item"><a class="nav-link" href="distribucion.html">Distribución</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <!-- Experiencias: menú desplegable desactivado por ahora (las experiencias se
+               enlazan desde el footer y el mosaico de Inicio). Para activarlo, quitar el
+               comentario y colocar este <li> donde deba ir en el menú.
+          <li class="nav-item dropdown dropdown-center">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiencias</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="catas.html">Catas</a></li>
+              <li><a class="dropdown-item" href="cocteleria.html">Coctelería</a></li>
+              <li><a class="dropdown-item" href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+            </ul>
+          </li>
+          -->
+        </ul>
+
+        <!-- WhatsApp + redes + idioma: dentro del menú en celular, arriba a la derecha en escritorio -->
+        <div class="mlt-header__utils">
+          <ul class="mlt-social">
+            <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+          </ul>
+          <!-- Selector de idioma: dropdown de Bootstrap -->
+          <div class="dropdown">
+            <button class="mlt-lang dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" lang="en">
+              English
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end mlt-lang__menu">
+              <li>
+                <a class="dropdown-item active" href="terminos.html" lang="es" hreflang="es" aria-current="true">
+                  Español
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" lang="en" hreflang="en">
+                  English
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Texto del cliente: copy/6. TERMINOS DE USO -->
+  <section class="mlt-section">
+    <div class="container-xxl">
+      <div class="mlt-prose-block mlt-prose-block--reading mlt-prose-block--legal mx-auto">
+        <h1 class="mlt-h2">Términos de Uso</h1>
+        <p class="mlt-subtitle">Última actualización: noviembre de 2026</p>
+        <p>Bienvenido al sitio web de MALTRAÑA<span class="mlt-reg">®</span>. Al acceder y navegar por este sitio, aceptas los presentes Términos de Uso. Te recomendamos leerlos antes de continuar.</p>
+        <h2 class="mlt-legal__h">1. Identificación del titular</h2>
+        <p>El presente sitio web es propiedad y está administrado por:</p>
+        <ul class="mlt-list">
+          <li><strong>Marca comercial:</strong> MALTRAÑA</li>
+          <li><strong>Titular legal:</strong> Grupo M Destilados Internacionales, S. de R.L. de C.V.</li>
+          <li><strong>Domicilio legal:</strong> Camino a San Gregorio #2, Mixtlán, Jalisco.</li>
+          <li><strong>País:</strong> México</li>
+          <li><strong>Correo electrónico de contacto:</strong> <a href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
+        </ul>
+        <p>En adelante, cuando se haga referencia a MALTRAÑA, se entenderá que se habla de la marca comercial y del titular legal del sitio web, según corresponda.</p>
+        <h2 class="mlt-legal__h">2. Acceso al sitio</h2>
+        <p>Este sitio web está dirigido exclusivamente a personas mayores de 18 años.</p>
+        <p>Al acceder, el visitante declara cumplir este requisito de edad. MALTRAÑA se reserva el derecho de restringir el acceso a cualquier persona que no cumpla con esta condición.</p>
+        <h2 class="mlt-legal__h">3. Finalidad del sitio web</h2>
+        <p>El sitio tiene una finalidad informativa y promocional. Su objetivo es dar a conocer MALTRAÑA, su raicilla, su origen, su proceso de elaboración y la cultura que la rodea.</p>
+        <p>La información publicada no constituye una oferta de venta ni implica la posibilidad de realizar compras directamente a través de este sitio web.</p>
+        <h2 class="mlt-legal__h">4. Propiedad intelectual e industrial</h2>
+        <p>Todos los contenidos de este sitio web, incluyendo textos, fotografías, imágenes, logotipos, marcas, diseños, elementos gráficos y demás materiales, están protegidos por la legislación aplicable en materia de propiedad intelectual e industrial.</p>
+        <p>Queda prohibida su reproducción, distribución, modificación o utilización con fines comerciales sin autorización previa y por escrito de sus titulares, salvo en los casos permitidos por la legislación vigente.</p>
+        <h2 class="mlt-legal__h">5. Uso adecuado del sitio</h2>
+        <p>El visitante se compromete a utilizar este sitio web de forma lícita y responsable, evitando cualquier actividad que pueda perjudicar su funcionamiento, comprometer su seguridad o vulnerar los derechos de terceros.</p>
+        <p>No está permitido utilizar sus contenidos para fines ilícitos ni intentar acceder sin autorización a sus sistemas o información.</p>
+        <h2 class="mlt-legal__h">6. Información y contenidos</h2>
+        <p>MALTRAÑA procura que la información publicada sea precisa y esté actualizada. No obstante, algunos contenidos pueden modificarse, actualizarse o retirarse sin previo aviso.</p>
+        <p>Las imágenes y descripciones de los productos tienen carácter informativo y pueden presentar diferencias respecto a las características de los productos comercializados.</p>
+        <h2 class="mlt-legal__h">7. Enlaces a sitios externos</h2>
+        <p>Este sitio puede incluir enlaces a páginas web de terceros con fines informativos o para facilitar el acceso a recursos relacionados.</p>
+        <p>MALTRAÑA no controla ni se responsabiliza de los contenidos, políticas de privacidad o prácticas de dichos sitios externos. El acceso a ellos se realiza bajo la responsabilidad del visitante.</p>
+        <h2 class="mlt-legal__h">8. Limitación de responsabilidad</h2>
+        <p>MALTRAÑA procura mantener el sitio web disponible y funcionando correctamente. Sin embargo, no garantiza su disponibilidad permanente ni la ausencia de errores técnicos.</p>
+        <p>En la medida permitida por la legislación aplicable, MALTRAÑA no será responsable de los daños o perjuicios derivados de interrupciones del servicio, fallos técnicos, uso inadecuado del sitio o circunstancias ajenas a su control.</p>
+        <h2 class="mlt-legal__h">9. Modificaciones de los términos</h2>
+        <p>MALTRAÑA podrá modificar estos Términos de Uso cuando lo considere necesario, con el fin de adaptarlos a cambios legales, técnicos o relacionados con el funcionamiento del sitio.</p>
+        <p>Las modificaciones serán publicadas en esta misma página y entrarán en vigor desde el momento de su publicación.</p>
+        <h2 class="mlt-legal__h">10. Legislación aplicable y jurisdicción</h2>
+        <p>El presente sitio web es de carácter internacional y puede ser consultado desde distintos países.</p>
+        <p>Los presentes Términos de Uso se regirán e interpretarán conforme a las leyes de los Estados Unidos Mexicanos.</p>
+        <p>Para cualquier controversia derivada del uso de este sitio web, las partes se someterán a la jurisdicción de los tribunales competentes del domicilio legal del titular del sitio web en México, salvo que las disposiciones legales imperativas aplicables establezcan otra jurisdicción.</p>
+        <p>Lo anterior se entiende sin perjuicio de los derechos y protecciones que puedan corresponder a los usuarios conforme a la legislación obligatoria de sus respectivos países.</p>
+        <h2 class="mlt-legal__h">11. Contacto</h2>
+        <p>Para cualquier consulta relacionada con estos Términos de Uso o con el contenido del sitio web, puedes ponerte en contacto con MALTRAÑA a través del correo electrónico indicado en el apartado de identificación del titular.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mlt-footer">
+  <div class="container-xxl">
+    <div class="row gy-4">
+      <div class="col-12 col-md-3 mlt-footer__brand">
+        <a href="index.html"><img class="mlt-footer__logo" src="assets/svg/logo-oficial.svg" alt="Maltraña Raicilla" width="300" height="280"></a>
+      </div>
+
+      <nav class="col-6 col-md-3 mlt-footer__nav" aria-label="Secciones">
+        <ul class="mlt-footer__list">
+          <li><a href="raicilla.html">Raicilla</a></li>
+          <li><a href="raicillas-maltrana.html">Raicillas Maltraña</a></li>
+          <li><a href="empresa.html">Empresa</a></li>
+          <li><a href="distribucion.html">Distribución</a></li>
+        </ul>
+      </nav>
+
+      <!-- Experiencias: menú padre con sus tres secciones (jerarquía con filete lateral) -->
+      <nav class="col-6 col-md-3 mlt-footer__nav" aria-labelledby="footer-exp">
+        <p class="mlt-footer__parent" id="footer-exp">Experiencias</p>
+        <ul class="mlt-footer__list mlt-footer__sub">
+          <li><a href="catas.html">Catas</a></li>
+          <li><a href="cocteleria.html">Coctelería</a></li>
+          <li><a href="ruta-de-la-raicilla.html">Ruta de la Raicilla</a></li>
+        </ul>
+      </nav>
+
+      <div class="col-12 col-md-3 mlt-footer__contact">
+        <ul class="mlt-footer__list">
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a class="mlt-footer__mail" href="mailto:contacto@raicilla-maltrana.com">contacto@raicilla-maltrana.com</a></li>
+        </ul>
+        <ul class="mlt-social mt-1">
+          <li><a class="mlt-social__wa" href="https://wa.me/523334930599" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mlt-divider mt-3" aria-hidden="true">
+      <span class="mlt-divider__line"></span>
+      <img class="mlt-divider__ornament" src="assets/svg/ornamento.svg" alt="" width="399" height="94">
+      <span class="mlt-divider__line"></span>
+    </div>
+
+    <!-- Leyendas sanitarias en un solo párrafo, centrado bajo el ornamento -->
+    <p class="mlt-footer__warnings">Evite el exceso. El exceso en el consumo de este producto es dañino para la salud.</p>
+
+    <!-- Legales juntos como grupo; después, el aviso de derechos -->
+    <div class="mlt-footer__legal d-md-flex align-items-center justify-content-between">
+      <ul class="mlt-footer__legal-links list-unstyled m-0">
+        <li><a href="privacidad.html">Aviso de Privacidad</a></li>
+        <li><a href="terminos.html">Términos de Uso</a></li>
+        <li><a href="cookies.html">Política de Cookies</a></li>
+        <li><a href="consumo-responsable.html">Consumo Responsable</a></li>
+      </ul>
+      <p class="mlt-footer__copy m-0">2026. Maltraña Raicilla. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="age-gate.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

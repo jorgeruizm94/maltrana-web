@@ -56,7 +56,7 @@
   --mlt-space-loose: 2.5rem; /* 40px */
   /* Margen mínimo a los lados: la página nunca toca los bordes (20px → 48px) */
   --mlt-page-gutter: clamp(2.5rem, 6vw, 6rem);
-  --mlt-section-py: clamp(2.25rem, 4.25vw, 3.5rem); /* espacio común arriba y abajo de TODAS las secciones */
+  --mlt-section-py: clamp(2.75rem, 5.25vw, 4.5rem); /* espacio común arriba y abajo de TODAS las secciones */
   --mlt-hero-py: clamp(2.5rem, 5vw, 4rem); /* primera sección con título y foto: más baja */
   --mlt-radius: 5px;
   --mlt-radius-img: 4px; /* imágenes: redondeo casi imperceptible, nítido pero no un rectángulo duro */
@@ -509,6 +509,259 @@ b {
 .mlt-section--photo .mlt-prose-block--center,
 .mlt-prose-block--reading {
   max-width: 46rem;
+}
+
+/* Enlaces de texto (Ruta de la Raicilla): se leen como hipervínculos, no como botones.
+   Ícono: agave en reposo → flecha en diagonal al pasar el cursor (como el mosaico de Inicio) */
+.mlt-textlinks {
+  list-style: none;
+  margin: 2.75rem 0 0; /* separado del texto: es un segmento aparte */
+  padding: 0;
+  display: grid;
+  gap: .75rem;
+}
+
+.mlt-textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: var(--mlt-fs-small);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+  transition: color .2s ease;
+}
+
+.mlt-textlink__icon {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+.mlt-textlink__icon > * {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity .3s, transform .3s;
+}
+
+/* El agave toma el color del texto (máscara con el SVG) */
+.mlt-textlink__agave {
+  background: currentColor;
+  -webkit-mask: url("assets/svg/agave.svg") center / contain no-repeat;
+  mask: url("assets/svg/agave.svg") center / contain no-repeat;
+}
+
+.mlt-textlink__icon .bi {
+  font-size: .9em;
+  opacity: 0;
+  transform: scale(.6);
+}
+
+.mlt-textlink:hover .mlt-textlink__agave,
+.mlt-textlink:focus-visible .mlt-textlink__agave {
+  opacity: 0;
+  transform: scale(.6);
+}
+
+.mlt-textlink:hover .bi,
+.mlt-textlink:focus-visible .bi {
+  opacity: 1;
+  transform: none;
+}
+
+/* En secciones claras (crema): texto en dorado oscuro; al pasar el cursor, dorado */
+.mlt-section--cream .mlt-h2 {
+  color: #1F2E25;
+}
+
+.mlt-section--cream .mlt-textlink {
+  color: var(--gold-ink);
+}
+
+.mlt-section--cream .mlt-textlink:hover,
+.mlt-section--cream .mlt-textlink:focus-visible {
+  color: var(--gold);
+}
+
+.mlt-section--cream .mlt-subtitle {
+  color: var(--gold-ink);
+}
+
+.mlt-section--cream .mlt-pullquote {
+  color: var(--gold);
+}
+
+/* "Nuestro proceso" (Raicilla) en tema claro: texto verde oscuro, acentos dorados */
+.mlt-section--cream {
+  --mlt-section-alt-bg: var(--cream); /* fondo del título fijo */
+}
+
+.mlt-section--cream .mlt-story__text {
+  color: rgba(31, 46, 37, .9);
+}
+
+.mlt-section--cream .mlt-pullquote__name {
+  color: #1F2E25;
+}
+
+.mlt-section--cream .mlt-story__text strong {
+  color: var(--gold);
+}
+
+.mlt-section--cream .mlt-story__stage,
+.mlt-section--cream .mlt-story__media {
+  box-shadow: 0 1px 2px rgba(110, 92, 58, .10), 0 18px 38px -18px rgba(110, 92, 58, .34);
+}
+
+.mlt-section--cream .mlt-brand__name,
+.mlt-section--cream .mlt-brand__name a {
+  color: #1F2E25;
+}
+
+.mlt-section--cream .mlt-brand:hover .mlt-brand__name a {
+  color: var(--gold-ink);
+}
+
+/* Sombra de las fotos en secciones claras: tono del crema, más oscuro y suave (no negro) */
+.mlt-section--cream .mlt-media {
+  box-shadow: 0 1px 2px rgba(110, 92, 58, .10), 0 18px 38px -18px rgba(110, 92, 58, .34);
+}
+
+.mlt-section--cream .mlt-btn--outline {
+  --bs-btn-color: #1F2E25;
+  --bs-btn-border-color: rgba(31, 46, 37, .45);
+  --bs-btn-hover-color: var(--cream);
+  --bs-btn-hover-bg: #1F2E25;
+  --bs-btn-hover-border-color: #1F2E25;
+}
+
+/* Bloque de texto angosto (Ruta: "Descubre la Ruta de la Raicilla") */
+@media (min-width: 768px) {
+  .mlt-split .mlt-prose-block--narrow {
+    max-width: 26rem;
+  }
+}
+
+/* Foto con más peso que el texto (Ruta, 1ª sección): texto angosto y foto más alta */
+@media (min-width: 768px) {
+  .mlt-split.mlt-split--media-wide {
+    grid-template-columns: .8fr 1.25fr;
+  }
+
+  .mlt-split--short.mlt-split--media-wide .mlt-media {
+    aspect-ratio: 10 / 9;
+    max-height: none;
+  }
+}
+
+/* Foto más pequeña que el texto, a la izquierda (Catas, sección clara) */
+@media (min-width: 768px) {
+  .mlt-split.mlt-split--reverse.mlt-split--media-small {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+  }
+
+  .mlt-split--short.mlt-split--media-small .mlt-media {
+    aspect-ratio: 7 / 5;
+    max-height: 420px;
+  }
+}
+
+/* Sección con foto de fondo más alta que una tira */
+.mlt-section--tall {
+  display: flex;
+  align-items: center;
+  min-height: clamp(26rem, 42vw, 38rem);
+}
+
+.mlt-section--tall > .container-xxl {
+  width: 100%;
+}
+
+/* Profundidad: verde más oscuro arriba que se desvanece hacia el verde de fondo */
+/* Degradado largo y suave: arriba un verde apenas más oscuro, baja poco a poco
+   y solo al final se vuelve transparente y deja el verde de fondo */
+.mlt-section--depth {
+  background:
+    linear-gradient(180deg,
+      rgba(22, 36, 28, 1) 0%,
+      rgba(22, 36, 28, .65) 55%,
+      rgba(22, 36, 28, 0) 100%),
+    var(--band);
+}
+
+/* Versión más ligera (Distribución) */
+.mlt-section--depth-soft {
+  background:
+    linear-gradient(180deg,
+      rgba(22, 36, 28, .6) 0%,
+      rgba(22, 36, 28, .38) 55%,
+      rgba(22, 36, 28, 0) 100%),
+    var(--band);
+}
+
+/* Más aire entre el título y la frase en dorado (Ruta, sección con foto de fondo) */
+.mlt-section--tall .mlt-h2 + .mlt-pullquote {
+  margin-top: 2.75rem !important;
+}
+
+/* Ruta: el título de la sección con foto de fondo con el formato de los
+   subtítulos de producto (mayúsculas), en blanco y un poco más grande; ancho
+   completo para que quepa en una línea en escritorio */
+.mlt-section--tall .mlt-h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(.9375rem, .85rem + .35vw, 1.0625rem);
+  letter-spacing: .06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.mlt-section--tall .mlt-prose-block--center {
+  max-width: none;
+}
+
+.mlt-section--tall .mlt-pullquote {
+  max-width: 46rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Verde un poco más oscuro que el de fondo: separa dos secciones seguidas (Distribución, pilares) */
+.mlt-section--deep {
+  background: #1E3127;
+}
+
+/* Velo un poco más ligero (Ruta: que se alcance a ver el logo de la chamarra) */
+.mlt-section--photo-soft::after {
+  background: rgba(14, 22, 17, .74);
+}
+
+/* Páginas legales: un poco más ancho que el bloque de lectura */
+.mlt-prose-block--legal {
+  max-width: 50rem;
+}
+
+/* Apartados dentro de un texto legal (Términos, Cookies, Consumo) */
+.mlt-legal__h {
+  margin: 2.25rem 0 .75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+
+.mlt-prose-block--legal .mlt-list {
+  margin-bottom: 1em;
 }
 
 .mlt-prose-block--wide {
@@ -1413,7 +1666,7 @@ html.mlt-gated {
   display: grid;
   gap: .75rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-areas: "rai rai" "prod prod" "mal mal" "dist dist";
+  grid-template-areas: "rai rai" "prod prod" "empresa empresa" "dist dist";
 }
 
 .mlt-tile--prod {
@@ -1421,8 +1674,8 @@ html.mlt-gated {
   min-height: 260px;
 }
 
-.mlt-tile--mal {
-  grid-area: mal;
+.mlt-tile--empresa {
+  grid-area: empresa;
   min-height: 200px;
 }
 
@@ -1442,13 +1695,13 @@ html.mlt-gated {
   .mlt-bento {
     gap: 1rem;
     grid-template-columns: .85fr 1.4fr 1fr; /* Raicillas Maltraña con más protagonismo */
-    grid-template-areas: "rai prod mal" "rai prod dist";
+    grid-template-areas: "rai prod empresa" "rai prod dist";
     grid-template-rows: repeat(2, clamp(210px, calc((100svh - var(--mlt-header-h) - 12rem) / 2), 300px));
   }
 
   .mlt-tile--prod,
   .mlt-tile--rai,
-  .mlt-tile--mal,
+  .mlt-tile--empresa,
   .mlt-tile--dist {
     min-height: 0;
   }
@@ -1620,9 +1873,14 @@ html.mlt-gated {
 
   /* Mosaico en celular: los recuadros secundarios del mismo tamaño */
   .mlt-tile--prod,
-  .mlt-tile--mal,
+  .mlt-tile--empresa,
   .mlt-tile--dist {
     min-height: 240px;
+  }
+
+  /* Raicillas Maltraña, más alto: más protagonismo y se aprecian las botellas */
+  .mlt-tile--prod {
+    min-height: 320px;
   }
 
   /* el primero (Raicilla), más alto */
@@ -1661,14 +1919,14 @@ html.mlt-gated {
 }
 
 /* Inicio, Maltraña: la foto crece hacia arriba para que el horno quede más alto y se vea mejor */
-.mlt-tile--mal .mlt-tile__media img {
+.mlt-tile--empresa .mlt-tile__media img {
   object-position: 50% 100%;
   transform: scale(1.2);
   transform-origin: 50% 100%;
 }
 
 @media (hover: hover) {
-  .mlt-tile--mal:hover .mlt-tile__media img {
+  .mlt-tile--empresa:hover .mlt-tile__media img {
     transform: scale(1.26);
   }
 }
@@ -1695,7 +1953,17 @@ html.mlt-gated {
   content: "";
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to top, rgba(10, 11, 10, .8) 0%, rgba(10, 11, 10, .32) 45%, rgba(10, 11, 10, 0) 70%);
+  /* degradado solo en la parte baja (detrás del texto); la foto se ve casi completa */
+  background: linear-gradient(to top, rgba(10, 11, 10, .72) 0%, rgba(10, 11, 10, .3) 28%, rgba(10, 11, 10, 0) 48%);
+  /* velo verde oscuro del brandbook (--band-deep) que aparece al pasar el cursor */
+  box-shadow: inset 0 0 0 100vmax rgba(26, 43, 34, 0);
+  transition: box-shadow .35s ease;
+}
+
+@media (hover: hover) {
+  .mlt-tile:hover::after {
+    box-shadow: inset 0 0 0 100vmax rgba(26, 43, 34, .22);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1764,15 +2032,11 @@ html.mlt-gated {
 }
 
 .mlt-expcta__head {
-  max-width: 46rem;
-  margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-.mlt-expcta__text {
-  margin: 1rem auto 0;
-  max-width: 60ch;
-  color: rgba(255, 255, 255, .86);
+.mlt-expcta__head .mlt-h2 {
+  margin-bottom: 0;
 }
 
 .mlt-expcta__cards {
@@ -2412,7 +2676,7 @@ button.mlt-pill {
     justify-content: center;
     transition: opacity .5s ease;
     min-height: 0;
-    padding-block: 1.75rem;
+    padding-block: 4.5rem; /* más separación: cada foto se queda más tiempo al bajar */
   }
 
   .mlt-story__text {
@@ -2479,13 +2743,25 @@ button.mlt-pill {
   }
 
   /* El título va en la columna del texto y se queda arriba al bajar */
+  /* Empieza a la misma altura que la foto (y se queda fijo a la misma altura que ella) */
   .mlt-story__title {
     position: sticky;
-    top: var(--mlt-header-h);
+    top: calc(var(--mlt-header-h) + 2rem);
     z-index: 2;
     margin: 0;
-    padding: 2rem 0 1rem;
+    padding: 0 0 2.5rem;
     background: var(--mlt-section-alt-bg, var(--band));
+  }
+
+  /* tapa la franja entre el header y el título fijo */
+  .mlt-story__title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: calc(2rem + 1px);
+    background: inherit;
   }
 
   .mlt-story__steps {
@@ -3193,11 +3469,14 @@ button.mlt-pill {
 }
 
 .mlt-contact dt {
-  font-size: .8125rem;
-  font-weight: 500;
-  letter-spacing: .1em;
+  /* formato de los subtítulos de producto (.mlt-product__tagline), en negritas y en blanco
+     para distinguirlos de los enlaces (dorados) */
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--mlt-fs-small);
+  letter-spacing: .06em;
+  line-height: 1.4;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .6);
 }
 
 .mlt-contact dd {
@@ -3217,9 +3496,16 @@ button.mlt-pill {
   aspect-ratio: 4 / 3;
 }
 
+/* Contacto: columna de datos ancha (la dirección cabe en una línea) */
+@media (min-width: 768px) {
+  .mlt-split.mlt-split--map {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
 /* Contacto: mapa centrado en el marcador */
 .mlt-map__media img {
-  object-position: 51% 48%;
+  object-position: 50% 50%;
 }
 
 /* ============================================================
@@ -3238,4 +3524,121 @@ button.mlt-pill {
 @keyframes mlt-drop {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Ajustes 26 nov (noche) ---------- */
+
+/* Catas, 2ª sección: texto un poco más ancho, foto más angosta */
+@media (min-width: 768px) {
+  .mlt-split.mlt-split--media-wide.mlt-split--balanced {
+    grid-template-columns: 1fr 1.05fr;
+  }
+}
+
+/* Foto encuadrada más arriba (Catas: se ve la tapa de la botella con aire) */
+.mlt-media--top img {
+  object-position: 50% 20%;
+}
+
+/* Tarjeta "Ruta de la Raicilla" (cierre de Experiencias): foto acercada
+   hacia la camioneta (crece hacia la esquina superior izquierda) */
+.mlt-expcard--ruta-de-la-raicilla .mlt-expcard__media img {
+  transform: scale(1.3);
+  transform-origin: 85% 90%;
+}
+
+@media (hover: hover) {
+  .mlt-expcard--ruta-de-la-raicilla:hover .mlt-expcard__media img {
+    transform: scale(1.36);
+  }
+}
+
+/* Raicilla, "Nuestro proceso": el título se desvanece en el último momento */
+.mlt-story__title {
+  transition: opacity .4s ease;
+}
+
+@media (min-width: 992px) {
+  .mlt-story__title.is-faded {
+    opacity: 0;
+  }
+}
+
+/* Raicillas Maltraña, 1er producto: degradado ligero (como Contacto) */
+.mlt-product.mlt-product--depth {
+  background:
+    linear-gradient(180deg,
+      rgba(22, 36, 28, .6) 0%,
+      rgba(22, 36, 28, .38) 55%,
+      rgba(22, 36, 28, 0) 100%),
+    var(--band);
+}
+
+@media (max-width: 767.98px) {
+  /* Raicillas Maltraña: foto de producto más alta y completa en celular */
+  .mlt-product__media {
+    aspect-ratio: 2 / 3;
+    width: 88%;
+    margin-inline: auto;
+  }
+
+  .mlt-product__media img {
+    transform: none;
+    object-position: 50% 50%;
+  }
+
+  /* Raicilla, "¿Qué es la raicilla?": foto más alta en celular */
+  .mlt-split--short.mlt-split--media-tall-m .mlt-media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .mlt-split--media-tall-m .mlt-media img {
+    object-position: 50% 100%;
+  }
+
+  /* Ruta, "Descubre…": mismo orden que la 2ª sección (título, texto, foto, enlaces) */
+  .mlt-split--stack-short {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .mlt-split--stack-short > .mlt-prose-block {
+    display: contents;
+  }
+
+  .mlt-split--stack-short .mlt-textlinks {
+    margin-top: 1rem;
+  }
+
+  .mlt-split--stack-short > .mlt-media {
+    order: 2;
+    margin-block: .5rem 1.5rem;
+    aspect-ratio: 16 / 11;
+  }
+
+  .mlt-split--stack-short > .mlt-prose-block > :last-child {
+    order: 3;
+  }
+
+  /* Ruta, sección con foto de fondo: más baja en celular, como divisoria */
+  .mlt-section--tall {
+    min-height: 0;
+    padding-block: 3rem;
+  }
+
+  /* Ruta: enlaces en mayúsculas en una sola línea */
+  .mlt-textlink {
+    font-size: .75rem;
+    letter-spacing: .04em;
+  }
+
+  /* Footer: los 4 enlaces legales de dos en dos */
+  .mlt-footer__legal-links {
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    column-gap: 1.75rem;
+    row-gap: .25rem;
+  }
 }

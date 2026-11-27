@@ -13,3 +13,11 @@ copy/
 
 # Carpetas de revisión que se envían aparte
 maltrana-web-revision*/
+
+# Archivos comprimidos (las revisiones se mandan aparte)
+*.zip
+
+# Fotos originales: el sitio solo usa .avif y .webp
+assets/img/**/*.jpg
+assets/img/**/*.jpeg
+assets/img/**/*.png
